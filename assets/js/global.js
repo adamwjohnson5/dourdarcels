@@ -35,6 +35,11 @@ function setEventsGlobal() {}
 
 /* Start */
 
-function start() {}
+function start() {
+    const darcel = document.querySelector('img#darcel');
+    darcel.onload = () => {
+        darcel.style.opacity = 1;
+    };
+}
 
 /* Global */
