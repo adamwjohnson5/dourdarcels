@@ -37,10 +37,9 @@ function setEventsGlobal() {}
 
 function start() {
     const darcel = document.querySelector('img#darcel');
-
+    darcel.setAttribute('src', 'assets/img/darcel.png');
 
     darcel.onload = () => {
-        alert('fired');
         darcel.style.opacity = 1;
     };
 
