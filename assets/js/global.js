@@ -37,9 +37,14 @@ function setEventsGlobal() {}
 
 function start() {
     const darcel = document.querySelector('img#darcel');
-    darcel.onload = () => {
+
+    if (window.touchScreen) {
         darcel.style.opacity = 1;
-    };
+    } else {
+        darcel.onload = () => {
+            darcel.style.opacity = 1;
+        };
+    }
 }
 
 /* Global */
