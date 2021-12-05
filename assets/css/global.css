@@ -224,4 +224,9 @@ a.text-icon img {
         top: 50%;
         background-color: #FC0;
     }
+
+    section#section-text p {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
 }
