@@ -38,9 +38,11 @@ function setEventsGlobal() {}
 function start() {
     const darcel = document.querySelector('img#darcel');
 
-
+    setTimeout(() => {
+    darcel.onload = () => {
         darcel.style.opacity = 1;
-
+    };
+    }, 500);
 }
 
 /* Global */
