@@ -36,13 +36,13 @@ function setEventsGlobal() {}
 /* Start */
 
 function start() {
+    // Fade in Darcel on load
     const darcel = document.querySelector('img#darcel');
-    darcel.setAttribute('src', 'assets/img/darcel.png');
+    darcel.setAttribute('src', 'assets/img/darcel.png'); // Hack! - iOS Safari not firing onLoad if image already in DOM
 
     darcel.onload = () => {
         darcel.style.opacity = 1;
     };
-
 }
 
 /* Global */
