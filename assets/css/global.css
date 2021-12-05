@@ -142,11 +142,11 @@ a.text-icon img {
 
     section {
         width: 100%;
-        height: 65%;
+        height: 60%;
     }
 
     section#section-text {
-        top: 65%;
+        top: 60%;
         background-color: #FC0;
     }
 
