@@ -150,6 +150,10 @@ a.text-icon img {
         background-color: #FC0;
     }
 
+    #text-wrapper {
+        padding-bottom: 84px;
+    }
+
     section#section-text p {
         padding-left: 24px;
         padding-right: 24px;
