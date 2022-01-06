@@ -1,10 +1,9 @@
 /* Fonts */
 
-/* @font-face {
-    font-family: "XXXXX";
-    src: url("../fonts/XXXXX.woff2") format("woff2"),
-        url("../fonts/XXXXX.woff") format("woff");
-} */
+@font-face {
+    font-family: "itc-avant-garde-gothic-lt-bold";
+    src: url("../fonts/itc-avant-garde-gothic-lt-bold.woff2") format("woff2");
+}
 
 /* Set-up */
 
@@ -14,7 +13,7 @@ html {
 }
 
 body {
-    font-family: sans-serif;
+    font-family: "itc-avant-garde-gothic-lt-bold", sans-serif;
     font-size: 14px;
     color: #FFF;
     line-height: 0;
@@ -44,7 +43,7 @@ p {
 }
 
 a {
-    color: #000;
+    color: #FFF;
     text-decoration: none;
 }
 
@@ -169,6 +168,21 @@ a#header-discord {
 header img {
     height: 32px;
     padding: 16px;
+}
+
+a#header-connect {
+    line-height: 1;
+    color: #000;
+    background-color: #FFF;
+    font-size: 18px;
+    border-radius: 999px;
+    float: right;
+    margin: 8px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    padding-right: 32px;
+    padding-left: 32px;
 }
 
 /* Section 1 */
