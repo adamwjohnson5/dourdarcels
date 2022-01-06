@@ -13,8 +13,8 @@ html {
 }
 
 body {
-    font-family: "itc-avant-garde-gothic-lt-bold", sans-serif;
-    font-size: 14px;
+    font-family: sans-serif;
+    font-size: 18px;
     color: #FFF;
     line-height: 0;
     margin: 0;
@@ -30,15 +30,17 @@ h3,
 h4,
 h5,
 h6 {
-    font-size: 24px;
+    font-family: "itc-avant-garde-gothic-lt-bold", sans-serif;
+    font-size: 110px;
+    letter-spacing: -4px;
     margin: 0;
-    line-height: 1.25;
+    line-height: 0.8;
     font-weight: normal;
 }
 
 p {
     margin: 0;
-    line-height: 1.5;
+    line-height: 1.25;
     overflow-wrap: break-word;
 }
 
@@ -53,7 +55,7 @@ a {
 
 .no-touch a:hover,
 a:active {
-    color: #999;
+    color: #666666;
 }
 
 /* Forms */
@@ -146,6 +148,53 @@ section {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.section-column {
+    position: absolute;
+    width: 50%;
+    left: 0;
+    text-align: center;
+    padding-left: 32px;
+    padding-right: 32px;
+    box-sizing: border-box;
+}
+
+.section-column p {
+    max-width: 480px;
+    margin: auto;
+    margin-top: 24px;
+}
+
+a.big-button {
+    line-height: 1;
+    color: #000;
+    background-color: #FFF;
+    font-size: 18px;
+    border-radius: 999px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    padding-right: 32px;
+    padding-left: 32px;
+    font-family: "itc-avant-garde-gothic-lt-bold", sans-serif;
+    width: max-content;
+}
+
+@media only screen and (max-width: 768px) {
+    .section-column {
+        width: 100%;
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+    h2 {
+        font-size: 72px;
+    }
 }
 
 /* Header */
@@ -171,18 +220,8 @@ header img {
 }
 
 a#header-connect {
-    line-height: 1;
-    color: #000;
-    background-color: #FFF;
-    font-size: 18px;
-    border-radius: 999px;
     float: right;
     margin: 8px;
-    height: 48px;
-    display: flex;
-    align-items: center;
-    padding-right: 32px;
-    padding-left: 32px;
 }
 
 @media only screen and (max-width: 640px) {
@@ -200,9 +239,6 @@ a#header-connect {
 
 section#section-1 {
     background-image: url('../img/bg-1.jpg');
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 section#section-1 img {
@@ -225,5 +261,10 @@ section#section-1 img {
 
 section#section-2 {
     top: 100%;
-    background-color: #2b5281;
+    background-image: url('../img/bg-2.jpg');
+}
+
+a#section-2-how {
+    margin: auto;
+    margin-top: 24px;
 }
