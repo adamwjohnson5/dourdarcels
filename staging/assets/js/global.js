@@ -35,6 +35,24 @@ function setEventsGlobal() {}
 
 /* Start */
 
-function start() {}
+function start() {
+    loadSection(1);
+}
 
 /* Global */
+
+function loadSection(int) {
+    const preload = document.querySelector('img#preload');
+    preload.setAttribute('src', `assets/img/bg-${ int }.jpg`);
+
+    // Preload bg image
+    preload.onload = () => {
+        document.querySelector('section#section-' + int).style.opacity = 1;
+        int++;
+
+        // Load next section if exists
+        if (document.querySelector('section#section-' + int)) {
+            loadSection(int);
+        }
+    };
+}

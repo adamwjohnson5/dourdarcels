@@ -141,6 +141,10 @@ button {
     clear: both;
 }
 
+img#preload {
+    display: none;
+}
+
 section {
     position: absolute;
     width: 100%;
@@ -152,6 +156,8 @@ section {
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    opacity: 0;
+    transition: opacity 0.5s ease-in;
 }
 
 .section-column {
