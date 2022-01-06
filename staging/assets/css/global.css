@@ -185,6 +185,17 @@ a#header-connect {
     padding-left: 32px;
 }
 
+@media only screen and (max-width: 640px) {
+    header {
+        width: 308px;
+        margin-left: -154px;
+    }
+
+    a#header-connect {
+        display: none;
+    }
+}
+
 /* Section 1 */
 
 section#section-1 {
