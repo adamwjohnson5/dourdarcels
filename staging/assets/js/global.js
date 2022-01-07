@@ -42,12 +42,13 @@ function start() {
 /* Global */
 
 function loadSection(int) {
-    const preload = document.querySelector('img#preload');
-    preload.setAttribute('src', `assets/img/bg-${ int }.jpg`);
+    const section = document.querySelector('section#section-' + int);
+    const bg = section.querySelector('img.section-bg');
+    bg.setAttribute('src', `assets/img/bg-${ int }.jpg`);
 
     // Preload bg image
-    preload.onload = () => {
-        document.querySelector('section#section-' + int).style.opacity = 1;
+    bg.onload = () => {
+        section.style.opacity = 1;
         int++;
 
         // Load next section if exists
