@@ -199,7 +199,6 @@ a.big-button {
     }
 
     .section-wrapper {
-        z-index: 1;
         position: static;
     }
 
@@ -227,6 +226,7 @@ header {
     left: 50%;
     margin-left: -280px;
     top: 32px;
+    z-index: 2;
 }
 
 a#header-discord {
@@ -245,8 +245,18 @@ a#header-connect {
 
 @media only screen and (max-width: 768px) {
     header {
-        width: 308px;
-        margin-left: -154px;
+        width: 232px;
+        margin-left: -116px;
+        height: 48px;
+    }
+
+    a#header-discord {
+        margin-left: 12px;
+    }
+
+    header img {
+        height: 24px;
+        padding: 12px;
     }
 
     a#header-connect {
@@ -264,6 +274,7 @@ section#section-1 .section-wrapper img {
 @media only screen and (max-width: 768px) {
     section#section-1 .section-wrapper {
         position: absolute;
+        z-index: 1;
     }
 
     section#section-1 .section-wrapper img {
