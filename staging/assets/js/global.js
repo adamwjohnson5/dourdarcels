@@ -51,9 +51,12 @@ function loadSection(int) {
         section.style.opacity = 1;
         int++;
 
-        // Load next section if exists
         if (document.querySelector('section#section-' + int)) {
+            // Load next section if exists
             loadSection(int);
+        } else {
+            // All sections loaded - show footer
+            document.querySelector('footer').style.visibility = 'visible';
         }
     };
 }
