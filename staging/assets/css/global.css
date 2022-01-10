@@ -20,8 +20,8 @@ body {
     margin: 0;
     -webkit-tap-highlight-color: transparent;
     -webkit-text-size-adjust: none;
-    /* user-select: none;
-    -webkit-user-select: none; */
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 h1,
@@ -203,6 +203,16 @@ a.big-button:active {
     background-color: #000;
 }
 
+@media only screen and (min-width: 769px) and (max-width: 1280px) {
+    h2 {
+        font-size: 100px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+}
+
 @media only screen and (max-width: 768px) {
     img.section-bg {
         width: 200%;
@@ -351,6 +361,20 @@ a.column-label:active {
     align-items: center;
 }
 
+#section-2-minting a {
+    pointer-events: none;
+}
+
+#section-2-minting .big-button {
+    opacity: 0.25;
+    transition: opacity 0.25s ease-in;
+}
+
+a#minting-button-1.big-button {
+    opacity: 1;
+    pointer-events: auto;
+}
+
 a#minting-button-1,
 #minting-button-3 {
     margin-bottom: 24px;
@@ -426,14 +450,9 @@ p#section-2-counter-text {
 }
 
 @media only screen and (min-width: 769px) and (max-width: 1280px) {
-    #section-2 h2 {
-        font-size: 100px;
-    }
-
     #section-2-minting,
     #section-2 p {
         margin-top: 16px;
-        font-size: 16px;
     }
 
     .minting-column {
@@ -480,6 +499,67 @@ p#section-2-counter-text {
 a#section-3-how {
     margin: auto;
     margin-top: 24px;
+}
+
+/* Section 7 */
+
+#section-7-team {
+    width: 528px;
+    margin: auto;
+    margin-top: 12px;
+}
+
+#section-7-team a {
+    float: left;
+    line-height: 1;
+    margin: 24px;
+    margin-bottom: 0 !important;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+#section-7-team a:hover,
+#section-7-team a:active {
+    text-decoration: none;
+}
+
+#section-7-team a img {
+    width: 128px;
+    display: block;
+    border-radius: 999px;
+}
+
+#section-7-team a span {
+    display: block;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1280px) {
+    #section-7-team {
+        width: 480px;
+        margin-top: 8px;
+    }
+
+    #section-7-team a {
+        margin: 16px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    #section-7 .section-column {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    #section-7-team {
+        width: 304px;
+    }
+
+    #section-7-team a {
+        margin: 12px;
+    }
 }
 
 /* Footer */
