@@ -1,3 +1,7 @@
+/* Import */
+
+@import url("section-2.css");
+
 /* Fonts */
 
 @font-face {
@@ -55,80 +59,19 @@ a:active {
     text-decoration: underline;
 }
 
-/* Forms */
-
-input:not([type="checkbox"]):not([type="radio"]),
-textarea {
-    margin: 0;
-    outline: none;
-    box-sizing: border-box;
-    padding: 8px;
-    font-family: sans-serif;
-    font-size: 14px;
-    border: none;
-    color: #000;
-    border-radius: 0;
-}
-
-textarea {
-    line-height: 1.5;
-}
-
-input[type="checkbox"],
-input[type="radio"] {
-    outline: none;
-    vertical-align: text-top;
-}
-
-select {
-    font-family: sans-serif;
-    font-size: 16px;
-    outline: none;
-    height: 32px;
-    border: none;
-    color: #000;
-}
-
-button {
-    margin: 0;
-}
-
-::placeholder {
-    color: #999;
-}
-
-.field-error,
-.field-error::placeholder {
-    color: #F00 !important;
-}
-
-/* Animation */
-
-.fade-in-1 {
-    animation: fadeIn linear 1s forwards;
-}
-
-.rotate-1 {
-    animation: rotating linear 1s infinite;
-}
-
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
+@media only screen and (min-width: 835px) and (max-width: 1194px) {
+    h2 {
+        font-size: 100px;
     }
 
-    100% {
-        opacity: 1;
+    p {
+        font-size: 16px;
     }
 }
 
-@keyframes rotating {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
+@media only screen and (max-width: 834px) {
+    h2 {
+        font-size: 72px;
     }
 }
 
@@ -203,17 +146,7 @@ a.big-button:active {
     background-color: #000;
 }
 
-@media only screen and (min-width: 769px) and (max-width: 1280px) {
-    h2 {
-        font-size: 100px;
-    }
-
-    p {
-        font-size: 16px;
-    }
-}
-
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 834px) {
     img.section-bg {
         width: 200%;
     }
@@ -232,10 +165,6 @@ a.big-button:active {
         padding-top: 48px;
         padding-bottom: 48px;
         position: static;
-    }
-
-    h2 {
-        font-size: 72px;
     }
 }
 
@@ -267,7 +196,7 @@ a#header-connect {
     margin: 8px;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 834px) {
     header {
         width: 232px;
         margin-left: -116px;
@@ -295,7 +224,7 @@ section#section-1 .section-wrapper img {
     max-width: 900px;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 834px) {
     section#section-1 .section-wrapper {
         position: absolute;
         z-index: 1;
@@ -303,194 +232,6 @@ section#section-1 .section-wrapper img {
 
     section#section-1 .section-wrapper img {
         width: 80%;
-    }
-}
-
-/* Section 2 */
-
-#section-2 p {
-    text-align: left;
-}
-
-#section-2-minting {
-    border: 1px solid #FFF;
-    border-radius: 20px;
-    width: max-content;
-    margin: auto;
-    margin-top: 24px;
-}
-
-.minting-column {
-    float: left;
-    margin-top: 16px;
-    margin-bottom: 16px;
-    padding-left: 32px;
-    padding-right: 32px;
-}
-
-#minting-column-1 {
-    border-right: 1px solid #FFF;
-}
-
-.column-label {
-    line-height: 1;
-    font-size: 14px;
-    margin: auto;
-    margin-bottom: 12px;
-    display: block;
-    font-weight: bold;
-    width: max-content;
-}
-
-a.column-label:hover,
-a.column-label:active {
-    text-decoration: none;
-}
-
-.column-label span {
-    font-size: 10px;
-    background-color: #fccd12;
-    border-radius: 999px;
-    color: #000;
-    width: 12px;
-    height: 12px;
-    vertical-align: 1px;
-    margin-left: 8px;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#section-2-minting a {
-    pointer-events: none;
-}
-
-#section-2-minting .big-button {
-    opacity: 0.25;
-    transition: opacity 0.25s ease-in;
-}
-
-a#minting-button-1.big-button {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-a#minting-button-1,
-#minting-button-3 {
-    margin-bottom: 24px;
-}
-
-#minting-button-3 {
-    background-color: #669a40;
-}
-
-a#minting-button-4 {
-    background-color: #000;
-    color: #FFF;
-}
-
-a#minting-button-4:active {
-    background-color: #FFF;
-    color: #000;
-}
-
-#minting-button-2 {
-    padding: 0;
-}
-
-#minting-button-2 a {
-    width: 32px;
-    height: 31px;
-    background-color: #000;
-    border-radius: 999px;
-    margin-left: 12px;
-    margin-right: 12px;
-    font-family: 'Helvetica Neue', sans-serif;
-    font-weight: bold;
-    font-size: 24px;
-    padding-top: 1px;
-    text-align: center;
-}
-
-#minting-button-2 a:hover,
-#minting-button-2 a:active {
-    text-decoration: none;
-}
-
-#minting-button-2 a:active {
-    background-color: #FFF;
-    color: #000;
-}
-
-#minting-button-2 span {
-    width: 96px
-}
-
-p#section-2-counter-text {
-    text-align: center;
-    font-size: 14px !important;
-    font-weight: bold;
-}
-
-#section-2-counter {
-    background-color: #669a40;
-    height: 8px;
-    border-radius: 999px;
-    max-width: 540px;
-    margin: auto;
-    margin-top: 8px;
-    overflow: hidden;
-}
-
-#section-2-counter-progress {
-    position: relative;
-    width: 0%;
-    height: 8px;
-    background-color: #cc2027;
-}
-
-@media only screen and (min-width: 769px) and (max-width: 1280px) {
-    #section-2-minting,
-    #section-2 p {
-        margin-top: 16px;
-    }
-
-    .minting-column {
-        margin-top: 12px;
-        margin-bottom: 12px;
-        padding-left: 16px;
-        padding-right: 16px;
-    }
-
-    #section-2-counter {
-        max-width: 480px;
-    }
-}
-
-@media only screen and (max-width: 768px) {
-    #section-2 p {
-        text-align: center;
-    }
-
-    .minting-column {
-        float: none;
-        padding-left: 24px;
-        padding-right: 24px;
-    }
-
-    #minting-column-1 {
-        border: none;
-        padding-bottom: 8px;
-    }
-
-    a#minting-button-4 {
-        background-color: #FFF;
-        color: #000;
-    }
-
-    a#minting-button-4:active {
-        background-color: #000;
-        color: #FFF;
     }
 }
 
@@ -536,7 +277,7 @@ a#section-3-how {
     font-weight: bold;
 }
 
-@media only screen and (min-width: 769px) and (max-width: 1280px) {
+@media only screen and (min-width: 835px) and (max-width: 1194px) {
     #section-7-team {
         width: 480px;
         margin-top: 8px;
@@ -547,7 +288,7 @@ a#section-3-how {
     }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 834px) {
     #section-7 .section-column {
         padding-left: 8px;
         padding-right: 8px;
@@ -579,7 +320,7 @@ footer a.big-button {
     margin-right: 12px;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 834px) {
     footer {
         height: 256px;
         flex-direction: column
