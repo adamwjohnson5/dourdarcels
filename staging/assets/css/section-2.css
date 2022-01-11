@@ -1,6 +1,6 @@
 /* Section 2 */
 
-#section-2 p {
+p#section-2-details {
     text-align: left;
 }
 
@@ -34,11 +34,6 @@
     width: max-content;
 }
 
-a.column-label:hover,
-a.column-label:active {
-    text-decoration: none;
-}
-
 .column-label span {
     font-size: 10px;
     background-color: #fccd12;
@@ -53,13 +48,10 @@ a.column-label:active {
     align-items: center;
 }
 
-#section-2-minting a {
-    pointer-events: none;
-}
-
 #section-2-minting .big-button {
     opacity: 0.25;
     transition: opacity 0.25s ease-in;
+    pointer-events: none;
 }
 
 a#minting-button-1.big-button {
@@ -91,7 +83,7 @@ a#minting-button-4:active {
 }
 
 #minting-button-2 a {
-    width: 32px;
+    width: 31px;
     height: 31px;
     background-color: #000;
     border-radius: 999px;
@@ -101,12 +93,7 @@ a#minting-button-4:active {
     font-weight: bold;
     font-size: 24px;
     padding-top: 1px;
-    text-align: center;
-}
-
-#minting-button-2 a:hover,
-#minting-button-2 a:active {
-    text-decoration: none;
+    padding-left: 1px;
 }
 
 #minting-button-2 a:active {
@@ -119,7 +106,6 @@ a#minting-button-4:active {
 }
 
 p#section-2-counter-text {
-    text-align: center;
     font-size: 14px !important;
     font-weight: bold;
 }
@@ -141,17 +127,17 @@ p#section-2-counter-text {
     background-color: #cc2027;
 }
 
-@media only screen and (min-width: 835px) and (max-width: 1194px) {
+@media only screen and (min-width: 532px) and (max-width: 1194px) {
     #section-2-minting,
-    #section-2 p {
+    p#section-2-counter-text {
         margin-top: 16px;
     }
 
     .minting-column {
         margin-top: 12px;
         margin-bottom: 12px;
-        padding-left: 16px;
-        padding-right: 16px;
+        padding-left: 12px;
+        padding-right: 12px;
     }
 
     #section-2-counter {
@@ -159,22 +145,7 @@ p#section-2-counter-text {
     }
 }
 
-@media only screen and (max-width: 834px) {
-    #section-2 p {
-        text-align: center;
-    }
-
-    .minting-column {
-        float: none;
-        padding-left: 24px;
-        padding-right: 24px;
-    }
-
-    #minting-column-1 {
-        border: none;
-        padding-bottom: 8px;
-    }
-
+@media only screen and (max-width: 926px) {
     a#minting-button-4 {
         background-color: #FFF;
         color: #000;
@@ -183,5 +154,22 @@ p#section-2-counter-text {
     a#minting-button-4:active {
         background-color: #000;
         color: #FFF;
+    }
+}
+
+@media only screen and (max-width: 531px) {
+    p#section-2-details {
+        text-align: center;
+    }
+
+    .minting-column {
+        float: none;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    #minting-column-1 {
+        border: none;
+        padding-bottom: 8px;
     }
 }

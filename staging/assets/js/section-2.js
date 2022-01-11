@@ -44,14 +44,18 @@ function mintQuantityToggle(action) {
     }
 
     if (window.mintQuantity === 0) {
+        // Reset
         document.querySelector('#minting-button-2 span').innerHTML = 'Quantity';
         document.querySelector('#minting-button-3').innerHTML = '0 ETH';
         let mintingMint = document.querySelector('a#minting-button-4');
         mintingMint.style.opacity = '';
         mintingMint.style.pointerEvents = '';
     } else {
+        // Update text
         document.querySelector('#minting-button-2 span').innerHTML = window.mintQuantity;
         document.querySelector('#minting-button-3').innerHTML = (window.mintQuantity * 0.1).toFixed(1) + ' ETH'; // Calculate cost
+
+        // Enable mint button
         let mintingMint = document.querySelector('a#minting-button-4');
         mintingMint.style.opacity = 1;
         mintingMint.style.pointerEvents = 'auto';

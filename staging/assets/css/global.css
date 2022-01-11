@@ -24,8 +24,6 @@ body {
     margin: 0;
     -webkit-tap-highlight-color: transparent;
     -webkit-text-size-adjust: none;
-    user-select: none;
-    -webkit-user-select: none;
 }
 
 h1,
@@ -52,6 +50,8 @@ p {
 a {
     color: #FFF;
     text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 /* Global */
@@ -221,7 +221,9 @@ a#section-3-how {
     #section-7 .section-column {
         padding: 0;
     }
+}
 
+@media only screen and (min-width: 593px) and (max-width: 1194px) {
     #section-7-team {
         width: 480px;
         margin-top: 16px;
