@@ -266,7 +266,7 @@ footer a.big-button {
     margin: 12px;
 }
 
-@media only screen and (max-width: 926px) {
+@media only screen and (max-width: 464px) {
     footer {
         height: 256px;
         flex-direction: column
