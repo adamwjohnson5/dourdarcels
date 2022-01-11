@@ -54,27 +54,6 @@ a {
     text-decoration: none;
 }
 
-.no-touch a:hover,
-a:active {
-    text-decoration: underline;
-}
-
-@media only screen and (min-width: 835px) and (max-width: 1194px) {
-    h2 {
-        font-size: 100px;
-    }
-
-    p {
-        font-size: 16px;
-    }
-}
-
-@media only screen and (max-width: 834px) {
-    h2 {
-        font-size: 72px;
-    }
-}
-
 /* Global */
 
 .clear {
@@ -107,6 +86,7 @@ img.section-bg {
     left: 0;
     text-align: center;
     box-sizing: border-box;
+    padding: 16px;
 }
 
 .section-column-right {
@@ -117,6 +97,11 @@ img.section-bg {
     max-width: 480px;
     margin: auto;
     margin-top: 24px;
+}
+
+.section-column p a {
+    text-decoration: underline;
+    font-weight: bold;
 }
 
 .big-button {
@@ -136,17 +121,26 @@ img.section-bg {
     min-width: 144px;
 }
 
-.no-touch a.big-button:hover,
-a.big-button:active {
-    text-decoration: none;
-}
-
 a.big-button:active {
     color: #FFF;
     background-color: #000;
 }
 
+@media only screen and (min-width: 835px) and (max-width: 1194px) {
+    h2 {
+        font-size: 100px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+}
+
 @media only screen and (max-width: 834px) {
+    h2 {
+        font-size: 72px;
+    }
+
     img.section-bg {
         width: 200%;
     }
@@ -165,55 +159,6 @@ a.big-button:active {
         padding-top: 48px;
         padding-bottom: 48px;
         position: static;
-    }
-}
-
-/* Header */
-
-header {
-    background-color: #000;
-    border-radius: 999px;
-    width: 560px;
-    height: 64px;
-    position: fixed;
-    left: 50%;
-    margin-left: -280px;
-    top: 32px;
-    z-index: 2;
-}
-
-a#header-discord {
-    margin-left: 16px;
-}
-
-header img {
-    height: 32px;
-    padding: 16px;
-}
-
-a#header-connect {
-    float: right;
-    margin: 8px;
-}
-
-@media only screen and (max-width: 834px) {
-    header {
-        width: 232px;
-        margin-left: -116px;
-        height: 48px;
-    }
-
-    a#header-discord {
-        margin-left: 12px;
-    }
-
-    header img {
-        height: 24px;
-        padding: 12px;
-    }
-
-    a#header-connect {
-        display: none;
     }
 }
 
@@ -316,8 +261,7 @@ footer {
 }
 
 footer a.big-button {
-    margin-left: 12px;
-    margin-right: 12px;
+    margin: 12px;
 }
 
 @media only screen and (max-width: 834px) {
@@ -325,8 +269,54 @@ footer a.big-button {
         height: 256px;
         flex-direction: column
     }
+}
 
-    footer a.big-button {
-        margin: 12px;
+/* Header */
+
+header {
+    background-color: #000;
+    border-radius: 999px;
+    width: 560px;
+    height: 64px;
+    position: fixed;
+    left: 50%;
+    margin-left: -280px;
+    top: 32px;
+    z-index: 2;
+}
+
+a#header-discord {
+    margin-left: 16px;
+}
+
+header img {
+    height: 32px;
+    padding: 16px;
+}
+
+a#header-connect {
+    float: right;
+    margin: 8px;
+}
+
+@media only screen and (max-width: 834px) {
+    header {
+        width: 232px;
+        margin-left: -116px;
+        height: 48px;
+        top: 24px;
+    }
+
+    a#header-discord {
+        margin-left: 12px;
+    }
+
+    header img {
+        height: 24px;
+        padding: 12px;
+    }
+
+    a#header-connect {
+        display: none;
     }
 }
