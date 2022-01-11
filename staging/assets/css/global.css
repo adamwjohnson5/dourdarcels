@@ -301,7 +301,7 @@ a#header-connect {
     margin: 8px;
 }
 
-@media only screen and (max-width: 926px) {
+@media only screen and (max-width: 624px) {
     header {
         width: 232px;
         margin-left: -116px;
