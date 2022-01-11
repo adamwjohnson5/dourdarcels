@@ -126,7 +126,7 @@ a.big-button:active {
     background-color: #000;
 }
 
-@media only screen and (min-width: 835px) and (max-width: 1194px) {
+@media only screen and (min-width: 927px) and (max-width: 1194px) {
     h2 {
         font-size: 100px;
     }
@@ -136,7 +136,7 @@ a.big-button:active {
     }
 }
 
-@media only screen and (max-width: 834px) {
+@media only screen and (max-width: 926px) {
     h2 {
         font-size: 72px;
     }
@@ -169,7 +169,7 @@ section#section-1 .section-wrapper img {
     max-width: 900px;
 }
 
-@media only screen and (max-width: 834px) {
+@media only screen and (max-width: 926px) {
     section#section-1 .section-wrapper {
         position: absolute;
         z-index: 1;
@@ -192,7 +192,7 @@ a#section-3-how {
 #section-7-team {
     width: 528px;
     margin: auto;
-    margin-top: 12px;
+    margin-top: 24px;
 }
 
 #section-7-team a {
@@ -202,11 +202,6 @@ a#section-3-how {
     margin-bottom: 0 !important;
     font-size: 16px;
     font-weight: 300;
-}
-
-#section-7-team a:hover,
-#section-7-team a:active {
-    text-decoration: none;
 }
 
 #section-7-team a img {
@@ -222,10 +217,14 @@ a#section-3-how {
     font-weight: bold;
 }
 
-@media only screen and (min-width: 835px) and (max-width: 1194px) {
+@media only screen and (min-width: 927px) and (max-width: 1194px) {
+    #section-7 .section-column {
+        padding: 0;
+    }
+
     #section-7-team {
         width: 480px;
-        margin-top: 8px;
+        margin-top: 16px;
     }
 
     #section-7-team a {
@@ -233,7 +232,7 @@ a#section-3-how {
     }
 }
 
-@media only screen and (max-width: 834px) {
+@media only screen and (max-width: 592px) {
     #section-7 .section-column {
         padding-left: 8px;
         padding-right: 8px;
@@ -241,6 +240,7 @@ a#section-3-how {
 
     #section-7-team {
         width: 304px;
+        margin-top: 12px;
     }
 
     #section-7-team a {
@@ -264,7 +264,7 @@ footer a.big-button {
     margin: 12px;
 }
 
-@media only screen and (max-width: 834px) {
+@media only screen and (max-width: 926px) {
     footer {
         height: 256px;
         flex-direction: column
@@ -299,7 +299,7 @@ a#header-connect {
     margin: 8px;
 }
 
-@media only screen and (max-width: 834px) {
+@media only screen and (max-width: 926px) {
     header {
         width: 232px;
         margin-left: -116px;
