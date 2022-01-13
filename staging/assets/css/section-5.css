@@ -3,6 +3,7 @@
 #section-5 .section-wrapper {
     justify-content: left;
     overflow-x: auto;
+    overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
 }
 
@@ -120,4 +121,48 @@ timeline-event {
 .event-bottom img {
     bottom: auto;
     top: 104px;
+}
+
+@media only screen and (max-width: 1194px) {
+    .event-line {
+        height: 76px;
+    }
+
+    .event h4 {
+        bottom: 16px;
+    }
+
+    .event-bottom h4 {
+        top: 16px;
+    }
+
+    .event img {
+        bottom: 76px;
+        width: 200px;
+        margin-left: -100px;
+    }
+
+    .event-bottom img {
+        top: 76px;
+    }
+}
+
+@media only screen and (max-width: 926px) {
+    #section-5 img.section-bg {
+        width: auto;
+        height: 580px;
+    }
+
+    #section-5 .section-wrapper {
+        position: absolute;
+    }
+
+    #section-5 h2 {
+        width: 75%;
+    }
+
+    #section-5-timeline {
+        margin-left: 0px;
+        left: 75%;
+    }
 }
