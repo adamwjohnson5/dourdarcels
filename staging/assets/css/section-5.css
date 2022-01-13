@@ -1,0 +1,123 @@
+/* Section 5 */
+
+#section-5 .section-wrapper {
+    justify-content: left;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+#section-5 h2 {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#section-5-timeline {
+    position: absolute;
+    left: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-right: 128px;
+    margin-left: -80px;
+}
+
+#section-5-timeline h3 {
+    width: 160px;
+    height: 160px;
+    background-color: #FFF;
+    border-radius: 999px;
+}
+
+#section-5-timeline h3 span {
+    font-size: 24px;
+    background-color: #000;
+    border-radius: 999px;
+    width: 80px;
+    height: 80px;
+    margin: 40px;
+    line-height: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: normal;
+}
+
+.timeline-line {
+    height: 1px;
+    width: 160px;
+    background-color: #FFF;
+}
+
+timeline-event {
+    width: 32px;
+    height: 32px;
+    background-color: #FFF;
+    border-radius: 999px;
+}
+
+.event-pupil {
+    width: 16px;
+    height: 16px;
+    background-color: #000;
+    border-radius: 999px;
+    margin: 8px;
+}
+
+.event {
+    position: absolute;
+    margin-left: 16px;
+    margin-top: -32px;
+}
+
+.event-bottom {
+    margin-top: 0px;
+}
+
+.event-line {
+    position: absolute;
+    width: 1px;
+    height: 104px;
+    background-color: #FFF;
+    bottom: 0;
+}
+
+.event-bottom .event-line {
+    bottom: auto;
+    top: 0;
+}
+
+.event h4 {
+    position: absolute;
+    letter-spacing: normal;
+    width: 260px;
+    bottom: 32px;
+    margin-left: -130px;
+}
+
+.event-bottom h4 {
+    bottom: auto;
+    top: 32px;
+}
+
+.event span.big-button {
+    background-color: #000;
+    color: #FFF;
+    margin: auto;
+}
+
+.event img {
+    position: absolute;
+    width: 220px;
+    bottom: 104px;
+    margin-left: -110px;
+}
+
+.event-bottom img {
+    bottom: auto;
+    top: 104px;
+}
