@@ -123,6 +123,26 @@ timeline-event {
     top: 104px;
 }
 
+#timeline-nav {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    margin-left: -72px;
+}
+
+#timeline-nav a {
+    padding: 12px;
+    display: inline-block;
+}
+
+#timeline-nav a span {
+   width: 12px;
+   height: 12px;
+   background-color: #FFF;
+   border-radius: 999px;
+   display: block;
+}
+
 @media only screen and (max-width: 1194px) {
     .event-line {
         height: 76px;
