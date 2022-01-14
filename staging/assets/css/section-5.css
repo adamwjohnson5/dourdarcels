@@ -133,6 +133,7 @@ timeline-event {
 #timeline-nav a {
     padding: 12px;
     display: inline-block;
+    transition: opacity 0.15s linear;
 }
 
 #timeline-nav a span {
@@ -170,7 +171,7 @@ timeline-event {
 @media only screen and (max-width: 926px) {
     #section-5 img.section-bg {
         width: auto;
-        height: 580px;
+        height: 640px;
     }
 
     #section-5 .section-wrapper {
