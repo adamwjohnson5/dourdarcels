@@ -311,6 +311,12 @@ a#header-connect {
     margin: 8px;
 }
 
+a#header-opensea,
+a#header-connect {
+    opacity: 0.25;
+    pointer-events: none;
+}
+
 @media only screen and (max-width: 624px) {
     header {
         width: 232px;

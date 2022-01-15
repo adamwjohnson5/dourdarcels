@@ -3,6 +3,7 @@
 /* Global vars */
 
 window.mintQuantity = 0;
+window.mintPrice = 0;
 
 /* Section 2 */
 
@@ -53,7 +54,7 @@ function mintQuantityToggle(action) {
     } else {
         // Update text
         document.querySelector('#minting-button-2 span').innerHTML = window.mintQuantity;
-        document.querySelector('#minting-button-3').innerHTML = (window.mintQuantity * 0.1).toFixed(1) + ' ETH'; // Calculate cost
+        document.querySelector('#minting-button-3').innerHTML = (window.mintQuantity * window.mintPrice).toFixed(1) + ' ETH'; // Calculate cost
 
         // Enable mint button
         let mintingMint = document.querySelector('a#minting-button-4');
