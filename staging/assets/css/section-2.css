@@ -50,7 +50,7 @@ p#section-2-details {
 
 #section-2-minting .big-button {
     opacity: 0.25;
-    transition: opacity 0.25s ease-in;
+    transition: opacity 0.25s ease-in, background-color 0.15s linear;
     pointer-events: none;
 }
 
@@ -74,7 +74,7 @@ a#minting-button-4 {
 }
 
 a#minting-button-4:active {
-    background-color: #FFF;
+    background-color: #FFF !important;
     color: #000;
 }
 
@@ -152,7 +152,7 @@ p#section-2-counter-text {
     }
 
     a#minting-button-4:active {
-        background-color: #000;
+        background-color: #000 !important;
         color: #FFF;
     }
 }

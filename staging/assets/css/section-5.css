@@ -111,16 +111,30 @@ timeline-event {
     margin: auto;
 }
 
+.no-touch .timeline-event-link span.big-button:hover {
+    background-color: #669A41;
+    cursor: pointer;
+}
+
+.timeline-event-link span.big-button:active {
+    background-color: #FFF !important;
+    color: #000;
+}
+
 .event img {
     position: absolute;
-    width: 220px;
+    width: 240px;
     bottom: 104px;
-    margin-left: -110px;
+    margin-left: -120px;
 }
 
 .event-bottom img {
     bottom: auto;
     top: 104px;
+}
+
+.timeline-event-link img {
+    cursor: pointer;
 }
 
 #timeline-nav {
@@ -142,6 +156,13 @@ timeline-event {
    background-color: #FFF;
    border-radius: 999px;
    display: block;
+}
+
+@media only screen and (max-width: 1366px) {
+    .event img {
+        width: 220px;
+        margin-left: -110px;
+    }
 }
 
 @media only screen and (max-width: 1194px) {

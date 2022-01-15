@@ -120,11 +120,19 @@ img.section-bg {
     font-family: "itc-avant-garde-gothic-lt-bold", sans-serif;
     width: max-content;
     min-width: 144px;
+    transition: background-color 0.15s linear;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
-a.big-button:active {
+.no-touch a.big-button:hover {
+    background-color: #F6C246;
+}
+
+.big-button:active {
     color: #FFF;
-    background-color: #000;
+    background-color: #000 !important;
+    transition: none !important;
 }
 
 @media only screen and (min-width: 927px) and (max-width: 1194px) {
