@@ -126,7 +126,7 @@ img.section-bg {
 }
 
 .no-touch a.big-button:hover {
-    background-color: #F6C246;
+    background-color: #FFCC00;
 }
 
 .big-button:active {
@@ -199,24 +199,25 @@ a#section-3-how {
 /* Section 7 */
 
 #section-7-team {
-    width: 528px;
+    width: max-content;
     margin: auto;
-    margin-top: 24px;
+    margin-top: 8px;
+    display: grid;
+    grid-template-columns: repeat(3, 176px);
 }
 
 #section-7-team a {
-    float: left;
     line-height: 1;
-    margin: 24px;
-    margin-bottom: 0 !important;
     font-size: 16px;
     font-weight: 300;
+    margin-top: 24px;
 }
 
 #section-7-team a img {
     width: 128px;
     display: block;
     border-radius: 999px;
+    margin: auto;
 }
 
 #section-7-team a span {
@@ -226,36 +227,26 @@ a#section-3-how {
     font-weight: bold;
 }
 
-@media only screen and (min-width: 927px) and (max-width: 1194px) {
-    #section-7 .section-column {
-        padding: 0;
-    }
-}
-
-@media only screen and (min-width: 593px) and (max-width: 1194px) {
+@media only screen and (max-width: 1194px) {
     #section-7-team {
-        width: 480px;
+        grid-template-columns: repeat(3, 160px);
         margin-top: 16px;
     }
 
     #section-7-team a {
-        margin: 16px;
+        margin-top: 16px;
     }
 }
 
 @media only screen and (max-width: 592px) {
     #section-7 .section-column {
-        padding-left: 8px;
-        padding-right: 8px;
+        padding-left: 16px;
+        padding-right: 16px;
     }
 
     #section-7-team {
-        width: 304px;
-        margin-top: 12px;
-    }
-
-    #section-7-team a {
-        margin: 12px;
+        width: auto;
+        grid-template-columns: repeat(2, auto);
     }
 }
 
