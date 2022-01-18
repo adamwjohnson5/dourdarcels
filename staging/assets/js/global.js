@@ -17,7 +17,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Scroll
     window.addEventListener('scroll', () => {
-        animateSection1(window.pageYOffset);
+        animateSection(1, window.pageYOffset);
+        animateSection(3, window.pageYOffset);
+        animateSection(4, window.pageYOffset);
+        animateSection(6, window.pageYOffset);
+        animateSection(7, window.pageYOffset);
     });
 
     // Resize
@@ -61,14 +65,26 @@ function loadSection(int) {
     };
 }
 
-/* Section 1 */
-
-function animateSection1(pos) {
-    const section = document.querySelector('section#section-1');
+function animateSection(sectionNum, pos) {
+    const section = document.querySelector('section#section-' + sectionNum);
 
     // Only if section is loaded and visible
-    if (section.style.opacity === '1' && pos < section.offsetHeight) {
-        const percent = Math.round(pos / section.offsetHeight * 100);
-        section.querySelector('img').style.transform = `scale(${ 1 + percent / 12 / 100 })`; // Scale max 150% on scroll
+    if (sectionNum === 1 && section.style.opacity === '1') {
+        // Section 1
+        let percent = Math.round(pos / section.offsetHeight * 100);
+        let scale = pos >= section.offsetHeight ? 1.1 : 1 + (percent / 10) / 100;
+        section.querySelector('img').style.transform = `scale(${ scale })`; // Scale max 110% on scroll
+    } else if (sectionNum !== 1 && section.style.opacity === '1') {
+        // All other sections excluding timeline
+        let percent = Math.round((pos - section.offsetTop + window.innerHeight) / section.offsetHeight * 100);
+        const column = section.querySelector('.section-column');
+
+        // Opacity
+        const opacity = pos < section.offsetTop - window.innerHeight ? 0 : pos >= section.offsetHeight - window.innerHeight + section.offsetTop ? 1 : percent / 100;
+        column.style.opacity = window.innerWidth >= 927 ? opacity : 1; // 0% - 100% (excluding mobile)
+
+        // Top
+        const top = pos < section.offsetTop - window.innerHeight ? (section.offsetHeight / 4) : pos >= section.offsetHeight - window.innerHeight + section.offsetTop ? 0 : (100 - percent) * (section.offsetHeight / 4) / 100;
+        column.style.marginTop = window.innerWidth >= 927 ? top + 'px' : 0; // Top moves 1/4 of section size (excluding mobile)
     }
 }
