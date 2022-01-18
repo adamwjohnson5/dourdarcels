@@ -71,6 +71,6 @@ function animateSection1(pos) {
         const percent = Math.round(pos / section.offsetHeight * 100);
         const logo = section.querySelector('img');
         //logo.style.opacity = (100 - percent) / 100; // Fade to 0% on scroll
-        logo.style.transform = `scale(${ 1 + percent / 8 / 100 })`; // Scale max 150% on scroll
+        logo.style.transform = `scale(${ 1 + percent / 10 / 100 })`; // Scale max 150% on scroll
     }
 }
