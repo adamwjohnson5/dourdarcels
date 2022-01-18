@@ -70,7 +70,7 @@ function animateSection1(pos) {
     if (section.style.opacity === '1' && pos < section.offsetHeight) {
         const percent = Math.round(pos / section.offsetHeight * 100);
         const logo = section.querySelector('img');
-        logo.style.opacity = (100 - percent) / 100; // Fade to 0% on scroll
-        logo.style.transform = `scale(${ 1 + percent / 4 / 100 })`; // Scale max 150% on scroll
+        //logo.style.opacity = (100 - percent) / 100; // Fade to 0% on scroll
+        logo.style.transform = `scale(${ 1 + percent / 8 / 100 })`; // Scale max 150% on scroll
     }
 }
