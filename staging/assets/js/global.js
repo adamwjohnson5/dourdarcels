@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Scroll
     window.addEventListener('scroll', () => {
-        //window.pageYOffset;
+        animateSection1(window.pageYOffset);
     });
 
     // Resize
@@ -59,4 +59,31 @@ function loadSection(int) {
             document.querySelector('footer').style.visibility = 'visible';
         }
     };
+}
+
+/* Section 1 */
+
+function animateSection1(pos) {
+    const section = document.querySelector('section#section-1');
+
+    // Only if section is loaded and visible
+    if (section.style.opacity === '1' && pos < section.offsetHeight) {
+        const percent = Math.round(pos / section.offsetHeight * 100);
+        var logoOpacity;
+
+        switch (percent) {
+            case 0:
+                logoOpacity = 1;
+                break;
+            case 100:
+                logoOpacity = 0;
+                break;
+            default:
+                logoOpacity = (100 - percent) / 100;
+        }
+
+        const logo = section.querySelector('img');
+        logo.style.opacity = logoOpacity;
+        logo.style.transform = `scale(${ 1 + percent / 4 / 100 })`;
+    }
 }
