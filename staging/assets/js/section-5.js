@@ -6,6 +6,10 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     // Scroll
+    window.addEventListener('scroll', () => {
+        initEvents(window.pageYOffset);
+    });
+
     const wrapper = document.querySelector('#section-5 .section-wrapper');
 
     wrapper.addEventListener('scroll', () => {
@@ -24,7 +28,7 @@ function setTimelineNav(pos) {
     const navItems = document.querySelectorAll('#timeline-nav a');
 
     for (let x = 0; x < navItems.length; x++) {
-        document.querySelector('a#timeline-nav-' + (x + 1)).style.opacity = 1;
+        navItems[x].style.opacity = 1;
     }
 
     // Select item
@@ -50,4 +54,39 @@ function moveTimeline(pos) {
         left: pos === 3 ? contentWidth : pos * contentDivided,
         behavior: 'smooth'
     });
+}
+
+function initEvents(pos) {
+    const section = document.querySelector('section#section-5');
+    const timeline = document.querySelector('#section-5-timeline');
+
+    if (section.style.opacity === '1' && !timeline.style.visibility && pos >= section.offsetTop - window.innerHeight + (section.offsetHeight / 2)) {
+        timeline.style.visibility = 'visible';
+        showEvent(0);
+    }
+}
+
+function showEvent(count) {
+    const timeline = document.querySelector('#section-5-timeline');
+
+    // Animate
+    if (timeline.children[count].tagName === 'H3') {
+        // Heading
+        timeline.children[count].style.transform = 'scale(1)';
+    } else if (timeline.children[count].tagName === 'DIV') {
+        // Line
+        timeline.children[count].style.width = '160px';
+    } else {
+        // Event
+        timeline.children[count].style.transform = 'scale(1)';
+        timeline.children[count].querySelector('.event').style.opacity = 1;
+    }
+
+    // Wait for animation to finish
+    setTimeout(() => {
+        if (count < timeline.children.length - 1) {
+            // Next event
+            showEvent(count + 1);
+        }
+    }, 250);
 }
