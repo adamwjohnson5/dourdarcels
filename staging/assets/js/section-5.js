@@ -69,14 +69,17 @@ function initEvents(pos) {
 function showEvent(count) {
     const timeline = document.querySelector('#section-5-timeline');
     const event = timeline.children[count];
+    var interval = 250;
 
     // Animate
     if (event.tagName === 'H3') {
         // Heading
         event.style.transform = 'scale(1)';
+        interval = 300;
     } else if (event.tagName === 'DIV') {
         // Line
         event.style.width = '160px';
+        interval = 150;
     } else {
         // Event
         event.style.transform = 'scale(1)';
@@ -92,7 +95,7 @@ function showEvent(count) {
                 // Top
                 event.querySelector('.event').style.marginTop = 0;
             }
-        }, 250);
+        }, interval);
     }
 
     // Wait for animation to finish

@@ -34,7 +34,7 @@
    background-color: #FFF;
    border-radius: 999px;
    transform: scale(0);
-   transition: transform .15s ease-out;
+   transition: transform .3s ease-out;
 }
 
 #section-5-timeline h3 span {
@@ -55,7 +55,7 @@
    height: 1px;
    width: 0px;
    background-color: #FFF;
-   transition: width .25s linear;
+   transition: width .15s linear;
 }
 
 timeline-event {
