@@ -68,18 +68,31 @@ function initEvents(pos) {
 
 function showEvent(count) {
     const timeline = document.querySelector('#section-5-timeline');
+    const event = timeline.children[count];
 
     // Animate
-    if (timeline.children[count].tagName === 'H3') {
+    if (event.tagName === 'H3') {
         // Heading
-        timeline.children[count].style.transform = 'scale(1)';
-    } else if (timeline.children[count].tagName === 'DIV') {
+        event.style.transform = 'scale(1)';
+    } else if (event.tagName === 'DIV') {
         // Line
-        timeline.children[count].style.width = '160px';
+        event.style.width = '160px';
     } else {
         // Event
-        timeline.children[count].style.transform = 'scale(1)';
-        timeline.children[count].querySelector('.event').style.opacity = 1;
+        event.style.transform = 'scale(1)';
+
+        setTimeout(() => {
+            event.querySelector('.event').style.opacity = 1;
+            const bottomEvent = event.querySelector('.event-bottom');
+
+            if (bottomEvent) {
+                // Bottom
+                bottomEvent.style.marginTop = '32px';
+            } else {
+                // Top
+                event.querySelector('.event').style.marginTop = 0;
+            }
+        }, 250);
     }
 
     // Wait for animation to finish
