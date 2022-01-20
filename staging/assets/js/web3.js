@@ -13,7 +13,7 @@ function connectWallet() {
 
 function mint() {
     //window.mintQuantity // This int variable contains the quantity user has selected
-    setMintProgress(0); // Update count of NFTs minted on success to update progress bar
+    // setMintProgress(0); // Update count of NFTs minted on success to update progress bar
 }
 
 function launchSmartContract() {

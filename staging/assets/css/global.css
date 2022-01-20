@@ -309,7 +309,9 @@ header img {
     height: 32px;
     padding: 16px;
 }
-
+.w-hidden {
+  display: none;
+}
 a#header-connect {
     float: right;
     margin: 8px;
