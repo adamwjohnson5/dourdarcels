@@ -35,7 +35,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /* Mouse and keyboard events */
 
-function setEventsGlobal() {}
+function setEventsGlobal() {
+    document.querySelector('#overlay-bg').addEventListener('click', (e) => {
+        toggleOverlay();
+    });
+}
 
 /* Start */
 
@@ -86,5 +90,27 @@ function animateSection(sectionNum, pos) {
         // Top
         const top = pos < section.offsetTop - window.innerHeight ? (section.offsetHeight / 4) : pos >= section.offsetHeight - window.innerHeight + section.offsetTop ? 0 : (100 - percent) * (section.offsetHeight / 4) / 100;
         column.style.marginTop = window.innerWidth >= 927 ? top + 'px' : 0; // Top moves 1/4 of section size (excluding mobile)
+    }
+}
+
+/* Overlay */
+
+function toggleOverlay(heading, body) {
+    const overlay = document.querySelector('#overlay');
+
+    if (overlay.style.display === 'flex') {
+        // Hide
+        overlay.style.display = '';
+        overlay.style.opacity = '';
+    } else {
+        // Show
+        overlay.style.display = 'flex';
+
+        setTimeout(() => {
+            overlay.style.opacity = 1;
+        }, 100); // Hack! (wait for display change)
+
+        overlay.querySelector('h4').textContent = heading;
+        overlay.querySelector('p').innerHTML = '<br />' + body;
     }
 }
