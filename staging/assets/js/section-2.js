@@ -3,7 +3,7 @@
 /* Global vars */
 
 window.mintQuantity = 0;
-window.mintPrice = 0.1;
+window.mintPriceInEther = 0.1;
 
 /* Section 2 */
 
@@ -43,7 +43,7 @@ function mintQuantityToggle(action) {
     } else if (action === 'neg' && window.mintQuantity > 0) {
         window.mintQuantity--;
     }
-    const mintingPrice = 0.1;
+
     if (window.mintQuantity === 0) {
         // Reset
         document.querySelector('#minting-button-2 span').innerHTML = 'Quantity';
@@ -54,7 +54,7 @@ function mintQuantityToggle(action) {
     } else {
         // Update text
         document.querySelector('#minting-button-2 span').innerHTML = window.mintQuantity;
-        document.querySelector('#minting-button-3').innerHTML = (window.mintQuantity * mintingPrice).toFixed(1) + ' ETH'; // Calculate cost
+        document.querySelector('#minting-button-3').innerHTML = (window.mintQuantity * mintPriceInEther).toFixed(1) + ' ETH'; // Calculate cost
 
         // Enable mint button
         let mintingMint = document.querySelector('a#minting-button-4');
