@@ -34,9 +34,9 @@ https://github.com/awj5
 
                     <div id="section-2-minting">
                         <div class="minting-column" id="minting-column-1">
-                            <a href="javascript: alert('WIP');" class="column-label">STEP 1<span>?</span></a>
+                            <a href="javascript: toggleOverlay('What’s a Wallet?', 'Crypto wallets keep your private keys – the passwords that give you access to your cryptocurrencies – safe & accessible, allowing you to send and receive cryptocurrencies like Ethereum, which is the currency we use for Dour Darcel NFTs.<br /><br />The wallet we use is MetaMask, it’s specific to Ethereum. MetaMask is connected to your web browser as an extension, you can set-up and install it here:<br /><a href=\'https://metamask.io/\' target=\'_blank\' class=\'big-button\' id=\'section-3-how\'>MetaMask</a>');" class="column-label">STEP 1<span>?</span></a>
                             <a href="javascript: connectWallet();" class="big-button" id="minting-button-1">Connect Wallet</a>
-                            <a href="javascript: alert('WIP');" class="column-label">STEP 2<span>?</span></a>
+                            <a href="javascript: toggleOverlay('How many Darcels can I mint?', 'During presale only 1 transaction is allowed and a maximum of ? Darcels.');" class="column-label">STEP 2<span>?</span></a>
                             <div class="big-button" id="minting-button-2"><a href="javascript: mintQuantityToggle('neg');" id="button-2-minus">&minus;</a><span>Quantity</span><a href="javascript: mintQuantityToggle('pos');" id="button-2-plus">&plus;</a></div>
                         </div>
 
@@ -180,6 +180,9 @@ https://github.com/awj5
             <a href="https://discord.com" target="_blank" id="header-discord" title="Discord"><img src="assets/img/icon-discord.png" alt="Discord" /></a><a href="https://twitter.com/DourDarcelsNFT" target="_blank" id="header-twitter" title="Twitter"><img src="assets/img/icon-twitter.png" alt="Twitter" /></a><a href="https://opensea.io" target="_blank" id="header-opensea" title="OpenSea"><img src="assets/img/icon-opensea.png" alt="OpenSea" /></a><a href="https://instagram.com/dourdarcelsnft" target="_blank" id="header-ig" title="Instagram"><img src="assets/img/icon-ig.png" alt="Instagram" /></a>
             <a href="javascript: connectWallet();" class="big-button" id="header-connect">Connect Wallet</a>
         </header>
+
+        <!-- Overlay -->
+        <div id="overlay"><div id="overlay-bg"></div><div id="overlay-wrapper"><div id="overlay-window"><a href="javascript: toggleOverlay();" id="overlay-close"><img src="assets/img/close.png" alt="Close" /></a><h4></h4><p></p></div></div></div>
 
         <!-- JS -->
         <script type="module" src="assets/js/components.js"></script>
