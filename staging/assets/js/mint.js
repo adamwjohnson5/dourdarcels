@@ -154,11 +154,11 @@ var initialize = async () => {
 
         refreshCounter();
         createAlert(
-          `Thanks for minting! Your transaction link is <a href='${etherscanLink}/${receipt.transactionHash}' target="_blank" >${etherscanLink}/${receipt.transactionHash}</a>`
+          `Thanks for minting!`,`Your transaction link is <a href='${etherscanLink}/${receipt.transactionHash}' target="_blank" >${etherscanLink}/${receipt.transactionHash}</a>`
         );
       } catch(err) {
-        createAlert("Canceled transaction.");
-        console.log("got here. cancelled");
+        createAlert('Failed', 'Canceled transaction.');
+        console.log('got here. cancelled');
       };
 
     } else if (allowListState && availableToMint !== 0) {
@@ -176,37 +176,37 @@ var initialize = async () => {
 
         refreshCounter();
           createAlert(
-            `Thanks for minting! Your transaction link is <a href='${etherscanLink}/${receipt.transactionHash}' target="_blank" >${etherscanLink}/${receipt.transactionHash}</a>`
+            `Thanks for minting!`,`Your transaction link is <a href='${etherscanLink}/${receipt.transactionHash}' target="_blank" >${etherscanLink}/${receipt.transactionHash}</a>`
           );
       } catch(err) {
-        createAlert("Canceled transaction.");
-        console.log("got here. cancelled");
+        createAlert('Failed', 'Canceled transaction.');
+        console.log('got here. cancelled');
         return;
       };
 
     } else if (allowListState && availableToMint === 0) {
         mintButton.disabled = true;
-        mintButton.innerText = "YOU HAVE NO ABILITY TO MINT!";
+        mintButton.innerText = 'YOU HAVE NO ABILITY TO MINT!';
         return;
     } else {
       mintButton.disabled = true;
-      mintButton.innerText = "SALE IS NOT ACTIVE YET!";
+      mintButton.innerText = 'SALE IS NOT ACTIVE YET!';
       return;
     }
     mintButton.disabled = false;
-    mintButton.innerText = "Mint!";
-    // mintPriceDiv.innerText = priceInEther("1").toLocaleString() + " ETH";
+    mintButton.innerText = 'Mint!';
+    // mintPriceDiv.innerText = priceInEther('1').toLocaleString() + ' ETH';
   };
 
   var onClickInstall = (e) => {
     e.preventDefault();
-    // onboardConnect.classList.add("w-hidden");
+    // onboardConnect.classList.add('w-hidden');
     onboarding.startOnboarding();
   };
 
   var updateButtons = async () => {
-    alertBar.classList.add("w-hidden");
-    alertBarMetamask.classList.add("w-hidden");
+    alertBar.classList.add('w-hidden');
+    alertBarMetamask.classList.add('w-hidden');
     // onboardConnect.classList.add("w-hidden");
     // onboardConnected.classList.add("w-hidden");
 
@@ -216,7 +216,7 @@ var initialize = async () => {
         alertBarMetamask.classList.remove("w-hidden");
       } else {
         createAlert(
-          "You need MetaMask to mint. <a href='#' id='onboard-link'>Click here to install</a>"
+          '', "You need MetaMask to mint. <a href='#' id='onboard-link'>Click here to install</a>"
         );
       }
       document.getElementById("onboard-link").onclick = onClickInstall;
@@ -272,23 +272,20 @@ var initialize = async () => {
       await handleNewNetwork(netVersion);
       if (net_version != contractNetwork) {
         var network = networkNames[contractNetwork];
-        createAlert(
-          "Your wallet is not connected to the " +
-            network +
-            ". To mint, please switch to the " +
-            network +
-            "."
+        createAlert('',
+          `Your wallet is not connected to the ${network}. To mint, please switch to the ${network}.`
         );
       }
     } catch (err) {
-      console.error("Error on init when getting accounts...", err);
+      console.error('Error on init when getting accounts...', err);
     }
   }
 
   // Alert Bar
-  function createAlert(alertMessage) {
-    alertBar.classList.remove("w-hidden");
-    alertBar.innerHTML = alertMessage;
+  function createAlert(header, alertMessage) {
+    toggleOverlay(header, alertMessage);
+    // alertBar.classList.remove('w-hidden');
+    // alertBar.innerHTML = alertMessage;
   }
 
   async function updateAvailableToMint(account) {
@@ -298,9 +295,9 @@ var initialize = async () => {
       availableToMint = await erc20.numAvailableToMint(account, proof);
 
       availableToMint = Number(availableToMint);
-      numAvailableToMint.classList.remove("w-hidden");
+      numAvailableToMint.classList.remove('w-hidden');
 
-      if (availableToMint === 1 || availableToMint === "1") {
+      if (availableToMint === 1 || availableToMint === '1') {
         numAvailableToMint.innerHTML = `You have ${availableToMint} NFT available to mint`;
       } else {
         numAvailableToMint.innerHTML = `You have ${availableToMint} NFTs available to mint`;
@@ -310,8 +307,8 @@ var initialize = async () => {
   }
 
   function clearAlert() {
-    alertBar.classList.add("w-hidden");
-    alertBarMetamask.classList.add("w-hidden");
+    alertBar.classList.add('w-hidden');
+    alertBarMetamask.classList.add('w-hidden');
   }
 
   // mobile detection
@@ -353,13 +350,13 @@ var initialize = async () => {
 
     if (!saleState && !allowListState) {
       mintButton.disabled = true;
-      mintButton.innerText = "SALE IS NOT ACTIVE YET!";
+      mintButton.innerText = 'SALE IS NOT ACTIVE YET!';
     } else if (allowListState && availableToMint === 0) {
       mintButton.disabled = true;
-      mintButton.innerText = "YOU HAVE NO ABILITY TO MINT!";
+      mintButton.innerText = 'YOU HAVE NO ABILITY TO MINT!';
     } else {
       mintButton.disabled = false;
-      mintButton.innerText = "Mint!";
+      mintButton.innerText = 'Mint!';
     }
   }
 
@@ -367,7 +364,7 @@ var initialize = async () => {
   setTimeout(refreshCounter, counterRefreshRate);
 };
 
-window.addEventListener("DOMContentLoaded", initialize);
+window.addEventListener('DOMContentLoaded', initialize);
 
 var abi = [
   { inputs: [], stateMutability: "nonpayable", type: "constructor" },
