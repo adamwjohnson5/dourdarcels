@@ -3,8 +3,8 @@
 /* Global vars */
 
 window.mintQuantity = 0;
-window.mintPrice = 0;
-
+window.mintPrice = 0.1;
+const price = 0.1;
 /* Section 2 */
 
 function setMintProgress(minted) {
@@ -54,7 +54,7 @@ function mintQuantityToggle(action) {
     } else {
         // Update text
         document.querySelector('#minting-button-2 span').innerHTML = window.mintQuantity;
-        document.querySelector('#minting-button-3').innerHTML = (window.mintQuantity * window.mintPrice).toFixed(1) + ' ETH'; // Calculate cost
+        document.querySelector('#minting-button-3').innerHTML = (window.mintQuantity * price).toFixed(1) + ' ETH'; // Calculate cost
 
         // Enable mint button
         let mintingMint = document.querySelector('a#minting-button-4');

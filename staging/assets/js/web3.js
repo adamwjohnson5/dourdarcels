@@ -2,7 +2,7 @@
 
 /* Web3 */
 
-setMintProgress(0); // Should be called on init with count of NFTs minted
+// setMintProgress(0); // Should be called on init with count of NFTs minted
 
 function connectWallet() {
     // Devs do your magic
