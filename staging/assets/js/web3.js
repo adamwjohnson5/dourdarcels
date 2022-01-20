@@ -4,6 +4,8 @@
 
 setMintProgress(0); // Should be called on init with count of NFTs minted
 
+//toggleOverlay('A Heading', 'Some text') // Can be used to show an alert. Second var can contain HTML
+
 function connectWallet() {
     // Devs do your magic
     walletConnected(); // Please call when wallet successfully connected
