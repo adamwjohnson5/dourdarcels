@@ -128,12 +128,6 @@ a.text-icon img {
     height: 32px;
 }
 
-a#text-icon-discord {
-    opacity: 0.5;
-    pointer-events: none; /* Disable */
-    cursor: default;
-}
-
 @media only screen and (max-width: 768px) {
     img#darcel {
         height: 85%;
