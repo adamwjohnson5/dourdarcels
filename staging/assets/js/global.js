@@ -64,7 +64,7 @@ function loadSection(int) {
             loadSection(int);
         } else {
             // All sections loaded - show footer
-            document.querySelector('footer').style.visibility = 'visible';
+            //document.querySelector('footer').style.visibility = 'visible';
         }
     };
 }
