@@ -1,4 +1,5 @@
 var contractNetwork = 4;
+// hooked up an old contract for testing
 var contractAddress = "0xd596c738c2a1445180f9790085a1733eeff2a938";
 var mintPrice = Number(100000000000000000);
 var mintPriceInEther = 0.1;
@@ -62,15 +63,13 @@ var initialize = async () => {
   var net_version;
   var onboarding;
 
-  var alertBar = document.getElementById("alert-bar");
-  var alertBarMetamask = document.getElementById("alert-bar-mobile");
   var mintForm = document.getElementById("mint-form");
   var numAvailableToMint = document.getElementById("available-mint");
   var mintButton = document.getElementById("minting-button-4");
   var onboardConnect = document.getElementById("minting-button-1");
   var mintPriceDiv = document.getElementById("mint-price");
   var availableQty = document.getElementById("section-2-counter-text span");
-  var quantityInput = document.querySelector('#minting-button-2 span');//document.getElementById("#minting-button-2"); // for now it is 1 (hardcoded)
+  var quantityInput = document.querySelector('#minting-button-2 span');
   var contractLink = document.getElementById("contract-link");
   contractLink.href =
     "https://" +
@@ -128,7 +127,6 @@ var initialize = async () => {
 
     var amountInEther = priceInEther(Number(numberToMint));
     mintButton.disabled = true;
-    clearAlert();
 
     const signer = provider.getSigner();
     var contract = new ethers.Contract(contractAddress,abi,signer);
@@ -175,9 +173,9 @@ var initialize = async () => {
         const receipt = await tx.wait();
 
         refreshCounter();
-          createAlert(
-            `Thanks for minting!`,`Your transaction link is <a href='${etherscanLink}/${receipt.transactionHash}' target="_blank" >${etherscanLink}/${receipt.transactionHash}</a>`
-          );
+        createAlert(
+        `Thanks for minting!`,`Your transaction link is <a href='${etherscanLink}/${receipt.transactionHash}' target="_blank" >${etherscanLink}/${receipt.transactionHash}</a>`
+        );
       } catch(err) {
         createAlert('Failed', 'Canceled transaction.');
         console.log('got here. cancelled');
@@ -195,25 +193,18 @@ var initialize = async () => {
     }
     mintButton.disabled = false;
     mintButton.innerText = 'Mint!';
-    // mintPriceDiv.innerText = priceInEther('1').toLocaleString() + ' ETH';
   };
 
   var onClickInstall = (e) => {
     e.preventDefault();
-    // onboardConnect.classList.add('w-hidden');
     onboarding.startOnboarding();
   };
 
   var updateButtons = async () => {
-    alertBar.classList.add('w-hidden');
-    alertBarMetamask.classList.add('w-hidden');
-    // onboardConnect.classList.add("w-hidden");
-    // onboardConnected.classList.add("w-hidden");
-
     if (!isMetaMaskInstalled()) {
       onboardConnect.onclick = onClickInstall;
       if (isMobile()) {
-        alertBarMetamask.classList.remove("w-hidden");
+        createAlert('', "Please use a computer or <a href='https://metamask.app.link/dapp/'>download the MetaMask app to mint</a>");
       } else {
         createAlert(
           '', "You need MetaMask to mint. <a href='#' id='onboard-link'>Click here to install</a>"
@@ -222,9 +213,7 @@ var initialize = async () => {
       document.getElementById("onboard-link").onclick = onClickInstall;
     } else if (isMetaMaskConnected()) {
       await loadContract();
-      // await refreshCounter();
-      // onboardConnect.classList.add("w-hidden");
-      // onboardConnected.classList.remove("w-hidden");
+
       // shorten wallet id
       const walletId = `${accounts[0].slice(0, 6)}...${accounts[0].slice(-4)}`;
       onboardConnect.innerHTML = 'Connected!';// `[${walletId}]`;
@@ -235,7 +224,6 @@ var initialize = async () => {
         onboarding.stopOnboarding();
       }
     } else {
-      // onboardConnect.classList.remove("w-hidden");
       mintButton.onclick = onClickConnect;
       onboardConnect.onclick = onClickConnect;
     }
@@ -284,8 +272,6 @@ var initialize = async () => {
   // Alert Bar
   function createAlert(header, alertMessage) {
     toggleOverlay(header, alertMessage);
-    // alertBar.classList.remove('w-hidden');
-    // alertBar.innerHTML = alertMessage;
   }
 
   async function updateAvailableToMint(account) {
@@ -304,11 +290,6 @@ var initialize = async () => {
       }
     }
     return availableToMint;
-  }
-
-  function clearAlert() {
-    alertBar.classList.add('w-hidden');
-    alertBarMetamask.classList.add('w-hidden');
   }
 
   // mobile detection
