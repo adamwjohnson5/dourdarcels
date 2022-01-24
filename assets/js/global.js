@@ -57,6 +57,11 @@ function loadSection(int) {
     // Preload bg image
     bg.onload = () => {
         section.style.opacity = 1;
+
+        if (int !== 2 && int !== 5) {
+            animateSection(int, window.scrollY); // Init
+        }
+
         int++;
 
         if (document.querySelector('section#section-' + int)) {
