@@ -3,7 +3,7 @@
 /* Global vars */
 
 window.mintQuantity = 0;
-window.mintPriceInEther = 0.1;
+window.mintPriceInEther = 0.03;
 
 /* Section 2 */
 
@@ -38,7 +38,7 @@ function walletConnected() {
 }
 
 function mintQuantityToggle(action) {
-    if (action === 'pos' && window.mintQuantity < 3) {
+    if (action === 'pos' && window.mintQuantity < maxPerPurchase) {
         window.mintQuantity++;
     } else if (action === 'neg' && window.mintQuantity > 0) {
         window.mintQuantity--;
@@ -54,7 +54,7 @@ function mintQuantityToggle(action) {
     } else {
         // Update text
         document.querySelector('#minting-button-2 span').innerHTML = window.mintQuantity;
-        document.querySelector('#minting-button-3').innerHTML = (window.mintQuantity * mintPriceInEther).toFixed(1) + ' ETH'; // Calculate cost
+        document.querySelector('#minting-button-3').innerHTML = (window.mintQuantity * mintPriceInEther).toFixed(2) + ' ETH'; // Calculate cost
 
         // Enable mint button
         let mintingMint = document.querySelector('a#minting-button-4');
