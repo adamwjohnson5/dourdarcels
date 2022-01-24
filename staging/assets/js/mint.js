@@ -5,7 +5,7 @@ var contractAddress = "0x38134bb53855b20ac924486e4643dfa9be917544";
 var mintPrice = Number(30000000000000000);
 var mintPriceInEther = 0.03;
 var maxTokens = 10000;
-var maxPerPurchase = 3;
+var maxPerPurchase = 2;
 var counterRefreshRate = 120000;
 var saleState;
 var allowListState;
@@ -68,6 +68,7 @@ var initialize = async () => {
   var numAvailableToMint = document.getElementById("available-mint");
   var mintButton = document.getElementById("minting-button-4");
   var onboardConnect = document.getElementById("minting-button-1");
+  var onboardConnectHeader = document.getElementById("header-connect");
   var mintPriceDiv = document.getElementById("mint-price");
   var availableQty = document.getElementById("section-2-counter-text span");
   var quantityInput = document.querySelector('#minting-button-2 span');
@@ -185,7 +186,7 @@ var initialize = async () => {
 
     } else if (allowListState && availableToMint === 0) {
         mintButton.disabled = true;
-        mintButton.innerText = 'YOU HAVE NO ABILITY TO MINT!';
+        mintButton.innerText = "You can't mint!";
         return;
     } else {
       mintButton.disabled = true;
@@ -202,8 +203,12 @@ var initialize = async () => {
   };
 
   var updateButtons = async () => {
+    const headerConnect = document.querySelector('a#header-connect');
+    headerConnect.style.opacity = 1;
+    headerConnect.style.pointerEvents = 'auto';
     if (!isMetaMaskInstalled()) {
       onboardConnect.onclick = onClickInstall;
+      onboardConnectHeader.onclick = onClickInstall;
       if (isMobile()) {
         createAlert('', "Please use a computer or <a href='https://metamask.app.link/dapp/'>download the MetaMask app to mint</a>");
       } else {
@@ -218,6 +223,7 @@ var initialize = async () => {
       // shorten wallet id
       const walletId = `${accounts[0].slice(0, 6)}...${accounts[0].slice(-4)}`;
       onboardConnect.innerHTML = 'Connected!';// `[${walletId}]`;
+      onboardConnectHeader.innerHTML = 'Connected!';
       walletConnected();
 
       mintButton.onclick = mint;
@@ -227,6 +233,7 @@ var initialize = async () => {
     } else {
       mintButton.onclick = onClickConnect;
       onboardConnect.onclick = onClickConnect;
+      onboardConnectHeader.onclick = onClickConnect;
     }
   };
 
@@ -327,6 +334,7 @@ var initialize = async () => {
     setMintProgress(Number(tokensRemaining));
 
     if (allowListState) {
+      maxPerPurchase = 3;
       availableToMint = await updateAvailableToMint(accounts[0]);
     }
 
@@ -335,7 +343,7 @@ var initialize = async () => {
       mintButton.innerText = 'Sale is inactive!';
     } else if (allowListState && availableToMint === 0) {
       mintButton.disabled = true;
-      mintButton.innerText = 'YOU HAVE NO ABILITY TO MINT!';
+      mintButton.innerText = "You can't mint!";
     } else {
       mintButton.disabled = false;
       mintButton.innerText = 'Mint!';
