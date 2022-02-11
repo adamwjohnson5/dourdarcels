@@ -27,7 +27,13 @@ function walletConnected() {
     headerConnect.style.pointerEvents = 'none';
     const mintingConnect = document.querySelector('a#minting-button-1');
     mintingConnect.innerHTML = 'Connected!';
-    mintingConnect.style.pointerEvents = 'none';
+    mintingConnect.style.pointerEvents = 'auto';
+    mintingConnect.style.opacity = 1;
+
+    const disConnect = document.querySelector('a#btn-disconnect');
+    // mintingConnect.innerHTML = 'Connected!';
+    disConnect.style.pointerEvents = 'auto';
+    disConnect.style.opacity = 1;
 
     // Minting buttons
     const mintingQuantity = document.querySelector('#minting-button-2');
@@ -35,6 +41,33 @@ function walletConnected() {
     mintingQuantity.querySelector('a#button-2-minus').style.pointerEvents = 'auto';
     mintingQuantity.querySelector('a#button-2-plus').style.pointerEvents = 'auto';
     document.querySelector('#minting-button-3').style.opacity = 1;
+}
+
+function walletDisConnected() {
+    // dis Connect buttons
+    const headerConnect = document.querySelector('a#header-connect');
+    headerConnect.innerHTML = 'Connect Wallet';
+    headerConnect.style.pointerEvents = '';
+    headerConnect.style.opacity = '';
+    const mintingConnect = document.querySelector('a#minting-button-1');
+    mintingConnect.innerHTML = 'Connect Wallet';
+    mintingConnect.style.opacity = '';
+    mintingConnect.style.pointerEvents = '';
+
+    // Reset
+    let mintingMint = document.querySelector('a#minting-button-4');
+    let mintingQuantity = document.querySelector('#minting-button-2');
+
+    document.querySelector('#minting-button-2 span').innerHTML = 'Quantity';
+    document.querySelector('#minting-button-3').innerHTML = '0 ETH';
+    mintingQuantity.querySelector('a#button-2-minus').style.pointerEvents = '';
+    mintingQuantity.querySelector('a#button-2-plus').style.pointerEvents = '';
+    document.querySelector('#minting-button-3').style.opacity = '';
+
+    mintingQuantity.style.opacity = '';
+    mintingQuantity.style.pointerEvents = '';
+    mintingMint.style.opacity = '';
+    mintingMint.style.pointerEvents = '';
 }
 
 function mintQuantityToggle(action) {
