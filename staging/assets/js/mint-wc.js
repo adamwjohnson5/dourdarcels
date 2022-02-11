@@ -170,7 +170,7 @@ async function mint() {
   var provider20 = new ethers.providers.Web3Provider(provider);
   var erc20 = new ethers.Contract(contractAddress, abi, provider20);
 
-  var numberToMint = quantityInput.value;
+  var numberToMint = quantityInput.innerHTML;
 
   var amountInEther = priceInEther(Number(numberToMint));
   mintButton.disabled = true;
@@ -207,7 +207,7 @@ async function mint() {
   };
 
   mintButton.disabled = false;
-  mintButton.innerText = 'Mint NFT';
+  mintButton.innerText = 'Mint!';
 };
   // checks total minted on the contract
   async function totalSupply() {
@@ -263,10 +263,10 @@ async function fetchAccountData() {
   // Get list of accounts of the connected wallet
   const accounts = await web3.eth.getAccounts();
 
-  document.querySelector("#selected-account").textContent = `${account.slice(0, 6)}...${accounts[0].slice(-4)}`;
+  // document.querySelector("#selected-account").textContent = `${account.slice(0, 6)}...${accounts[0].slice(-4)}`;
   // document.querySelector("#btn-disconnect").textContent = `${account.slice(0, 6)}...`;
   mintButton.disabled = false;
-  onboardConnectHeader.innerHTML = 'Connected!';
+  onboardConnectHeader.innerHTML = `${account.slice(0, 6)}...${accounts[0].slice(-4)}`;
   walletConnected();
   // Get a handl
   const template = document.querySelector("#template-balance");
@@ -380,10 +380,10 @@ async function onDisconnect() {
     await web3Modal.clearCachedProvider();
     provider = null;
   }
-  document.querySelector("#selected-account").textContent = '';
+  // document.querySelector("#selected-account").textContent = '';
 
   account = null;
-
+  walletDisConnected();
   // Set the UI back to the initial state
   document.querySelector("#prepare").style.display = "block";
   document.querySelector("#connected").style.display = "none";
@@ -396,6 +396,7 @@ async function onDisconnect() {
 window.addEventListener('load', async () => {
   init();
   document.querySelector("#minting-button-1").addEventListener("click", onConnect);
+  document.querySelector("#header-connect").addEventListener("click", onConnect);
   document.querySelector("#btn-disconnect").addEventListener("click", onDisconnect);
   document.querySelector("#minting-button-4").addEventListener("click", mint);
 });
