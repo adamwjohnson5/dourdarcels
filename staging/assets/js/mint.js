@@ -223,7 +223,7 @@ var initialize = async () => {
       // shorten wallet id
       const walletId = `${accounts[0].slice(0, 6)}...${accounts[0].slice(-4)}`;
       onboardConnect.innerHTML = 'Connected!';// `[${walletId}]`;
-      onboardConnectHeader.innerHTML = 'Connected!';
+      onboardConnectHeader.innerHTML = walletId;
       walletConnected();
 
       mintButton.onclick = mint;

@@ -59,17 +59,17 @@ https://github.com/awj5
           </tr>
         </template>
       </div>
-        <div id="prepare" class="minting_container__controls_buttons__button_container">
+        <!-- <div id="prepare" class="minting_container__controls_buttons__button_container">
             <a id="minting-button-1" href="#" class="big-button">CONNECT YOUR WALLET</a>
-      </div>
-      <div id="connected" style="display: none">
+      </div> -->
+      <!-- <div id="connected" style="display: none">
               <button id="btn-disconnect" class="big-button" type="button">
                 Disconnect Wallet
               </button>
               <button class="big-button" type="button">
                 <span id="selected-account"></span>
               </button>
-            </div>
+            </div> -->
                 <div id="network" style="display: none">
                   <p>
                     <strong>Connected blockchain:</strong> <span id="network-name"></span>
@@ -99,8 +99,14 @@ https://github.com/awj5
           <div id="section-2-minting">
             <div class="minting-column" id="minting-column-1">
               <a href="" class="column-label">STEP 1<span>?</span></a>
-              <!-- <a href="" class="big-button" id="minting-button-1">Connect Wallet</a> -->
-<a href="" class="big-button" id="btn-connect">Connect Wallet</a>
+              <div id="prepare">
+                <a id="minting-button-1" href="#" class="big-button">CONNECT WALLET</a>
+              </div>
+              <div id="connected" style="display: none">
+                <a id="btn-disconnect" class="big-button" href="#">
+                  DISCONNECT WALLET
+                </a>
+              </div>
               <a href="javascript: alert('WIP');" class="column-label">STEP 2<span>?</span></a>
               <div class="big-button" id="minting-button-2">
                 <a href="javascript: mintQuantityToggle('neg');" id="button-2-minus">&minus;</a>
@@ -113,7 +119,7 @@ https://github.com/awj5
               <span class="column-label">TOTAL PRICE (+ GAS)</span>
               <div class="big-button" id="minting-button-3">0 ETH</div>
               <span class="column-label">STEP 3</span>
-              <a href="javascript: mint();" class="big-button" id="minting-button-4">Mint!</a>
+              <a  class="big-button" id="minting-button-4">Mint!</a>
             </div>
 
             <div class="clear"></div>
@@ -247,7 +253,7 @@ https://github.com/awj5
     <!-- Header -->
     <header>
       <a href="https://discord.com" target="_blank" id="header-discord" title="Discord"><img src="assets/img/icon-discord.png" alt="Discord" /></a><a href="https://twitter.com/DourDarcelsNFT" target="_blank" id="header-twitter" title="Twitter"><img src="assets/img/icon-twitter.png" alt="Twitter" /></a><a href="https://opensea.io" target="_blank" id="header-opensea" title="OpenSea"><img src="assets/img/icon-opensea.png" alt="OpenSea" /></a><a href="https://instagram.com/dourdarcelsnft" target="_blank" id="header-ig" title="Instagram"><img src="assets/img/icon-ig.png" alt="Instagram" /></a>
-      <a href="" class="big-button" id="header-connect">Connect Wallet</a>
+      <a href="" class="big-button" id="header-connect">Connect Wallet<span id="selected-account"></span></a>
     </header>
 
     <!-- JS -->
@@ -273,7 +279,7 @@ https://github.com/awj5
     <script src="assets/js/section-2.js"></script>
     <script src="assets/js/section-5.js"></script>
     <script src="assets/js/web3.js"></script>
-    <script src="assets/js/mint-new.js"></script>
+    <script src="assets/js/mint-wc.js"></script>
   </body>
 
 </html>
