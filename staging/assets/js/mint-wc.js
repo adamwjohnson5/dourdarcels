@@ -26,7 +26,7 @@ var contractAddress = "0x38134bb53855b20ac924486e4643dfa9be917544";
 var mintPrice = Number(30000000000000000);
 var mintPriceInEther = 0.03;
 var maxTokens = 10000;
-var maxPerPurchase = 2;
+var maxPerPurchase = 2; //for public sale
 var counterRefreshRate = 120000;
 var saleIsActive = true;
 var contractNetwork = 4;
@@ -70,32 +70,23 @@ var networkNames = {1: "Ethereum Mainnet", 4: "Rinkeby Test Network"};
 var etherscanSubdomain = {1: "", 4: "rinkeby."};
 var alertBar = document.getElementById("alert-bar");
 var alertBarMetamask = document.getElementById("alert-bar-mobile");
+var numAvailableToMint = document.getElementById("available-mint");
 var mintForm = document.getElementById("mint-form");
 var mintButton = document.getElementById("minting-button-4");
 var onboardConnectHeader = document.getElementById("header-connect");
-var onboardConnect = document.getElementById("minting-button-1");//document.getElementById("onboard-connect");
-// var onboardInProgress = document.getElementById("onboard-in-progress");
-// var onboardConnected = document.getElementById("onboard-connected");
-// var mintInProgress = document.getElementById("mint-in-progress");
+var onboardConnect = document.getElementById("minting-button-1");
 var mintPriceDiv = document.getElementById("mint-price");
 var availableQty = document.getElementById("section-2-counter-text span");
 var quantityInput = document.querySelector('#minting-button-2 span');
 var contractLink = document.getElementById("contract-link");
 contractLink.href = "https://" + etherscanSubdomain[contractNetwork] + "etherscan.io/address/" + contractAddress + "#code";
 /**
- * Setup the orchestra
+ * Setup
  */
 
 async function init() {
 
-  // console.log("Initializing example");
-  // console.log("WalletConnectProvider is", WalletConnectProvider);
-  // console.log("Fortmatic is", Fortmatic);
-  // console.log("window.web3 is", window.web3, "window.ethereum is", window.ethereum);
-
   document.querySelector("#minting-button-4").setAttribute("disabled", "disabled");
-//   alertBar.classList.add("w-hidden");
-//   alertBarMetamask.classList.add("w-hidden");
   // Check that the web page is run in a secure context,
   // as otherwise MetaMask won't be available
   if(location.protocol !== 'https:') {
@@ -146,13 +137,8 @@ function priceInEther(quantity) {
   return (mintPriceInEther * quantity);
 }
 
-  function createAlert(header, alertMessage) {
-    toggleOverlay(header, alertMessage);
-  }
-
-
-function clearAlert() {
-  alertBar.classList.add("w-hidden");
+function createAlert(header, alertMessage) {
+  toggleOverlay(header, alertMessage);
 }
 
 var etherscanLink =
@@ -160,11 +146,29 @@ var etherscanLink =
     ? "https://etherscan.io/tx"
     : "https://rinkeby.etherscan.io/tx";
 
+async function updateAvailableToMint(account) {
+  if (allowListState) {
+    var proof = getProof();
+    var contract = new web3Infura.eth.Contract(abi, contractAddress);
+
+    availableToMint = await contract.methods.numAvailableToMint(account, proof).call();
+
+    availableToMint = Number(availableToMint);
+    numAvailableToMint.classList.remove('w-hidden');
+
+    if (availableToMint === 1 || availableToMint === '1') {
+      numAvailableToMint.innerHTML = `You have ${availableToMint} NFT available to mint`;
+    } else {
+      numAvailableToMint.innerHTML = `You have ${availableToMint} NFTs available to mint`;
+    }
+  }
+  return availableToMint;
+}
+
 async function mint() {
   if (!account) {
-   return;
+    return;
   }
-  // clearAlert();
   var gasEstimate;
 
   var provider20 = new ethers.providers.Web3Provider(provider);
@@ -177,70 +181,121 @@ async function mint() {
 
   const signer = provider20.getSigner();
   var contract20 = new ethers.Contract(contractAddress,abi,signer);
-  mintButton.innerText = "Minting..";
+
   const overrides = {
     from: account,
     value: ethers.utils.parseEther(`${amountInEther}`),
     gasLimit: undefined,
   }
 
-  try {
-    gasEstimate = await erc20.estimateGas.mint(numberToMint, overrides);
+  if (saleState) {
+    mintButton.innerText = "Minting..";
+    try {
+      gasEstimate = await erc20.estimateGas.mint(numberToMint, overrides);
 
-    gasEstimate = gasEstimate.mul(
-      ethers.BigNumber.from("125").div(ethers.BigNumber.from("100"))
-    );
-    overrides.gasLimit = gasEstimate;
+      gasEstimate = gasEstimate.mul(
+        ethers.BigNumber.from("125").div(ethers.BigNumber.from("100"))
+      );
 
-    const tx = await contract20.mint(numberToMint, overrides);
+      overrides.gasLimit = gasEstimate;
+      const tx = await contract20.mint(numberToMint, overrides);
 
-    const receipt = await tx.wait();
-    const hash = receipt.transactionHash;
+      const receipt = await tx.wait();
+      const hash = receipt.transactionHash;
 
-    refreshCounter();
-    createAlert(
-      `Thanks for minting!`,`Your transaction link is <a href='${etherscanLink}/${hash}' target="_blank" >${etherscanLink}/${hash.slice(0, 6)}...${hash.slice(-4)}</a>`
-    );
-  } catch(err) {
-    createAlert('Failed', 'Canceled transaction.');
-    console.log(err);
-  };
+      refreshCounter();
+      createAlert(
+        `Thanks for minting!`,`Your transaction link is <a href='${etherscanLink}/${hash}' target="_blank" >${etherscanLink}/${hash.slice(0, 6)}...${hash.slice(-4)}</a>`
+      );
+    } catch(err) {
+      createAlert('Failed', 'Canceled transaction.');
+      console.log('got here. cancelled');
+      return;
+    };
+  } else if (allowListState && availableToMint !== 0) {
+    const proof = getProof();
+    mintButton.innerText = "Minting..";
+
+    try {
+      let gasEstimate = await erc20.estimateGas.mintAllowList(numberToMint,proof,overrides);
+
+      gasEstimate = gasEstimate.mul(ethers.BigNumber.from("125").div(ethers.BigNumber.from("100")))
+      overrides.gasLimit = gasEstimate;
+      const tx = await contract20.mintAllowList(numberToMint, proof, overrides);
+
+      const receipt = await tx.wait();
+      const hash = receipt.transactionHash;
+
+      refreshCounter();
+      createAlert(
+        `Thanks for minting!`,`Your transaction link is <a href='${etherscanLink}/${hash}' target="_blank" >${etherscanLink}/${hash.slice(0, 6)}...${hash.slice(-4)}</a>`
+      );
+    } catch(err) {
+      createAlert('Failed', 'Canceled transaction.');
+      console.log('got here. cancelled');
+      return;
+    };
+
+  } else if (allowListState && availableToMint === 0) {
+      mintButton.disabled = true;
+      return;
+  } else {
+    mintButton.disabled = true;
+    return;
+  }
 
   mintButton.disabled = false;
   mintButton.innerText = 'Mint!';
 };
+
+var web3Infura = new Web3(
+  contractNetwork == 1 ?
+    "https://mainnet.infura.io/v3/4b48220ef22f43c1a1c842c850869019" :
+    "https://rinkeby.infura.io/v3/c31e1f10f5e540aeabf40419532cbbb6"
+);
   // checks total minted on the contract
   async function totalSupply() {
-    var web3Infura = new Web3(
-      contractNetwork == 1 ?
-        "https://mainnet.infura.io/v3/4b48220ef22f43c1a1c842c850869019" :
-        "https://rinkeby.infura.io/v3/c31e1f10f5e540aeabf40419532cbbb6"
-    );
+
     var contract = new web3Infura.eth.Contract(abi, contractAddress);
     tokensRemaining = await contract.methods.totalSupply().call();
 
     return tokensRemaining;
   }
+  async function getSaleState() {
+    var contract = new web3Infura.eth.Contract(abi, contractAddress);
+    saleState = await contract.methods.isSaleActive().call();
+
+    return saleState;
+  }
+  async function allowList() {
+    var contract = new web3Infura.eth.Contract(abi, contractAddress);
+    const allowList = await contract.methods.isAllowListActive().call();
+
+    return allowList;
+  }
+
 
   async function refreshCounter() {
     tokensRemaining = await totalSupply();
     document.querySelector('#section-2-counter-text span').innerHTML = (maxTokens - tokensRemaining).toString();
     setMintProgress(Number(tokensRemaining));
+
     var saleState = await getSaleState();
-    if (!saleState) mintButton.disabled = true;
-  }
-  async function getSaleState() {
-    var web3Infura = new Web3(
-        contractNetwork == 1 ?
-          "https://mainnet.infura.io/v3/4b48220ef22f43c1a1c842c850869019" :
-          "https://rinkeby.infura.io/v3/c31e1f10f5e540aeabf40419532cbbb6"
-      );
-      var contract = new web3Infura.eth.Contract(abi, contractAddress);
+    allowListState = await allowList();
 
-      saleState = await contract.methods.isSaleActive().call();
-    return saleState;
-  }
+    if (allowListState) {
+      maxPerPurchase = 3;
+      if (account) { availableToMint = await updateAvailableToMint(account); }
+    }
 
+    if (!saleState && !allowListState) {
+      mintButton.disabled = true;
+    } else if (allowListState && availableToMint === 0) {
+      mintButton.disabled = true;
+    } else {
+      mintButton.disabled = false;
+    }
+  }
 
 
 /**
@@ -267,8 +322,9 @@ async function fetchAccountData() {
   // document.querySelector("#btn-disconnect").textContent = `${account.slice(0, 6)}...`;
   mintButton.disabled = false;
   onboardConnectHeader.innerHTML = `${account.slice(0, 6)}...${accounts[0].slice(-4)}`;
+  availableToMint = await updateAvailableToMint(account);
   walletConnected();
-  // Get a handl
+  // Get a handle
   const template = document.querySelector("#template-balance");
   const accountContainer = document.querySelector("#accounts");
 
@@ -289,7 +345,7 @@ async function fetchAccountData() {
     accountContainer.appendChild(clone);
   });
 
-  // Because rendering account does its own RPC commucation
+  // Because rendering account does its own RPC communication
   // with Ethereum node, we do not want to display any results
   // until data for all accounts is loaded
   await Promise.all(rowResolvers);
@@ -310,7 +366,7 @@ async function fetchAccountData() {
 async function refreshAccountData() {
 
   // If any current data is displayed when
-  // the user is switching acounts in the wallet
+  // the user is switching accounts in the wallet
   // immediate hide this data
 
   document.querySelector("#connected").style.display = "none";
@@ -376,7 +432,7 @@ async function onDisconnect() {
     // If the cached provider is not cleared,
     // WalletConnect will default to the existing session
     // and does not allow to re-scan the QR code with a new wallet.
-    // Depending on your use case you may want or want not his behavir.
+    // Depending on your use case you may want or want not his behavior.
     await web3Modal.clearCachedProvider();
     provider = null;
   }
