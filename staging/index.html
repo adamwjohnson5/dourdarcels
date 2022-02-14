@@ -49,8 +49,6 @@ https://github.com/awj5
             <div id="available-mint"></div>
           </p>
 
-
-      <!-- We use simple <template> templating for the example -->
       <div id="templates" style="display: none">
         <template id="template-balance">
           <tr>
@@ -59,53 +57,34 @@ https://github.com/awj5
           </tr>
         </template>
       </div>
-        <!-- <div id="prepare" class="minting_container__controls_buttons__button_container">
-            <a id="minting-button-1" href="#" class="big-button">CONNECT YOUR WALLET</a>
-      </div> -->
-      <!-- <div id="connected" style="display: none">
-              <button id="btn-disconnect" class="big-button" type="button">
-                Disconnect Wallet
-              </button>
-              <button class="big-button" type="button">
-                <span id="selected-account"></span>
-              </button>
-            </div> -->
-                <div id="network" style="display: none">
-                  <p>
-                    <strong>Connected blockchain:</strong> <span id="network-name"></span>
-                  </p>
+      <div id="network" style="display: none">
+        <p>
+          <span id="network-name"></span>
+        </p>
+      </div>
+      <div style="display: none">
+        <h3>All account balances</h3>
 
-                  <p>
-                    <!-- <strong>Selected account:</strong> <span id="selected-account"></span> -->
-                  </p>
-
-                </div>
-                <div style="display: none">
-                    <h3>All account balances</h3>
-
-                    <table class="table table-listing">
-                    <thead>
-                        <th>Address</th>
-                        <th>ETH balance</th>
-                    </thead>
-
-                    <tbody id="accounts">
-                    </tbody>
-                    </table>
-
-                </div>
+        <table class="table table-listing">
+          <thead>
+            <th>Address</th>
+            <th>ETH balance</th>
+          </thead>
+          <tbody id="accounts"></tbody>
+        </table>
+      </div>
 
 
           <div id="section-2-minting">
             <div class="minting-column" id="minting-column-1">
               <a href="" class="column-label">STEP 1<span>?</span></a>
-              <div id="prepare">
-                <a id="minting-button-1" href="#" class="big-button">CONNECT WALLET</a>
-              </div>
               <div id="connected" style="display: none">
                 <a id="btn-disconnect" class="big-button" href="#">
                   DISCONNECT WALLET
                 </a>
+              </div>
+              <div id="prepare">
+                <a id="minting-button-1" href="#" class="big-button">CONNECT WALLET</a>
               </div>
               <a href="javascript: alert('WIP');" class="column-label">STEP 2<span>?</span></a>
               <div class="big-button" id="minting-button-2">
