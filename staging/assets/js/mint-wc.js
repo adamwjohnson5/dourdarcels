@@ -30,6 +30,7 @@ var maxPerPurchase = 2; //for public sale
 var counterRefreshRate = 120000;
 var saleIsActive = true;
 var contractNetwork = 4;
+var chainId;
 var saleState;
 var allowListState;
 var availableToMint;
@@ -59,8 +60,8 @@ var leaves = [
 var tree = new MerkleTree(leaves, keccak256, { sort: true });
 var root = tree.getHexRoot();
 
-var getProof = () => {
-  var leaf = keccak256(accounts[0]);
+var getProof = (account) => {
+  var leaf = keccak256(account);
   return tree.getHexProof(leaf);
 };
 
@@ -148,7 +149,7 @@ var etherscanLink =
 
 async function updateAvailableToMint(account) {
   if (allowListState) {
-    var proof = getProof();
+    var proof = getProof(account);
     var contract = new web3Infura.eth.Contract(abi, contractAddress);
 
     availableToMint = await contract.methods.numAvailableToMint(account, proof).call();
@@ -167,6 +168,10 @@ async function updateAvailableToMint(account) {
 
 async function mint() {
   if (!account) {
+    return;
+  }
+  if (chainId !== contractNetwork) {
+    createAlert('Failed', 'Incorrect Network');
     return;
   }
   var gasEstimate;
@@ -210,10 +215,9 @@ async function mint() {
     } catch(err) {
       createAlert('Failed', 'Canceled transaction.');
       console.log('got here. cancelled');
-      return;
     };
   } else if (allowListState && availableToMint !== 0) {
-    const proof = getProof();
+    const proof = getProof(account);
     mintButton.innerText = "Minting..";
 
     try {
@@ -233,7 +237,6 @@ async function mint() {
     } catch(err) {
       createAlert('Failed', 'Canceled transaction.');
       console.log('got here. cancelled');
-      return;
     };
 
   } else if (allowListState && availableToMint === 0) {
@@ -307,13 +310,12 @@ async function fetchAccountData() {
   const web3 = new Web3(provider);
   contract = await new web3.eth.Contract(abi, contractAddress);
 
-  console.log("Web3 instance is", web3);
-
   // Get connected chain id from Ethereum node
-  const chainId = await web3.eth.getChainId();
+  chainId = await web3.eth.getChainId();
   // Load chain information over an HTTP API
   const chainData = evmChains.getChain(chainId);
   document.querySelector("#network-name").textContent = chainData.name;
+
   if (chainId !== contractNetwork) {
     createAlert('Failed', 'Incorrect Network');
     return;
