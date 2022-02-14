@@ -23,7 +23,7 @@ function setMintProgress(minted) {
 function walletConnected() {
     // Connect buttons
     const headerConnect = document.querySelector('a#header-connect');
-    headerConnect.innerHTML = 'Connected!';
+    // headerConnect.innerHTML = 'Connected!';
     headerConnect.style.pointerEvents = 'none';
     const mintingConnect = document.querySelector('a#minting-button-1');
     mintingConnect.innerHTML = 'Connected!';
