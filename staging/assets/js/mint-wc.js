@@ -314,7 +314,10 @@ async function fetchAccountData() {
   // Load chain information over an HTTP API
   const chainData = evmChains.getChain(chainId);
   document.querySelector("#network-name").textContent = chainData.name;
-
+  if (chainId !== contractNetwork) {
+    createAlert('Failed', 'Incorrect Network');
+    return;
+  }
   // Get list of accounts of the connected wallet
   const accounts = await web3.eth.getAccounts();
 
