@@ -326,7 +326,7 @@ async function fetchAccountData() {
   // document.querySelector("#selected-account").textContent = `${account.slice(0, 6)}...${accounts[0].slice(-4)}`;
   // document.querySelector("#btn-disconnect").textContent = `${account.slice(0, 6)}...`;
   mintButton.disabled = false;
-  onboardConnectHeader.innerHTML = `${account.slice(0, 6)}...${accounts[0].slice(-4)}`;
+  onboardConnectHeader.innerHTML = `${account.slice(0, 6)}...${account.slice(-4)}`;
   availableToMint = await updateAvailableToMint(account);
   walletConnected();
   // Get a handle
@@ -381,7 +381,7 @@ async function refreshAccountData() {
   // fetchAccountData() will take a while as it communicates
   // with Ethereum node via JSON-RPC and loads chain data
   // over an API call.
-  document.querySelector("#minting-button-1").setAttribute("disabled", "disabled")
+  document.querySelector("#minting-button-1").setAttribute("disabled", "disabled");
   await fetchAccountData(provider);
   document.querySelector("#minting-button-1").removeAttribute("disabled")
 }
