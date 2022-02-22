@@ -44,6 +44,15 @@ function setEventsGlobal() {
 /* Start */
 
 function start() {
+    // Temp - show minting
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+
+    if (urlParams.has('mint')) {
+        // Param exists
+        document.querySelector('section#section-2').style.display = 'block';
+    }
+
     loadSection(1);
 }
 
@@ -100,8 +109,19 @@ function animateSection(sectionNum, pos) {
 
 /* Overlay */
 
-function toggleOverlay(heading, body) {
+function toggleOverlay(heading, body, style) {
     const overlay = document.querySelector('#overlay');
+    const window = overlay.querySelector('#overlay-window');
+
+    if (style) {
+        // Add custom class
+        window.classList.add(style);
+        window.querySelector('a#overlay-close img').setAttribute('src', 'assets/img/close-black.png');
+    } else {
+        // Remove all classes
+        window.setAttribute('class', '');
+        window.querySelector('a#overlay-close img').setAttribute('src', 'assets/img/close.png');
+    }
 
     if (overlay.style.display === 'flex') {
         // Hide
