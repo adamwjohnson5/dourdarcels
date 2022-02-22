@@ -3,7 +3,8 @@
 /* Global vars */
 
 window.mintQuantity = 0;
-window.mintPrice = 0;
+window.mintMaxQuantity = 3;
+window.mintPrice = 0.1;
 
 /* Section 2 */
 
@@ -38,7 +39,7 @@ function walletConnected() {
 }
 
 function mintQuantityToggle(action) {
-    if (action === 'pos' && window.mintQuantity < 3) {
+    if (action === 'pos' && window.mintQuantity < window.mintMaxQuantity) {
         window.mintQuantity++;
     } else if (action === 'neg' && window.mintQuantity > 0) {
         window.mintQuantity--;
