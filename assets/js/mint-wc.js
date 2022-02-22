@@ -150,7 +150,6 @@ let etherscanLink =
 async function updateAvailableToMint(account) {
   if (allowListState) {
     let proof = getProof(account);
-    // let contract = new web3Infura.eth.Contract(abi, contractAddress);
 
     availableToMint = await contract.methods.numAvailableToMint(account, proof).call();
 
@@ -210,10 +209,7 @@ async function mint() {
 
       refreshCounter();
       showMintingSuccess(`${etherscanLink}/${hash}`);
-      // createAlert(
-      //   `Thanks for minting!`,`Your transaction link is <a href='${etherscanLink}/${hash}' target="_blank" >${etherscanLink}/${hash.slice(0, 6)}...${hash.slice(-4)}</a>`
-      // );
-    } catch(err) {
+    } catch (err) {
       createAlert('Failed', 'Canceled transaction.');
       console.log('got here. cancelled');
     };
@@ -233,10 +229,8 @@ async function mint() {
 
       refreshCounter();
       showMintingSuccess(`${etherscanLink}/${hash}`);
-      // createAlert(
-      //   `Thanks for minting!`,`Your transaction link is <a href='${etherscanLink}/${hash}' target="_blank" >${etherscanLink}/${hash.slice(0, 6)}...${hash.slice(-4)}</a>`
-      // );
-    } catch(err) {
+
+    } catch (err) {
       createAlert('Failed', 'Canceled transaction.');
       console.log('got here. cancelled');
     };
@@ -259,21 +253,21 @@ let web3Infura = new Web3(
     "https://rinkeby.infura.io/v3/c31e1f10f5e540aeabf40419532cbbb6"
 );
 contract = new web3Infura.eth.Contract(abi, contractAddress);
+
 // checks total minted on the contract
 async function totalSupply() {
-  // let contract = new web3Infura.eth.Contract(abi, contractAddress);
   tokensRemaining = await contract.methods.totalSupply().call();
 
   return tokensRemaining;
 }
+
 async function getSaleState() {
-  // let contract = new web3Infura.eth.Contract(abi, contractAddress);
   saleState = await contract.methods.isSaleActive().call();
 
   return saleState;
 }
+
 async function allowList() {
-  // let contract = new web3Infura.eth.Contract(abi, contractAddress);
   const allowList = await contract.methods.isAllowListActive().call();
 
   return allowList;
@@ -315,7 +309,7 @@ async function fetchAccountData() {
   chainId = await web3.eth.getChainId();
   // Load chain information over an HTTP API
   const chainData = evmChains.getChain(chainId);
-  document.querySelector("#network-name").textContent = chainData.name;
+  // document.querySelector("#network-name").textContent = chainData.name;
 
   if (chainId !== contractNetwork) {
     createAlert('Failed', 'Incorrect Network');
@@ -329,32 +323,8 @@ async function fetchAccountData() {
   mintButton.disabled = false;
   onboardConnectHeader.innerHTML = `${account.slice(0, 6)}...${account.slice(-4)}`;
   availableToMint = await updateAvailableToMint(account);
+
   walletConnected();
-  // Get a handle
-  const template = document.querySelector("#template-balance");
-  const accountContainer = document.querySelector("#accounts");
-
-  // Purge UI elements any previously loaded accounts
-  accountContainer.innerHTML = '';
-
-  // Go through all accounts and get their ETH balance
-  const rowResolvers = accounts.map(async (address) => {
-    const balance = await web3.eth.getBalance(address);
-    // ethBalance is a BigNumber instance
-    // https://github.com/indutny/bn.js/
-    const ethBalance = web3.utils.fromWei(balance, "ether");
-    const humanFriendlyBalance = parseFloat(ethBalance).toFixed(4);
-    // Fill in the templated row and put in the document
-    const clone = template.content.cloneNode(true);
-    clone.querySelector(".address").textContent = address;
-    clone.querySelector(".balance").textContent = humanFriendlyBalance;
-    accountContainer.appendChild(clone);
-  });
-
-  // Because rendering account does its own RPC communication
-  // with Ethereum node, we do not want to display any results
-  // until data for all accounts is loaded
-  await Promise.all(rowResolvers);
 
   // Display fully loaded UI for wallet data
   document.querySelector("#prepare").style.display = "none";
@@ -383,7 +353,7 @@ async function refreshAccountData() {
   // with Ethereum node via JSON-RPC and loads chain data
   // over an API call.
   document.querySelector("#minting-button-1").setAttribute("disabled", "disabled");
-  await fetchAccountData(provider);
+  await fetchAccountData();
   document.querySelector("#minting-button-1").removeAttribute("disabled")
 }
 
@@ -401,7 +371,7 @@ async function onConnect() {
 
     await refreshCounter();
 
-  } catch(e) {
+  } catch (e) {
     console.log("Could not get a wallet connection", e);
     return;
   }
@@ -432,7 +402,7 @@ async function onDisconnect() {
   console.log("Killing the wallet connection", provider);
 
   // TODO: Which providers have close method?
-  if(provider.close) {
+  if (provider.close) {
     await provider.close();
 
     // If the cached provider is not cleared,
