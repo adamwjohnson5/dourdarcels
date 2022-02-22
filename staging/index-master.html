@@ -49,43 +49,11 @@ https://github.com/awj5
             <div id="available-mint"></div>
           </p>
 
-      <div id="templates" style="display: none">
-        <template id="template-balance">
-          <tr>
-            <th class="address"></th>
-            <td class="balance"></td>
-          </tr>
-        </template>
-      </div>
-      <div id="network" style="display: none">
-        <p>
-          <span id="network-name"></span>
-        </p>
-      </div>
-      <div style="display: none">
-        <h3>All account balances</h3>
-
-        <table class="table table-listing">
-          <thead>
-            <th>Address</th>
-            <th>ETH balance</th>
-          </thead>
-          <tbody id="accounts"></tbody>
-        </table>
-      </div>
-
-
           <div id="section-2-minting">
             <div class="minting-column" id="minting-column-1">
-              <a href="" class="column-label">STEP 1<span>?</span></a>
-              <div id="connected" style="display: none">
-                <a id="btn-disconnect" class="big-button" href="#">
-                  DISCONNECT WALLET
-                </a>
-              </div>
-              <div id="prepare">
-                <a id="minting-button-1" href="#" class="big-button">CONNECT WALLET</a>
-              </div>
+              <a href="javascript: alert('WIP');" class="column-label">STEP 1<span>?</span></a>
+              <a href="" class="big-button" id="minting-button-1">Connect Wallet</a>
+
               <a href="javascript: alert('WIP');" class="column-label">STEP 2<span>?</span></a>
               <div class="big-button" id="minting-button-2">
                 <a href="javascript: mintQuantityToggle('neg');" id="button-2-minus">&minus;</a>
@@ -98,7 +66,7 @@ https://github.com/awj5
               <span class="column-label">TOTAL PRICE (+ GAS)</span>
               <div class="big-button" id="minting-button-3">0 ETH</div>
               <span class="column-label">STEP 3</span>
-              <a  class="big-button" id="minting-button-4">Mint!</a>
+              <a href="javascript: mint();" class="big-button" id="minting-button-4">Mint!</a>
             </div>
 
             <div class="clear"></div>
@@ -232,7 +200,7 @@ https://github.com/awj5
     <!-- Header -->
     <header>
       <a href="https://discord.com" target="_blank" id="header-discord" title="Discord"><img src="assets/img/icon-discord.png" alt="Discord" /></a><a href="https://twitter.com/DourDarcelsNFT" target="_blank" id="header-twitter" title="Twitter"><img src="assets/img/icon-twitter.png" alt="Twitter" /></a><a href="https://opensea.io" target="_blank" id="header-opensea" title="OpenSea"><img src="assets/img/icon-opensea.png" alt="OpenSea" /></a><a href="https://instagram.com/dourdarcelsnft" target="_blank" id="header-ig" title="Instagram"><img src="assets/img/icon-ig.png" alt="Instagram" /></a>
-      <a href="#" class="big-button" id="header-connect">Connect Wallet<span id="selected-account"></span></a>
+      <a href="" class="big-button" id="header-connect">Connect Wallet</a>
     </header>
 
     <!-- JS -->
@@ -242,9 +210,7 @@ https://github.com/awj5
     <script type="text/javascript" src="https://unpkg.com/web3@1.2.11/dist/web3.min.js"></script>
     <script type="text/javascript" src="https://unpkg.com/web3modal@1.9.0/dist/index.js"></script>
     <script type="text/javascript" src="https://unpkg.com/evm-chains@0.2.0/dist/umd/index.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/3.0.0-rc.5/web3.min.js"></script>
-    <script src="https://unpkg.com/@walletconnect/web3-provider@1.7.1/dist/umd/index.min.js"></script>
-
+    <script type="text/javascript" src="https://unpkg.com/@walletconnect/web3-provider@1.2.1/dist/umd/index.min.js"></script>
     <script type="text/javascript" src="https://unpkg.com/fortmatic@2.0.6/dist/fortmatic.js"></script>
     <script
       src="https://unpkg.com/@metamask/onboarding@1.0.1/dist/metamask-onboarding.bundle.js"
@@ -254,11 +220,11 @@ https://github.com/awj5
     </script>
     <script type="module" src="assets/js/components.js"></script>
     <script src="assets/js/plugins/smoothscroll.min.js"></script>
-    <script src="../assets/js/global.js"></script>
-    <script src="../assets/js/section-2.js"></script>
-    <script src="../assets/js/section-5.js"></script>
-    <script src="../assets/js/web3.js"></script>
-    <script src="assets/js/mint-wc.js"></script>
+    <script src="assets/js/global.js"></script>
+    <script src="assets/js/section-2.js"></script>
+    <script src="assets/js/section-5.js"></script>
+    <script src="assets/js/web3.js"></script>
+    <script src="assets/js/mint.js"></script>
   </body>
 
 </html>

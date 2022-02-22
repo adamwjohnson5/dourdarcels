@@ -43,47 +43,11 @@ https://github.com/awj5
                 <div class="section-column section-column-right">
                     <h2>Get Your<br />Darcel</h2>
                     <p id="section-2-details">Dour Darcels are TBA ETH each. For presale only TBA transaction is allowed and a maximum of TBA Darcels.</p>
-                    <a class="w-hidden" id="contract-link" target="_blank" href="#">Smart Contract</a>
-                    <p>
-                      <div id="available-mint"></div>
-                    </p>
-                    <div id="templates" style="display: none">
-                      <template id="template-balance">
-                        <tr>
-                          <th class="address"></th>
-                          <td class="balance"></td>
-                        </tr>
-                      </template>
-                    </div>
-                    <div id="network" style="display: none">
-                      <p>
-                        <span id="network-name"></span>
-                      </p>
-                    </div>
-                    <div style="display: none">
-                      <h3>All account balances</h3>
 
-                      <table class="table table-listing">
-                        <thead>
-                          <th>Address</th>
-                          <th>ETH balance</th>
-                        </thead>
-                        <tbody id="accounts"></tbody>
-                      </table>
-                    </div>
                     <div id="section-2-minting">
                         <div class="minting-column" id="minting-column-1">
                             <a href="javascript: toggleOverlay('What’s a Wallet?', 'Crypto wallets keep your private keys – the passwords that give you access to your cryptocurrencies – safe & accessible, allowing you to send and receive cryptocurrencies like Ethereum, which is the currency we use for Dour Darcel NFTs.<br /><br />The wallet we use is MetaMask, it’s specific to Ethereum. MetaMask is connected to your web browser as an extension, you can set-up and install it here:<br /><a href=\'https://metamask.io/\' target=\'_blank\' class=\'big-button\' id=\'section-3-how\'>MetaMask</a>');" class="column-label">STEP 1<span>?</span></a>
-                            <!-- <a href="javascript: connectWallet();" class="big-button" id="minting-button-1">Connect Wallet</a> -->
-                            <!-- <a href="" class="column-label">STEP 1<span>?</span></a> -->
-                            <div id="connected" style="display: none">
-                              <a id="btn-disconnect" class="big-button" href="#">
-                                DISCONNECT WALLET
-                              </a>
-                            </div>
-                            <div id="prepare">
-                              <a id="minting-button-1" href="#" class="big-button">CONNECT WALLET</a>
-                            </div>
+                            <a href="javascript: connectWallet();" class="big-button" id="minting-button-1">Connect Wallet</a>
                             <a href="javascript: toggleOverlay('How many Darcels can I mint?', 'During presale only TBA transaction is allowed and a maximum of TBA Darcels.');" class="column-label">STEP 2<span>?</span></a>
                             <div class="big-button" id="minting-button-2"><a href="javascript: mintQuantityToggle('neg');" id="button-2-minus">&minus;</a><span>Quantity</span><a href="javascript: mintQuantityToggle('pos');" id="button-2-plus">&plus;</a></div>
                         </div>
@@ -92,7 +56,7 @@ https://github.com/awj5
                             <span class="column-label">TOTAL PRICE (+ GAS)</span>
                             <div class="big-button" id="minting-button-3">0 ETH</div>
                             <span class="column-label">STEP 3</span>
-                            <a class="big-button" id="minting-button-4">Mint!</a>
+                            <a href="javascript: mint();" class="big-button" id="minting-button-4">Mint!</a>
                         </div>
 
                         <div class="clear"></div>
@@ -232,27 +196,11 @@ https://github.com/awj5
         <div id="overlay"><div id="overlay-bg"></div><div id="overlay-wrapper"><div id="overlay-window"><a href="javascript: toggleOverlay();" id="overlay-close"><img src="assets/img/close.png" alt="Close" /></a><h4></h4><p></p></div></div></div>
 
         <!-- JS -->
-        <script src="https://cdn.jsdelivr.net/npm/keccak256@latest/keccak256.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/merkletreejs@latest/merkletree.js"></script>
-
-        <script type="text/javascript" src="https://unpkg.com/web3@1.2.11/dist/web3.min.js"></script>
-        <script type="text/javascript" src="https://unpkg.com/web3modal@1.9.0/dist/index.js"></script>
-        <script type="text/javascript" src="https://unpkg.com/evm-chains@0.2.0/dist/umd/index.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/3.0.0-rc.5/web3.min.js"></script>
-        <script src="https://unpkg.com/@walletconnect/web3-provider@1.7.1/dist/umd/index.min.js"></script>
-        <script type="text/javascript" src="https://unpkg.com/fortmatic@2.0.6/dist/fortmatic.js"></script>
-        <script
-            src="https://unpkg.com/@metamask/onboarding@1.0.1/dist/metamask-onboarding.bundle.js"
-            type="text/javascript">
-        </script>
-        <script src="https://cdn.ethers.io/lib/ethers-5.0.umd.min.js" type="text/javascript">
-        </script>
         <script type="module" src="assets/js/components.js"></script>
         <script src="assets/js/plugins/smoothscroll.min.js"></script>
         <script src="assets/js/global.js"></script>
         <script src="assets/js/section-2.js"></script>
         <script src="assets/js/section-5.js"></script>
         <script src="assets/js/web3.js"></script>
-        <script src="assets/js/mint-wc.js"></script>
     </body>
 </html>

@@ -318,7 +318,6 @@ async function fetchAccountData() {
 
   if (chainId !== contractNetwork) {
     createAlert('Failed', 'Incorrect Network');
-    onDisconnect();
     return;
   }
   // Get list of accounts of the connected wallet
@@ -360,6 +359,8 @@ async function fetchAccountData() {
   document.querySelector("#prepare").style.display = "none";
   document.querySelector("#connected").style.display = "block";
 }
+
+
 
 /**
  * Fetch account data for UI when
@@ -430,7 +431,7 @@ async function onDisconnect() {
   console.log("Killing the wallet connection", provider);
 
   // TODO: Which providers have close method?
-  if (provider.close) {
+  if(provider.close) {
     await provider.close();
 
     // If the cached provider is not cleared,

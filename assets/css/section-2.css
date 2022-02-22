@@ -1,5 +1,9 @@
 /* Section 2 */
 
+section#section-2 {
+    display: block;
+}
+
 p#section-2-details {
     text-align: left;
 }
