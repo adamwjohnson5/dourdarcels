@@ -131,6 +131,39 @@ p#section-2-counter-text {
     background-color: #cc2027;
 }
 
+#overlay-window.minting-success {
+    background-color: #ffcf08;
+    text-align: center;
+    background-image: url('../img/sticker-thumbs.gif');
+    background-repeat: no-repeat;
+    background-size: 240px 240px;
+    background-position: top 32px center;
+    max-width: 400px;
+    width: 400px;
+}
+
+#overlay-window.minting-success h4 {
+    font-size: 60px;
+    font-family: "itc-avant-garde-gothic-lt-bold", sans-serif;
+    line-height: 1;
+    letter-spacing: -2.5px;
+    font-weight: normal;
+    margin-top: 256px;
+}
+
+#overlay-window.minting-success p {
+    font-size: 18px;
+}
+
+#overlay-window.minting-success p a {
+    word-break: break-all;
+}
+
+.no-touch #overlay-window.minting-success p a:hover,
+#overlay-window.minting-success p a:active {
+    text-decoration: underline;
+}
+
 @media only screen and (min-width: 532px) and (max-width: 1194px) {
     #section-2-minting,
     p#section-2-counter-text {
@@ -175,5 +208,18 @@ p#section-2-counter-text {
     #minting-column-1 {
         border: none;
         padding-bottom: 8px;
+    }
+
+    #overlay-window.minting-success {
+        width: auto;
+    }
+
+    #overlay-window.minting-success h4 {
+        font-size: 48px;
+        letter-spacing: -2px;
+    }
+
+    #overlay-window.minting-success p {
+        font-size: 16px;
     }
 }

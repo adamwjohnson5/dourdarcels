@@ -62,3 +62,7 @@ function mintQuantityToggle(action) {
         mintingMint.style.pointerEvents = 'auto';
     }
 }
+
+function showMintingSuccess(tranLink) {
+    toggleOverlay('Congrats!', `<strong>You've successfully minted!</strong><br />Your transaction link is:<br /><a href="${ tranLink }" target="_blank">${ tranLink }</a><br /><br />The <strong>Dour Darcels</strong> will be revealed on OpenSea in the coming days.`, 'minting-success');
+}

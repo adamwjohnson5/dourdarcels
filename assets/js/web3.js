@@ -14,6 +14,7 @@ function connectWallet() {
 function mint() {
     //window.mintQuantity // This int variable contains the quantity user has selected
     setMintProgress(0); // Update count of NFTs minted on success to update progress bar
+    showMintingSuccess('https://1234567891012345678910123456789101234567891012345678910'); // Show minting success pop-up. Pass transaction URL.
 }
 
 function launchSmartContract() {
