@@ -4,10 +4,6 @@ section#section-2 {
     display: block;
 }
 
-p#section-2-details {
-    text-align: left;
-}
-
 #section-2-minting {
     border: 1px solid #FFF;
     border-radius: 20px;
@@ -84,6 +80,11 @@ a#minting-button-4:active {
 
 #minting-button-2 {
     padding: 0;
+}
+
+#minting-button-2:active {
+    color: #000 !important;
+    background-color: #FFF !important;
 }
 
 #minting-button-2 a {
@@ -195,10 +196,6 @@ p#section-2-counter-text {
 }
 
 @media only screen and (max-width: 531px) {
-    p#section-2-details {
-        text-align: center;
-    }
-
     .minting-column {
         float: none;
         padding-left: 16px;

@@ -52,22 +52,13 @@ https://github.com/awj5
             <div class="section-wrapper">
                 <div class="section-column section-column-right">
                     <h2>Get Your<br />Darcel</h2>
-                    <p id="section-2-details">Dour Darcels are 0.1 ETH each. For presale only TBA transaction is allowed and a maximum of TBA Darcels.</p>
-                    <p>
-                      <div id="available-mint"></div>
-                    </p>
+                    <p id="section-2-details"></p>
+
                     <div id="section-2-minting">
                         <div class="minting-column" id="minting-column-1">
                             <a href="javascript: toggleOverlay('What’s a Wallet?', 'Crypto wallets keep your private keys – the passwords that give you access to your cryptocurrencies – safe & accessible, allowing you to send and receive cryptocurrencies like Ethereum, which is the currency we use for Dour Darcel NFTs.<br /><br />The wallet we use is MetaMask, it’s specific to Ethereum. MetaMask is connected to your web browser as an extension, you can set-up and install it here:<br /><a href=\'https://metamask.io/\' target=\'_blank\' class=\'big-button\' id=\'section-3-how\'>MetaMask</a>');" class="column-label">STEP 1<span>?</span></a>
-                            <div id="connected" style="display: none">
-                              <a id="btn-disconnect" class="big-button" href="#">
-                                Disconnect Wallet
-                              </a>
-                            </div>
-                            <div id="prepare">
-                              <a id="minting-button-1" href="#" class="big-button">Connect Wallet</a>
-                            </div>
-                            <a href="javascript: toggleOverlay('How many Darcels can I mint?', 'During presale only TBA transaction is allowed and a maximum of TBA Darcels.');" class="column-label">STEP 2<span>?</span></a>
+                            <a href="javascript: connectWallet();" class="big-button" id="minting-button-1">Connect Wallet</a>
+                            <a href="javascript: toggleOverlay('How many Darcels can I mint?', 'During pre-sale only 1 transaction is allowed and a maximum of 3 Darcels.<br /><br />You can mint up to 2 Darcels during public mint. 1 transaction only allowed.');" class="column-label">STEP 2<span>?</span></a>
                             <div class="big-button" id="minting-button-2"><a href="javascript: mintQuantityToggle('neg');" id="button-2-minus">&minus;</a><span>Quantity</span><a href="javascript: mintQuantityToggle('pos');" id="button-2-plus">&plus;</a></div>
                         </div>
 
@@ -99,7 +90,7 @@ https://github.com/awj5
                     <br />
                     Each <strong>Dour Darcel</strong> is randomly generated and is a unique NFT that lives on the Ethereum blockchain.<br />
                     <br />
-                    <strong>Releasing Q1 2022</strong></p>
+                    <strong>Presale: March 4th<br />Public Sale: March 5th<br />Price: 0.1ETH</strong></p>
                     <a href="https://www.instagram.com/p/CYpLvq2pE-O/" target="_blank" class="big-button" id="section-3-how">Buying your first NFT?</a>
                 </div>
             </div>
@@ -238,6 +229,7 @@ https://github.com/awj5
         </script>
         <script src="https://cdn.ethers.io/lib/ethers-5.0.umd.min.js" type="text/javascript">
         </script>
+        <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.20/lodash.min.js"></script>
         <script type="module" src="assets/js/components.js"></script>
         <script src="assets/js/plugins/smoothscroll.min.js"></script>
         <script src="assets/js/global.js"></script>

@@ -3,6 +3,8 @@
 /* Global vars */
 
 window.touchScreen = false;
+window.minting = false; // Toggle at launch
+window.presale = true; // Toggle at public mint
 
 /* On DOM load */
 
@@ -44,13 +46,17 @@ function setEventsGlobal() {
 /* Start */
 
 function start() {
-    // Temp - show minting
+    // Temp - url params
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
 
     if (urlParams.has('mint')) {
-        // Param exists
-        document.querySelector('section#section-2').style.display = 'block';
+        window.minting = true;
+    }
+
+    // Minting open?
+    if (window.minting) {
+        mintingOpen();
     }
 
     loadSection(1);
