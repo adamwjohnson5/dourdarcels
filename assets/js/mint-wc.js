@@ -26,7 +26,6 @@ let contractAddress = "0x8640888a6a89a5bd1a96839ee9ab5bc3ce38b134";
 let mintPrice = Number(30000000000000000);
 let mintPriceInEther = 0.03; // to be changed in section-2.js as well
 let maxTokens = 10000;
-let maxPerPurchase = 2; //for public sale
 let counterRefreshRate = 120000;
 let saleIsActive = true;
 let chainId;
@@ -35,7 +34,7 @@ let allowListState;
 let availableToMint;
 let contract;
 
-let leaves = [
+let values = [
   "0xc4996857d25e902eBEa251621b758F86D3761C0f",
   "0xB887A81683ed3cD4a5C0414C5456B6D7F0E11b00",
   "0x4e8AA3C649c2511E18328e08649D0f8d174b1e35",
@@ -54,8 +53,15 @@ let leaves = [
   "0x2013E3Db6F1b0eDda0acdB32F271D10B4f6a17A6",
   "0xBe1D95BD480fFC1447B5D39e14f1f308cDdC744e",
   "0xDFD8f2d34f8B233878FA16fa5Fd4d177108ABF00",
-].map((v) => keccak256(v));
+];
 
+let leaves = values.map((v) => keccak256(v));
+
+// find the amount from a values list, or return undefined
+const isWhiteListed = (values, account) => {
+  const accountFound = values.includes(account);
+  return accountFound;
+};
 
 let tree = new MerkleTree(leaves, keccak256, { sort: true });
 let root = tree.getHexRoot();
@@ -71,7 +77,7 @@ let networkNames = {1: "Ethereum Mainnet", 4: "Rinkeby Test Network"};
 let etherscanSubdomain = {1: "", 4: "rinkeby."};
 let alertBar = document.getElementById("alert-bar");
 let alertBarMetamask = document.getElementById("alert-bar-mobile");
-let numAvailableToMint = document.getElementById("available-mint");
+// let numAvailableToMint = document.getElementById("available-mint");
 let mintForm = document.getElementById("mint-form");
 let mintButton = document.getElementById("minting-button-4");
 let onboardConnectHeader = document.getElementById("header-connect");
@@ -79,8 +85,6 @@ let onboardConnect = document.getElementById("minting-button-1");
 let mintPriceDiv = document.getElementById("mint-price");
 let availableQty = document.getElementById("section-2-counter-text span");
 let quantityInput = document.querySelector('#minting-button-2 span');
-// let contractLink = document.getElementById("contract-link");
-// contractLink.href = "https://" + etherscanSubdomain[contractNetwork] + "etherscan.io/address/" + contractAddress + "#code";
 
 /**
  * Setup
@@ -154,13 +158,13 @@ async function updateAvailableToMint(account) {
     availableToMint = await contract.methods.numAvailableToMint(account, proof).call();
 
     availableToMint = Number(availableToMint);
-    numAvailableToMint.classList.remove('w-hidden');
+    // numAvailableToMint.classList.remove('w-hidden');
 
-    if (availableToMint === 1 || availableToMint === '1') {
-      numAvailableToMint.innerHTML = `You have ${availableToMint} NFT available to mint`;
-    } else {
-      numAvailableToMint.innerHTML = `You have ${availableToMint} NFTs available to mint`;
-    }
+    // if (availableToMint === 1 || availableToMint === '1') {
+    //   numAvailableToMint.innerHTML = `You have ${availableToMint} NFT available to mint`;
+    // } else {
+    //   numAvailableToMint.innerHTML = `You have ${availableToMint} NFTs available to mint`;
+    // }
   }
   return availableToMint;
 }
@@ -280,9 +284,10 @@ async function refreshCounter() {
 
   let saleState = await getSaleState();
   allowListState = await allowList();
+  window.presale = false;
 
   if (allowListState) {
-    maxPerPurchase = 3;
+    window.presale = true;
     if (account) { availableToMint = await updateAvailableToMint(account); }
   }
 
@@ -294,7 +299,6 @@ async function refreshCounter() {
     mintButton.disabled = false;
   }
 }
-
 
 /**
  * Kick in the UI action after Web3modal dialog has chosen a provider
@@ -317,18 +321,14 @@ async function fetchAccountData() {
   }
   // Get list of accounts of the connected wallet
   const accounts = await web3.eth.getAccounts();
-
-  // document.querySelector("#selected-account").textContent = `${account.slice(0, 6)}...${accounts[0].slice(-4)}`;
-  // document.querySelector("#btn-disconnect").textContent = `${account.slice(0, 6)}...`;
   mintButton.disabled = false;
   onboardConnectHeader.innerHTML = `${account.slice(0, 6)}...${account.slice(-4)}`;
   availableToMint = await updateAvailableToMint(account);
+  console.log('Connected account: '+ account);
+  window.presale? window.whitelisted = isWhiteListed(values, account): window.whitelisted = false;
 
+  isConnected();
   walletConnected();
-
-  // Display fully loaded UI for wallet data
-  document.querySelector("#prepare").style.display = "none";
-  document.querySelector("#connected").style.display = "block";
 }
 
 
@@ -344,9 +344,6 @@ async function refreshAccountData() {
   // If any current data is displayed when
   // the user is switching accounts in the wallet
   // immediate hide this data
-
-  document.querySelector("#connected").style.display = "none";
-  document.querySelector("#prepare").style.display = "block";
 
   // Disable button while UI is loading.
   // fetchAccountData() will take a while as it communicates
@@ -412,13 +409,10 @@ async function onDisconnect() {
     await web3Modal.clearCachedProvider();
     provider = null;
   }
-  // document.querySelector("#selected-account").textContent = '';
 
   account = null;
   walletDisConnected();
   // Set the UI back to the initial state
-  document.querySelector("#prepare").style.display = "block";
-  document.querySelector("#connected").style.display = "none";
 }
 
 
@@ -427,8 +421,5 @@ async function onDisconnect() {
  */
 window.addEventListener('load', async () => {
   init();
-  document.querySelector("#minting-button-1").addEventListener("click", onConnect);
-  document.querySelector("#header-connect").addEventListener("click", onConnect);
-  document.querySelector("#btn-disconnect").addEventListener("click", onDisconnect);
   document.querySelector("#minting-button-4").addEventListener("click", mint);
 });
