@@ -14,7 +14,7 @@ function isConnected() {
 }
 
 function disconnectWallet() {
-    disableConnectButtons(); // This temporarily disables the connect buttons
+    disableConnectButtons(); // This temporarily disables the connect buttons. Please leave at top.
 
     // Devs do your magic
 
@@ -22,7 +22,7 @@ function disconnectWallet() {
 }
 
 function connectWallet() {
-    disableConnectButtons(); // This temporarily disables the connect buttons
+    disableConnectButtons(); // This temporarily disables the connect buttons. Please leave at top.
 
     // Devs do your magic here
 
