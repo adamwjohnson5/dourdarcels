@@ -318,7 +318,7 @@ a#header-connect {
 a#header-opensea,
 a#header-connect {
     opacity: 0.25;
-    pointer-events: none;  /* Remove at launch */
+    pointer-events: none;
 }
 
 @media only screen and (max-width: 624px) {
