@@ -6,8 +6,27 @@ setMintProgress(0); // Should be called on init with count of NFTs minted
 
 //toggleOverlay('A Heading', 'Some text') // Can be used to show an alert. Second var can contain HTML
 
-function connectWallet() {
+// This func is called on load
+function isConnected() {
+    // Check if wallet already connected
+    window.whitelisted = false; // Please set if user address is connected and whitelisted
+    return false; // Return true or false (connected/not connected)
+}
+
+function disconnectWallet() {
+    disableConnectButtons(); // This temporarily disables the connect buttons
+
     // Devs do your magic
+
+    walletDisconnected(); // Please call when wallet successfully disconnected
+}
+
+function connectWallet() {
+    disableConnectButtons(); // This temporarily disables the connect buttons
+
+    // Devs do your magic here
+
+    window.whitelisted = false; // Please set if user address is whitelisted
     walletConnected(); // Please call when wallet successfully connected
 }
 
