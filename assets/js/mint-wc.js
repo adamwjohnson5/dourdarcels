@@ -284,11 +284,13 @@ async function refreshCounter() {
 
   let saleState = await getSaleState();
   allowListState = await allowList();
-  window.presale = false;
+
 
   if (allowListState) {
     window.presale = true;
     if (account) { availableToMint = await updateAvailableToMint(account); }
+  } else {
+    window.presale = false;
   }
 
   if (!saleState && !allowListState) {
@@ -322,13 +324,16 @@ async function fetchAccountData() {
   // Get list of accounts of the connected wallet
   const accounts = await web3.eth.getAccounts();
   mintButton.disabled = false;
+  walletConnected();
   onboardConnectHeader.innerHTML = `${account.slice(0, 6)}...${account.slice(-4)}`;
+
   availableToMint = await updateAvailableToMint(account);
+
   console.log('Connected account: '+ account);
   window.presale? window.whitelisted = isWhiteListed(values, account): window.whitelisted = false;
 
   isConnected();
-  walletConnected();
+
 }
 
 
@@ -366,29 +371,29 @@ async function onConnect() {
     const signer = web3Provider.getSigner();
     account = await signer.getAddress();
 
-    await refreshCounter();
+    await refreshAccountData();
+
+    disableConnectButtons();
+    walletConnected();
+      // Subscribe to accounts change
+    provider.on("accountsChanged", (accounts) => {
+      fetchAccountData();
+    });
+
+    // Subscribe to chainId change
+    provider.on("chainChanged", (chainId) => {
+      fetchAccountData();
+    });
+
+    // Subscribe to networkId change
+    provider.on("networkChanged", (networkId) => {
+      fetchAccountData();
+    });
 
   } catch (e) {
     console.log("Could not get a wallet connection", e);
     return;
   }
-
-  // Subscribe to accounts change
-  provider.on("accountsChanged", (accounts) => {
-    fetchAccountData();
-  });
-
-  // Subscribe to chainId change
-  provider.on("chainChanged", (chainId) => {
-    fetchAccountData();
-  });
-
-  // Subscribe to networkId change
-  provider.on("networkChanged", (networkId) => {
-    fetchAccountData();
-  });
-
-  await refreshAccountData();
 }
 
 /**
@@ -411,6 +416,7 @@ async function onDisconnect() {
   }
 
   account = null;
+  await refreshCounter();
   walletDisConnected();
   // Set the UI back to the initial state
 }

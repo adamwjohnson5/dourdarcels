@@ -23,12 +23,12 @@ async function disconnectWallet() {
 
 async function connectWallet() {
     await onConnect();
-    disableConnectButtons(); // This temporarily disables the connect buttons. Please leave at top.
+    // disableConnectButtons(); // This temporarily disables the connect buttons. Please leave at top.
 
     // Devs do your magic here
 
     // window.whitelisted = false; // Please set if user address is whitelisted
-    walletConnected(); // Please call when wallet successfully connected
+    // walletConnected(); // Please call when wallet successfully connected
 }
 
 // function mint() {
