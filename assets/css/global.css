@@ -171,6 +171,12 @@ img.section-bg {
     }
 }
 
+/* Web3 */
+
+#WEB3_CONNECT_MODAL_ID {
+    line-height: 1.5;
+}
+
 /* Section 1 */
 
 section#section-1 .section-wrapper img {

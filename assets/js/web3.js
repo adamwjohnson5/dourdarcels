@@ -10,6 +10,7 @@ setMintProgress(0); // Should be called on init with count of NFTs minted
 function isConnected() {
     // Check if wallet already connected
     window.whitelisted = false; // Please set if user address is connected and whitelisted
+    window.whitelistQty = 0; // Please set allowance if user whitelisted. Set to 0 if not whitelisted
     return false; // Return true or false (connected/not connected)
 }
 
@@ -27,12 +28,14 @@ function connectWallet() {
     // Devs do your magic here
 
     window.whitelisted = false; // Please set if user address is whitelisted
+    window.whitelistQty = 0; // Please set allowance if user whitelisted. Set to 0 if not whitelisted
     walletConnected(); // Please call when wallet successfully connected
 }
 
 function mint() {
     //window.mintQuantity // This int variable contains the quantity user has selected
     setMintProgress(0); // Update count of NFTs minted on success to update progress bar
+    window.whitelistQty = 0; // Please set remaining allowance if user whitelisted. Set to 0 if not whitelisted
     showMintingSuccess('https://1234567891012345678910123456789101234567891012345678910'); // Show minting success pop-up. Pass transaction URL.
 }
 
