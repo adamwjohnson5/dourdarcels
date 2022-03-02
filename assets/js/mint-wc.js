@@ -380,7 +380,6 @@ async function onConnect() {
  * Disconnect wallet button pressed.
  */
 async function onDisconnect() {
-
   console.log("Killing the wallet connection", provider);
 
   // TODO: Which providers have close method?
@@ -396,7 +395,6 @@ async function onDisconnect() {
   }
 
   account = null;
-  await refreshCounter();
   walletDisconnected();
   // Set the UI back to the initial state
 }
