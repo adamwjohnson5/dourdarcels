@@ -34,38 +34,19 @@ let allowListState;
 let availableToMint;
 let contract;
 
-let values = [
-  "0xc4996857d25e902eBEa251621b758F86D3761C0f",
-  "0xB887A81683ed3cD4a5C0414C5456B6D7F0E11b00",
-  "0x4e8AA3C649c2511E18328e08649D0f8d174b1e35",
-  "0xA75725aEa06F49177677d692d594672D32de55ce",
-  "0xb99426903d812A09b8DE7DF6708c70F97D3dD0aE",
-  "0x47452ba544acc423cb77077243348300C7cc1c2d",
-  "0xdeF2afbB3B5244723e80bcC775373E9F505E43ee",
-  "0x2A03A89Aa15639A8ca045cB48e05a1f1c800A682",
-  "0x9652e335647Fa18B7b9FFb2c092CAa0D31d9853d",
-  "0x307047162b8357c34dc9fb5fde62cd5c91ccde20",
-  "0x034c81A1bD952Ed7a6Ff5Cb49bDE0BBA23263291",
-  "0x70F4eA8E350c0eEd3cD344bF3693f10eDA145ce7",
-  "0x25428d29a6fa3629ff401c6dade418b19cb2d615",
-  "0xad3372Cd209550e03AEebA8a756688d6255F94EB",
-  "0x54390Ff492946a8766a383272C9521a915A06deE",
-  "0x2013E3Db6F1b0eDda0acdB32F271D10B4f6a17A6",
-  "0xBe1D95BD480fFC1447B5D39e14f1f308cDdC744e",
-  "0xDFD8f2d34f8B233878FA16fa5Fd4d177108ABF00",
-];
-
 let leaves = values.map((v) => keccak256(v));
 
 // find the amount from a values list, or return undefined
 const isWhiteListed = (values, account) => {
   const accountFound = values.includes(account);
+  window.whitelisted = accountFound;
+
   return accountFound;
 };
 
 let tree = new MerkleTree(leaves, keccak256, { sort: true });
 let root = tree.getHexRoot();
-
+console.log(root);
 let getProof = (account) => {
   let leaf = keccak256(account);
   return tree.getHexProof(leaf);
@@ -77,7 +58,6 @@ let networkNames = {1: "Ethereum Mainnet", 4: "Rinkeby Test Network"};
 let etherscanSubdomain = {1: "", 4: "rinkeby."};
 let alertBar = document.getElementById("alert-bar");
 let alertBarMetamask = document.getElementById("alert-bar-mobile");
-// let numAvailableToMint = document.getElementById("available-mint");
 let mintForm = document.getElementById("mint-form");
 let mintButton = document.getElementById("minting-button-4");
 let onboardConnectHeader = document.getElementById("header-connect");
@@ -158,13 +138,7 @@ async function updateAvailableToMint(account) {
     availableToMint = await contract.methods.numAvailableToMint(account, proof).call();
 
     availableToMint = Number(availableToMint);
-    // numAvailableToMint.classList.remove('w-hidden');
-
-    // if (availableToMint === 1 || availableToMint === '1') {
-    //   numAvailableToMint.innerHTML = `You have ${availableToMint} NFT available to mint`;
-    // } else {
-    //   numAvailableToMint.innerHTML = `You have ${availableToMint} NFTs available to mint`;
-    // }
+    window.whitelistQty = availableToMint;
   }
   return availableToMint;
 }
@@ -211,7 +185,7 @@ async function mint() {
       const receipt = await tx.wait();
       const hash = receipt.transactionHash;
 
-      refreshCounter();
+      await refreshCounter();
       showMintingSuccess(`${etherscanLink}/${hash}`);
     } catch (err) {
       createAlert('Failed', 'Canceled transaction.');
@@ -223,15 +197,18 @@ async function mint() {
 
     try {
       let gasEstimate = await erc20.estimateGas.mintAllowList(numberToMint,proof,overrides);
+      console.log(gasEstimate)
+     // gasEstimate = gasEstimate.mul(ethers.BigNumber.from("200").div(ethers.BigNumber.from("100")))
 
-      gasEstimate = gasEstimate.mul(ethers.BigNumber.from("125").div(ethers.BigNumber.from("100")))
+      gasEstimate = gasEstimate.add(ethers.BigNumber.from("150000"));
       overrides.gasLimit = gasEstimate;
+      console.log(gasEstimate)
       const tx = await contract20.mintAllowList(numberToMint, proof, overrides);
 
       const receipt = await tx.wait();
       const hash = receipt.transactionHash;
 
-      refreshCounter();
+      await refreshCounter();
       showMintingSuccess(`${etherscanLink}/${hash}`);
 
     } catch (err) {
@@ -246,7 +223,7 @@ async function mint() {
     mintButton.disabled = true;
     return;
   }
-
+  setMintingDetails();
   mintButton.disabled = false;
   mintButton.innerText = 'Mint!';
 };
@@ -324,14 +301,17 @@ async function fetchAccountData() {
   // Get list of accounts of the connected wallet
   const accounts = await web3.eth.getAccounts();
   mintButton.disabled = false;
-  walletConnected();
-  onboardConnectHeader.innerHTML = `${account.slice(0, 6)}...${account.slice(-4)}`;
+
+  account = accounts[0];
+  // commented out showing wallet address
+  // onboardConnectHeader.innerHTML = `${account.slice(0, 6)}...${account.slice(-4)}`;
 
   availableToMint = await updateAvailableToMint(account);
 
   console.log('Connected account: '+ account);
   window.presale? window.whitelisted = isWhiteListed(values, account): window.whitelisted = false;
 
+  walletConnected();
   isConnected();
 
 }
@@ -417,7 +397,7 @@ async function onDisconnect() {
 
   account = null;
   await refreshCounter();
-  walletDisConnected();
+  walletDisconnected();
   // Set the UI back to the initial state
 }
 
