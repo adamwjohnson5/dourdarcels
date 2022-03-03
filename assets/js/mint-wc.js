@@ -37,9 +37,13 @@ let contract;
 
 let leaves = values.map((v) => keccak256(v));
 
-// find the amount from a values list, or return undefined
+// find the address from a values list, or return false
 const isWhiteListed = (values, account) => {
-  const accountFound = values.includes(account);
+  const lowerValues = values.map(element => {
+    return element.toLowerCase();
+  });
+  const accountFound = lowerValues.includes(account.toLowerCase());
+
   window.whitelisted = accountFound;
 
   return accountFound;
