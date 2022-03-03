@@ -38,11 +38,3 @@ function mint() {
     window.whitelistQty = 0; // Please set remaining allowance if user whitelisted. Set to 0 if not whitelisted
     showMintingSuccess('https://1234567891012345678910123456789101234567891012345678910'); // Show minting success pop-up. Pass transaction URL.
 }
-
-function launchSmartContract() {
-
-}
-
-function launchIP() {
-
-}
