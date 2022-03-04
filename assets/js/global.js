@@ -70,7 +70,7 @@ function start() {
 function loadSection(int) {
     const section = document.querySelector(`section#section-${ typeof window.project === 'undefined' ? '' : window.project + '-'}` + int);
     const bg = section.querySelector('img.section-bg');
-    bg.setAttribute('src', `assets/img/bg-${ int }.jpg`);
+    bg.setAttribute('src', `assets/img/bg-${ typeof window.project === 'undefined' ? '' : window.project + '-'}${ int }.jpg`);
 
     // Preload bg image
     bg.onload = () => {
@@ -93,7 +93,7 @@ function loadSection(int) {
 }
 
 function animateSection(sectionNum, pos) {
-    const section = document.querySelector('section#section-' + sectionNum);
+    const section = document.querySelector(`section#section-${ typeof window.project === 'undefined' ? '' : window.project + '-'}` + sectionNum);
 
     // Only if section is loaded and visible
     if (sectionNum === 1 && section.style.opacity === '1') {
