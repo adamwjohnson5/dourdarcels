@@ -3,7 +3,7 @@
 /* Global vars */
 
 window.touchScreen = false;
-window.minting = false; // Toggle at launch
+window.minting = true; // Toggle at launch
 window.presale = true; // Toggle at public mint
 window.project;
 
@@ -82,7 +82,7 @@ function loadSection(int) {
 
         int++;
 
-        if (document.querySelector('section#section-' + int)) {
+        if (document.querySelector(`section#section-${ typeof window.project === 'undefined' ? '' : window.project + '-'}` + int)) {
             // Load next section if exists
             loadSection(int);
         } else {
