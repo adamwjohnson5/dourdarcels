@@ -5,6 +5,7 @@
 window.touchScreen = false;
 window.minting = false; // Toggle at launch
 window.presale = true; // Toggle at public mint
+window.project;
 
 /* On DOM load */
 
@@ -19,11 +20,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Scroll
     window.addEventListener('scroll', () => {
-        animateSection(1, window.pageYOffset);
-        animateSection(3, window.pageYOffset);
-        animateSection(4, window.pageYOffset);
-        animateSection(6, window.pageYOffset);
-        animateSection(7, window.pageYOffset);
+        if (typeof window.project === 'undefined') {
+            animateSection(1, window.pageYOffset);
+            animateSection(3, window.pageYOffset);
+            animateSection(4, window.pageYOffset);
+            animateSection(6, window.pageYOffset);
+            animateSection(7, window.pageYOffset);
+        }
     });
 
     // Resize
@@ -55,7 +58,7 @@ function start() {
     }
 
     // Minting open?
-    if (window.minting) {
+    if (window.minting && typeof window.project === 'undefined') {
         mintingOpen();
     }
 
@@ -65,7 +68,7 @@ function start() {
 /* Global */
 
 function loadSection(int) {
-    const section = document.querySelector('section#section-' + int);
+    const section = document.querySelector(`section#section-${ typeof window.project === 'undefined' ? '' : window.project + '-'}` + int);
     const bg = section.querySelector('img.section-bg');
     bg.setAttribute('src', `assets/img/bg-${ int }.jpg`);
 
