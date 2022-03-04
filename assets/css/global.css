@@ -284,11 +284,6 @@ footer a.big-button {
     margin: 12px;
 }
 
-a#footer-contract {
-    opacity: 0.25;
-    pointer-events: none;
-}
-
 @media only screen and (max-width: 464px) {
     footer {
         height: 256px;
@@ -323,10 +318,6 @@ header img {
 a#header-connect {
     float: right;
     margin: 8px;
-}
-
-a#header-opensea,
-a#header-connect {
     opacity: 0.25;
     pointer-events: none;
 }
