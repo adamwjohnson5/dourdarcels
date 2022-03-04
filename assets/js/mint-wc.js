@@ -137,7 +137,7 @@ async function updateAvailableToMint(account) {
   return availableToMint;
 }
 
-function toggleMintButton(enable) {
+function enableMintButton(enable) {
   let mintingMint = document.querySelector('a#minting-button-4');
   if (enable) {
     mintingMint.style.opacity = 1;
@@ -181,7 +181,7 @@ async function mint() {
 
   if (saleState) {
     mintButton.innerText = "Minting..";
-    toggleMintButton(false);
+    enableMintButton(false);
     try {
       gasEstimate = await erc20.estimateGas.mint(numberToMint, overrides);
 
@@ -204,7 +204,7 @@ async function mint() {
   } else if (allowListState && availableToMint !== 0) {
     const proof = getProof(account);
     mintButton.innerText = "Minting..";
-    toggleMintButton(false);
+    enableMintButton(false);
 
     try {
       let gasEstimate = await erc20.estimateGas.mintAllowList(numberToMint,proof,overrides);
@@ -227,14 +227,14 @@ async function mint() {
     };
 
   } else if (allowListState && availableToMint === 0) {
-      toggleMintButton(false);
-      return;
+    enableMintButton(false);
+    return;
   } else {
-    toggleMintButton(false);
+    enableMintButton(false);
     return;
   }
   setMintingDetails();
-  toggleMintButton(true);
+  enableMintButton(true);
   mintButton.innerText = 'Mint!';
 };
 
