@@ -137,6 +137,16 @@ async function updateAvailableToMint(account) {
   return availableToMint;
 }
 
+function enableMintButton(enable) {
+  let mintingMint = document.querySelector('a#minting-button-4');
+  if (enable) {
+    mintingMint.style.opacity = 1;
+    mintingMint.style.pointerEvents = 'auto';
+  } else {
+    mintingMint.style.opacity = '';
+    mintingMint.style.pointerEvents = '';
+  }
+}
 async function mint() {
   if (!account) {
     return;
@@ -171,6 +181,7 @@ async function mint() {
 
   if (saleState) {
     mintButton.innerText = "Minting..";
+    enableMintButton(false);
     try {
       gasEstimate = await erc20.estimateGas.mint(numberToMint, overrides);
 
@@ -193,6 +204,7 @@ async function mint() {
   } else if (allowListState && availableToMint !== 0) {
     const proof = getProof(account);
     mintButton.innerText = "Minting..";
+    enableMintButton(false);
 
     try {
       let gasEstimate = await erc20.estimateGas.mintAllowList(numberToMint,proof,overrides);
@@ -215,14 +227,14 @@ async function mint() {
     };
 
   } else if (allowListState && availableToMint === 0) {
-      mintButton.disabled = true;
-      return;
+    enableMintButton(false);
+    return;
   } else {
-    mintButton.disabled = true;
+    enableMintButton(false);
     return;
   }
   setMintingDetails();
-  mintButton.disabled = false;
+  enableMintButton(true);
   mintButton.innerText = 'Mint!';
 };
 
@@ -293,7 +305,8 @@ async function fetchAccountData() {
 
   if (chainId !== contractNetwork) {
     createAlert('Failed', 'Incorrect Network');
-    return;
+    await onDisconnect();
+    throw 'err';
   }
   // Get list of accounts of the connected wallet
   const accounts = await web3.eth.getAccounts();
@@ -310,7 +323,6 @@ async function fetchAccountData() {
 
   walletConnected();
   isConnected();
-
 }
 
 
