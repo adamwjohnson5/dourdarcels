@@ -105,6 +105,11 @@ img.section-bg {
     font-weight: bold;
 }
 
+.section-column p span {
+    font-style: italic;
+    font-size: 14px;
+}
+
 .big-button {
     line-height: 1;
     color: #000;

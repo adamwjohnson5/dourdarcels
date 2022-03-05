@@ -3,8 +3,8 @@
 /* Global vars */
 
 window.touchScreen = false;
-window.minting = false; // Toggle at launch
-window.presale = true; // Toggle at public mint
+window.minting = true; // Toggle at launch
+window.presale = false; // Toggle at public mint
 window.project;
 
 /* On DOM load */
@@ -76,7 +76,7 @@ function loadSection(int) {
     bg.onload = () => {
         section.style.opacity = 1;
 
-        if (int !== 2 && int !== 5) {
+        if (typeof window.project !== 'undefined' || typeof window.project === 'undefined' && int !== 2 && int !== 5) {
             animateSection(int, window.scrollY); // Init
         }
 
@@ -96,7 +96,7 @@ function animateSection(sectionNum, pos) {
     const section = document.querySelector(`section#section-${ typeof window.project === 'undefined' ? '' : window.project + '-'}` + sectionNum);
 
     // Only if section is loaded and visible
-    if (sectionNum === 1 && section.style.opacity === '1') {
+    if (typeof window.project === 'undefined' && sectionNum === 1 && section.style.opacity === '1') {
         // Section 1
         let percent = Math.round(pos / section.offsetHeight * 100);
         let scale = pos >= section.offsetHeight ? 1.1 : 1 + (percent / 10) / 100;
