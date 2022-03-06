@@ -67,14 +67,14 @@ function walletConnected() {
     mintingConnect.setAttribute('href', 'javascript: disconnectWallet();');
 
     // Must be whitelisted if pre-sale
-    if (!window.presale || window.presale && window.whitelisted) {
+    /* if (!window.presale || window.presale && window.whitelisted) {
         // Minting buttons
-        /* const mintingQuantity = document.querySelector('#minting-button-2');
+        const mintingQuantity = document.querySelector('#minting-button-2');
         mintingQuantity.style.opacity = 1;
         mintingQuantity.querySelector('a#button-2-minus').style.pointerEvents = 'auto';
         mintingQuantity.querySelector('a#button-2-plus').style.pointerEvents = 'auto';
-        document.querySelector('#minting-button-3').style.opacity = 1; */
-    }
+        document.querySelector('#minting-button-3').style.opacity = 1;
+    } */
 
     setMintingDetails();
 }
