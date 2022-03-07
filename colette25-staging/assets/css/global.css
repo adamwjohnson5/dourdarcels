@@ -1,1 +1,25 @@
 /* Colette */
+
+/* Section 1 */
+
+a#section-colette-1-how {
+    margin: auto;
+    margin-top: 24px;
+}
+
+header {
+    width: 366px;
+    margin-left: -183px;
+}
+
+footer a.big-button {
+    pointer-events: none;
+    opacity: 0.25;
+}
+
+@media only screen and (max-width: 624px) {
+    header {
+        width: 274px;
+        margin-left: -137px;
+    }
+}

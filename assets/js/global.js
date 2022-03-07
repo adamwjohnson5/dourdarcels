@@ -76,7 +76,7 @@ function loadSection(int) {
     bg.onload = () => {
         section.style.opacity = 1;
 
-        if (typeof window.project !== 'undefined' || typeof window.project === 'undefined' && int !== 2 && int !== 5) {
+        if (typeof window.project !== 'undefined' && int !== 4 || typeof window.project === 'undefined' && int !== 2 && int !== 5) {
             animateSection(int, window.scrollY); // Init
         }
 
