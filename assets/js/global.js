@@ -70,7 +70,7 @@ function start() {
 function loadSection(int) {
     const section = document.querySelector(`section#section-${ typeof window.project === 'undefined' ? '' : window.project + '-'}` + int);
     const bg = section.querySelector('img.section-bg');
-    bg.setAttribute('src', `assets/img/bg-${ typeof window.project === 'undefined' ? '' : window.project + '-'}${ int }.jpg`);
+    bg.setAttribute('src', `/assets/img/bg-${ typeof window.project === 'undefined' ? '' : window.project + '-'}${ int }.jpg`);
 
     // Preload bg image
     bg.onload = () => {
@@ -125,11 +125,11 @@ function toggleOverlay(heading, body, style) {
     if (style) {
         // Add custom class
         window.classList.add(style);
-        window.querySelector('a#overlay-close img').setAttribute('src', 'assets/img/close-black.png');
+        window.querySelector('a#overlay-close img').setAttribute('src', '/assets/img/close-black.png');
     } else {
         // Remove all classes
         window.setAttribute('class', '');
-        window.querySelector('a#overlay-close img').setAttribute('src', 'assets/img/close.png');
+        window.querySelector('a#overlay-close img').setAttribute('src', '/assets/img/close.png');
     }
 
     if (overlay.style.display === 'flex') {
