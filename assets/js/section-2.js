@@ -31,8 +31,7 @@ function setMintingWelcomeText() {
     if (window.presale) {
         document.querySelector('section#section-2').querySelector('p#section-2-details').innerHTML = '<strong>Welcome, please connect your wallet to participate in the pre-sale mint.</strong>';
     } else {
-        //document.querySelector('section#section-2').querySelector('p#section-2-details').innerHTML = '<strong>Welcome, please connect your wallet to mint.</strong> You can mint a maximum of <strong>3 Darcels</strong> per transaction. Dour Darcels are <strong>0.1ETH</strong> each.';
-        document.querySelector('section#section-2').querySelector('p#section-2-details').innerHTML = 'SOLD OUT 😳 THANK YOU FRENS 🙌';
+        document.querySelector('section#section-2').querySelector('p#section-2-details').innerHTML = '<strong>Welcome, please connect your wallet to mint.</strong> You can mint a maximum of <strong>3 Darcels</strong> per transaction. Dour Darcels are <strong>0.1ETH</strong> each.';
     }
 }
 
@@ -67,14 +66,14 @@ function walletConnected() {
     mintingConnect.setAttribute('href', 'javascript: disconnectWallet();');
 
     // Must be whitelisted if pre-sale
-    /* if (!window.presale || window.presale && window.whitelisted) {
+    if (!window.presale || window.presale && window.whitelisted) {
         // Minting buttons
         const mintingQuantity = document.querySelector('#minting-button-2');
         mintingQuantity.style.opacity = 1;
         mintingQuantity.querySelector('a#button-2-minus').style.pointerEvents = 'auto';
         mintingQuantity.querySelector('a#button-2-plus').style.pointerEvents = 'auto';
         document.querySelector('#minting-button-3').style.opacity = 1;
-    } */
+    }
 
     setMintingDetails();
 }
@@ -92,8 +91,7 @@ function setMintingDetails() {
         document.querySelector('p#section-2-details').innerHTML = '<strong>Unfortunately your wallet isn\'t on the pre-sale whitelist.</strong> Please connect again during the public mint on <strong>March 5th</strong>.';
     } else {
         // Is not presale
-        //document.querySelector('p#section-2-details').innerHTML = 'You can mint up to <strong>3 Darcels</strong>. Dour Darcels are <strong>0.1ETH</strong> each.';
-        document.querySelector('p#section-2-details').innerHTML = 'SOLD OUT 😳 THANK YOU FRENS 🙌';
+        document.querySelector('p#section-2-details').innerHTML = 'You can mint up to <strong>3 Darcels</strong>. Dour Darcels are <strong>0.1ETH</strong> each.';
     }
 }
 
@@ -142,7 +140,7 @@ function mintQuantityToggle(action) {
     } else {
         // Update text
         document.querySelector('#minting-button-2 span').innerHTML = window.mintQuantity;
-        document.querySelector('#minting-button-3').innerHTML = (window.mintQuantity * mintPriceInEther).toFixed(2) + ' ETH'; // Calculate cost
+        document.querySelector('#minting-button-3').innerHTML = (window.mintQuantity * window.mintPrice).toFixed(1) + ' ETH'; // Calculate cost
 
         // Enable mint button
         let mintingMint = document.querySelector('a#minting-button-4');

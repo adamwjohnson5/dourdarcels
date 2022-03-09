@@ -71,7 +71,6 @@ a#minting-button-1,
 a#minting-button-4 {
     background-color: #000;
     color: #FFF;
-    cursor: pointer;
 }
 
 a#minting-button-4:active {
@@ -128,7 +127,7 @@ p#section-2-counter-text {
 
 #section-2-counter-progress {
     position: relative;
-    width: 100%;
+    width: 0%;
     height: 8px;
     background-color: #cc2027;
 }
