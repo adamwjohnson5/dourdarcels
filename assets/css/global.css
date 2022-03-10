@@ -284,9 +284,9 @@ footer a.big-button {
     margin: 12px;
 }
 
-@media only screen and (max-width: 464px) {
+@media only screen and (max-width: 926px) {
     footer {
-        height: 256px;
+        height: 328px;
         flex-direction: column;
         padding-bottom: 24px;
     }
