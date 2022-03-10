@@ -104,9 +104,9 @@ timeline-event {
 .event h4 {
    position: absolute;
    letter-spacing: normal;
-   width: 260px;
+   width: 300px;
    bottom: 32px;
-   margin-left: -130px;
+   margin-left: -150px;
 }
 
 .event-bottom h4 {
@@ -121,7 +121,7 @@ timeline-event {
 }
 
 .no-touch .timeline-event-link span.big-button:hover {
-   background-color: #669A41;
+   background-color: #2964AB;
    cursor: pointer;
 }
 
