@@ -4,26 +4,23 @@
 
 @import url("section-5.css");
 
-/* Section 1 */
+/* Section 2 */
 
-a#section-colette-1-how {
+a#section-colette-2-how {
     margin: auto;
     margin-top: 24px;
 }
 
-section#section-colette-1 p span {
+section#section-colette-2 p span {
     font-style: italic;
     font-size: 14px;
 }
 
+/* Header */
+
 header {
     width: 366px;
     margin-left: -183px;
-}
-
-footer a.big-button {
-    pointer-events: none;
-    opacity: 0.25;
 }
 
 @media only screen and (max-width: 624px) {
@@ -31,4 +28,11 @@ footer a.big-button {
         width: 274px;
         margin-left: -137px;
     }
+}
+
+/* Footer */
+
+footer a.big-button {
+    pointer-events: none;
+    opacity: 0.25;
 }
