@@ -4,6 +4,28 @@
 
 @import url("section-5.css");
 
+/* Section 1 */
+
+section#section-colette-1 h2 {
+    font-size: 120px;
+}
+
+@media only screen and (min-width: 927px) and (max-width: 1194px) {
+    section#section-colette-1 h2 {
+        font-size: 110px;
+    }
+}
+
+@media only screen and (max-width: 926px) {
+    section#section-colette-1 h2 {
+        font-size: 72px;
+    }
+
+    section#section-colette-1 {
+        margin-top: 72px;
+    }
+}
+
 /* Section 2 */
 
 a#section-colette-2-how {
@@ -14,6 +36,19 @@ a#section-colette-2-how {
 section#section-colette-2 p span {
     font-style: italic;
     font-size: 14px;
+}
+
+/* Footer */
+
+footer a.big-button {
+    pointer-events: none;
+    opacity: 0.25;
+}
+
+@media only screen and (max-width: 926px) {
+    footer {
+        height: 256px;
+    }
 }
 
 /* Header */
@@ -28,11 +63,4 @@ header {
         width: 274px;
         margin-left: -137px;
     }
-}
-
-/* Footer */
-
-footer a.big-button {
-    pointer-events: none;
-    opacity: 0.25;
 }
