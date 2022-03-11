@@ -1,13 +1,13 @@
 /* Section 4 */
 
-#section-colette-4 .section-wrapper {
+#section-colette-5 .section-wrapper {
    justify-content: left;
    overflow-x: auto;
    overflow-y: hidden;
    -webkit-overflow-scrolling: touch;
 }
 
-#section-colette-4 h2 {
+#section-colette-5 h2 {
    position: absolute;
    width: 50%;
    height: 100%;
@@ -17,7 +17,7 @@
    text-align: center;
 }
 
-#section-4-timeline {
+#section-5-timeline {
    position: absolute;
    left: 50%;
    height: 100%;
@@ -28,7 +28,7 @@
    visibility: hidden;
 }
 
-#section-4-timeline h3 {
+#section-5-timeline h3 {
    width: 160px;
    height: 160px;
    background-color: #FFF;
@@ -37,7 +37,7 @@
    transition: transform .3s ease-out;
 }
 
-#section-4-timeline h3 span {
+#section-5-timeline h3 span {
    font-size: 24px;
    background-color: #000;
    border-radius: 999px;
@@ -121,7 +121,7 @@ timeline-event {
 }
 
 .no-touch .timeline-event-link span.big-button:hover {
-   background-color: #2964AB;
+   background-color: #FFCC00;
    cursor: pointer;
 }
 
@@ -175,7 +175,7 @@ timeline-event {
 }
 
 @media only screen and (max-width: 1194px) {
-   #section-colette-4 h2 {
+   #section-colette-5 h2 {
       font-size: 90px;
    }
 
@@ -203,21 +203,21 @@ timeline-event {
 }
 
 @media only screen and (max-width: 926px) {
-   #section-colette-4 img.section-bg {
+   #section-colette-5 img.section-bg {
       width: auto;
       height: 640px;
    }
 
-   #section-colette-4 .section-wrapper {
+   #section-colette-5 .section-wrapper {
       position: absolute;
    }
 
-   #section-colette-4 h2 {
+   #section-colette-5 h2 {
       width: 75%;
       font-size: 60px;
    }
 
-   #section-4-timeline {
+   #section-5-timeline {
       margin-left: 0px;
       left: 75%;
    }

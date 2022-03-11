@@ -2,7 +2,7 @@
 
 /* Global vars */
 
-/* Section 4 */
+/* Section 5 */
 
 document.addEventListener('DOMContentLoaded', () => {
     // Scroll
@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
         initEvents(window.pageYOffset);
     });
 
-    const wrapper = document.querySelector('#section-colette-4 .section-wrapper');
+    const wrapper = document.querySelector('#section-colette-5 .section-wrapper');
 
     wrapper.addEventListener('scroll', () => {
         setTimelineNav(wrapper.scrollLeft);
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function setTimelineNav(pos) {
-    const timeline = document.querySelector('#section-4-timeline');
+    const timeline = document.querySelector('#section-5-timeline');
     const contentWidth = timeline.offsetLeft + timeline.offsetWidth - window.innerWidth;
     const contentDivided = contentWidth / 6;
 
@@ -46,19 +46,19 @@ function setTimelineNav(pos) {
 }
 
 function moveTimeline(pos) {
-    const timeline = document.querySelector('#section-4-timeline');
+    const timeline = document.querySelector('#section-5-timeline');
     const contentWidth = timeline.offsetLeft + timeline.offsetWidth - window.innerWidth;
     const contentDivided = contentWidth / 3;
 
-    document.querySelector('#section-colette-4 .section-wrapper').scrollTo({
+    document.querySelector('#section-colette-5 .section-wrapper').scrollTo({
         left: pos === 3 ? contentWidth : pos * contentDivided,
         behavior: 'smooth'
     });
 }
 
 function initEvents(pos) {
-    const section = document.querySelector('section#section-colette-4');
-    const timeline = document.querySelector('#section-4-timeline');
+    const section = document.querySelector('section#section-colette-5');
+    const timeline = document.querySelector('#section-5-timeline');
 
     if (section.style.opacity === '1' && !timeline.style.visibility && pos >= section.offsetTop - window.innerHeight + (section.offsetHeight / 2)) {
         timeline.style.visibility = 'visible';
@@ -67,7 +67,7 @@ function initEvents(pos) {
 }
 
 function showEvent(count) {
-    const timeline = document.querySelector('#section-4-timeline');
+    const timeline = document.querySelector('#section-5-timeline');
     const event = timeline.children[count];
     var interval = 250;
 
