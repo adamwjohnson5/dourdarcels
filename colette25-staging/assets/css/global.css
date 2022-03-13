@@ -6,23 +6,48 @@
 
 /* Section 1 */
 
-section#section-colette-1 h2 {
-    font-size: 120px;
+section#section-colette-1 .section-column {
+    margin-top: 80px;
 }
 
-@media only screen and (min-width: 927px) and (max-width: 1194px) {
-    section#section-colette-1 h2 {
-        font-size: 110px;
-    }
+section#section-colette-1 form {
+    margin-top: 24px;
+}
+
+section#section-colette-1 form input {
+    border-radius: 999px 0 0 999px;
+    width: 288px;
+}
+
+section#section-colette-1 form a {
+    display: inline-flex;
+    vertical-align: top;
+    border-radius: 0 999px 999px 0;
+    background-color: #000;
+    color: #FFF;
+    min-width: auto;
+}
+
+.no-touch section#section-colette-1 form a.big-button:hover {
+    background-color: #FFCC00;
+}
+
+section#section-colette-1 form a.big-button:active {
+    color: #000;
+    background-color: #FFF !important;
 }
 
 @media only screen and (max-width: 926px) {
-    section#section-colette-1 h2 {
-        font-size: 72px;
+    section#section-colette-1 form input {
+        width: 168px;
+        padding-left: 16px;
+        padding-right: 16px;
     }
 
-    section#section-colette-1 {
-        margin-top: 72px;
+    section#section-colette-1 form a {
+        padding-left: 24px;
+        padding-right: 24px;
+        background-color: #FFCC00;
     }
 }
 
@@ -33,7 +58,7 @@ a#section-colette-2-how {
     margin-top: 24px;
 }
 
-section#section-colette-2 p span {
+p#section-colette-2-footer {
     font-style: italic;
     font-size: 14px;
 }

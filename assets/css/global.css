@@ -55,6 +55,22 @@ a {
     -webkit-user-select: none;
 }
 
+/* Forms */
+
+input {
+    margin: 0;
+    outline: none;
+    box-sizing: border-box;
+    padding-left: 32px;
+    padding-right: 32px;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 16px;
+    border: none;
+    color: #000;
+    border-radius: 0;
+    height: 48px;
+}
+
 /* Global */
 
 .clear {

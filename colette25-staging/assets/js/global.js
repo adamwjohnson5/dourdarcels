@@ -14,6 +14,17 @@ document.addEventListener('DOMContentLoaded', () => {
         animateSection(3, window.pageYOffset);
         animateSection(4, window.pageYOffset);
     });
+
+    // Mouse events
+    const email = document.querySelector('section#section-colette-1 form input');
+
+    email.addEventListener('focus', (e) => {
+        email.setAttribute('placeholder', 'Enter your email');
+    });
+
+    email.addEventListener('blur', (e) => {
+        email.setAttribute('placeholder', 'Join the mailing list for updates');
+    });
 });
 
 /* Colette */
