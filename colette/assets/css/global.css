@@ -6,8 +6,8 @@
 
 /* Section 1 */
 
-section#section-colette-1 .section-column {
-    margin-top: 80px;
+section#section-colette-1 h2 {
+    margin-top: 64px;
 }
 
 section#section-colette-1 form {
