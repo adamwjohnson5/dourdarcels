@@ -19,7 +19,7 @@ section#section-colette-1 form input {
     width: 288px;
 }
 
-section#section-colette-1 form a {
+section#section-colette-1 form button {
     display: inline-flex;
     vertical-align: top;
     border-radius: 0 999px 999px 0;
@@ -28,11 +28,11 @@ section#section-colette-1 form a {
     min-width: auto;
 }
 
-.no-touch section#section-colette-1 form a.big-button:hover {
+.no-touch section#section-colette-1 form button.big-button:hover {
     background-color: #FFCC00;
 }
 
-section#section-colette-1 form a.big-button:active {
+section#section-colette-1 form button.big-button:active {
     color: #000;
     background-color: #FFF !important;
 }

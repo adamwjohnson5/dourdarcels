@@ -1,5 +1,7 @@
 'use strict';
 
+/* Colette */
+
 /* Global vars */
 
 window.project = 'colette';
@@ -26,5 +28,3 @@ document.addEventListener('DOMContentLoaded', () => {
         email.setAttribute('placeholder', 'Join the mailing list for updates');
     });
 });
-
-/* Colette */
