@@ -76,6 +76,7 @@ button {
     cursor: pointer;
     margin: 0;
     outline: none;
+    -webkit-appearance: none;
 }
 
 /* Global */
