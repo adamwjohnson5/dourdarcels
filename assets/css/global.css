@@ -157,6 +157,11 @@ img.section-bg {
     transition: none !important;
 }
 
+a.centered-big-button {
+    margin: auto;
+    margin-top: 24px;
+}
+
 @media only screen and (min-width: 927px) and (max-width: 1194px) {
     h2 {
         font-size: 100px;
@@ -216,13 +221,6 @@ section#section-1 .section-wrapper img {
     section#section-1 .section-wrapper img {
         width: 80%;
     }
-}
-
-/* Section 3 */
-
-a#section-3-how {
-    margin: auto;
-    margin-top: 24px;
 }
 
 /* Section 7 */
