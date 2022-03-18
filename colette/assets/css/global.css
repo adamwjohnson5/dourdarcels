@@ -66,11 +66,6 @@ p#section-colette-2-footer {
 
 /* Footer */
 
-footer a.big-button {
-    pointer-events: none;
-    opacity: 0.25;
-}
-
 @media only screen and (max-width: 926px) {
     footer {
         height: 256px;
