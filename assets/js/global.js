@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
             animateSection(4, window.pageYOffset);
             animateSection(6, window.pageYOffset);
             animateSection(7, window.pageYOffset);
-            //animateSection(8, window.pageYOffset);
+            animateSection(8, window.pageYOffset);
         }
     });
 
@@ -69,21 +69,23 @@ function start() {
 /* Global */
 
 function loadSection(int) {
-    const section = document.querySelector(`section#section-${ typeof window.project === 'undefined' ? '' : window.project + '-'}` + int);
+    const sections = document.querySelectorAll('section');
+    const sectionID = parseInt(sections[int - 1].id.replace(`section-${ typeof window.project === 'undefined' ? '' : window.project + '-'}`, ''));
+    const section = document.querySelector(`section#section-${ typeof window.project === 'undefined' ? '' : window.project + '-'}` + sectionID);
     const bg = section.querySelector('img.section-bg');
-    bg.setAttribute('src', `/assets/img/bg-${ typeof window.project === 'undefined' ? '' : window.project + '-'}${ int }.jpg`);
+    bg.setAttribute('src', `/assets/img/bg-${ typeof window.project === 'undefined' ? '' : window.project + '-'}${ sectionID }.jpg`);
 
     // Preload bg image
     bg.onload = () => {
         section.style.opacity = 1;
 
-        if (typeof window.project !== 'undefined' && int !== 5 || typeof window.project === 'undefined' && int !== 2 && int !== 5) {
-            animateSection(int, window.scrollY); // Init
+        if (typeof window.project !== 'undefined' && sectionID !== 5 || typeof window.project === 'undefined' && sectionID !== 2 && sectionID !== 5) {
+            animateSection(sectionID, window.scrollY); // Init
         }
 
         int++;
 
-        if (document.querySelector(`section#section-${ typeof window.project === 'undefined' ? '' : window.project + '-'}` + int)) {
+        if (sections[int - 1]) {
             // Load next section if exists
             loadSection(int);
         } else {
