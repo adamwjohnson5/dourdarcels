@@ -2,6 +2,7 @@
 
 @import url("section-2.css");
 @import url("section-5.css");
+@import url("section-9.css");
 
 /* Fonts */
 
@@ -61,20 +62,42 @@ input {
     margin: 0;
     outline: none;
     box-sizing: border-box;
-    padding-left: 32px;
+    padding-left: 20px;
     padding-right: 32px;
-    font-family: 'Helvetica Neue', sans-serif;
-    font-size: 16px;
+    font-family: "itc-avant-garde-gothic-lt-bold", sans-serif;
+    font-size: 18px;
     border: none;
     color: #000;
     border-radius: 0;
     height: 48px;
+    border-radius: 999px;
+}
+
+input[type="submit"] {
+    cursor: pointer;
 }
 
 button {
     border: none;
     cursor: pointer;
     margin: 0;
+}
+
+select {
+    appearance: none;
+    outline: none;
+    border: none;
+    background-color: #FFF;
+    font-size: 18px;
+    border-radius: 999px;
+    padding-right: 48px;
+    padding-left: 20px;
+    height: 48px;
+    font-family: "itc-avant-garde-gothic-lt-bold", sans-serif;
+    background-image: url('../img/dropdown-arrow.png');
+    background-repeat: no-repeat;
+    background-size: 32px 32px;
+    background-position: center right 8px;
 }
 
 /* Global */
@@ -338,8 +361,6 @@ header img {
 a#header-connect {
     float: right;
     margin: 8px;
-    opacity: 0.25;
-    pointer-events: none;
 }
 
 @media only screen and (max-width: 624px) {
@@ -423,4 +444,8 @@ a#header-connect {
 #overlay-window p {
     font-size: 14px;
     font-weight: normal;
+}
+
+#overlay-window p a {
+    text-decoration: underline;
 }

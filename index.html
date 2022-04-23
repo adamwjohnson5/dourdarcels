@@ -58,7 +58,7 @@ https://github.com/awj5
                     <div id="section-2-minting">
                         <div class="minting-column" id="minting-column-1">
                             <a href="javascript: toggleOverlay('What’s a Wallet?', 'Crypto wallets keep your private keys – the passwords that give you access to your cryptocurrencies – safe & accessible, allowing you to send and receive cryptocurrencies like Ethereum, which is the currency we use for Dour Darcel NFTs.<br /><br />The wallet we use is MetaMask, it’s specific to Ethereum. MetaMask is connected to your web browser as an extension, you can set-up and install it here:<br /><a href=\'https://metamask.io/\' target=\'_blank\' class=\'big-button\' id=\'section-3-how\'>MetaMask</a>');" class="column-label">STEP 1<span>?</span></a>
-                            <a href="javascript: connectWallet();" class="big-button" id="minting-button-1">Connect Wallet</a>
+                            <a href="javascript: connectWallet();" class="big-button connect-button" id="minting-button-1">Connect Wallet</a>
                             <a href="javascript: toggleOverlay('How many Darcels can I mint?', 'During pre-sale a maximum of 3 Darcels can be minted.<br /><br />You can mint up to 3 Darcels per transaction during public mint.');" class="column-label">STEP 2<span>?</span></a>
                             <div class="big-button" id="minting-button-2"><a href="javascript: mintQuantityToggle('neg');" id="button-2-minus">&minus;</a><span>Quantity</span><a href="javascript: mintQuantityToggle('pos');" id="button-2-plus">&plus;</a></div>
                         </div>
@@ -113,14 +113,56 @@ https://github.com/awj5
             <img src="" class="section-bg" alt="" />
         </section>
 
-        <section id="section-8">
+        <section id="section-9">
             <div class="section-wrapper">
                 <div class="section-column">
-                    <h2>colette x<br />Dour<br />Darcels</h2>
-                    <p>Our first collaboration! <strong>25 x 1/1 NFTs</strong> to celebrate the <strong>25th anniversary</strong> of colette opening &amp; the <strong>10th anniversary</strong> of the Darcel Disappoints exhibition ‘150/15’.<br />
-                    <br />
-                    <a href="https://opensea.io/collection/colettexdourdarcels" target="_blank">View on OpenSea</a></p>
-                    <a href="https://dourdarcels.io/colette" class="big-button centered-big-button">Visit the minisite</a>
+                    <h2>Apparel 01</h2>
+
+                    <div id="section-9-merch-connect">
+                        <a href="javascript: connectWallet();" class="big-button centered-big-button connect-button">Connect Wallet</a>
+                        <p><strong>Releasing 9am EST Saturday April 23</strong><br />
+                        <br />
+                        <i>The red hoodie is only available to Dour Darcel holders of the 'Darcel T-shirt' trait.</i><br />
+                        <br />
+                        <strong>This is a PREORDER, approximate delivery time of 6 weeks.</strong></p>
+                    </div>
+
+                    <div id="section-9-merch-connected">
+                        <p><strong>$100 USD</strong><br />
+                        <br />
+                        100% cotton hoodie with built in NFC chip that can be scanned with your phone to reveal your Dour Darcels token.<br />
+                        <br />
+                        <strong>Do not tumble dry. Air dry only.<br />
+                        This is a PREORDER, approximate delivery time of 6 weeks.</strong></p>
+
+                        <form action="https://www.paypal.com/cgi-bin/webscr" onsubmit="validateMerch9(this); return false;" method="post" target="_blank">
+                            <input type="hidden" name="cmd" value="_s-xclick" />
+                            <input type="hidden" name="hosted_button_id" value="8KWGQW5ZUKBDQ" />
+                            <input type="hidden" name="on0" value="Token">
+                            <input type="hidden" name="on1" value="Variant">
+                            <input type="hidden" name="os0" id="section-9-merch-wallet-token" />
+                            <input type="hidden" name="os1" id="section-9-merch-variant" />
+
+                            <select id="section-9-merch-size">
+                                <option value="">Select Size</option>
+                                <option value="S">Small</option>
+                                <option value="M">Medium</option>
+                                <option value="L">Large</option>
+                                <option value="XL">Extra Large</option>
+                            </select>
+
+                            <a href="javascript: toggleOverlay('Garment Measurements', 'SMALL<br />Width: 102cm<br />Length: 66cm<br />Sleeve: 62cm<br />Shoulder Width: 42.5cm<br /><br />MEDIUM<br />Width: 110cm<br />Length: 70cm<br />Sleeve: 62cm<br />Shoulder Width: 46.5cm<br /><br />LARGE<br />Width: 118cm<br />Length: 73cm<br />Sleeve: 63cm<br />Shoulder Width: 50.5cm<br /><br />EXTRA LARGE<br />Width: 126cm<br />Length: 76cm<br />Sleeve: 63cm<br />Shoulder Width: 52.5cm');" class="big-button">Measurements</a>
+
+                            <select id="section-9-merch-color">
+                                <option value="">Select Color</option>
+                                <option value="Red">Red</option>
+                            </select>
+
+                            <input type="text" placeholder="Add DD token #" maxlength="5" id="section-9-merch-token" />
+                            <input type="submit" value="Purchase" id="section-9-merch-submit" />
+                            <div class="clear"></div>
+                        </form>
+                    </div>
                 </div>
             </div>
 
@@ -175,6 +217,20 @@ https://github.com/awj5
             <img src="" class="section-bg" alt="" />
         </section>
 
+        <section id="section-8">
+            <div class="section-wrapper">
+                <div class="section-column">
+                    <h2>colette x<br />Dour<br />Darcels</h2>
+                    <p>Our first collaboration! <strong>25 x 1/1 NFTs</strong> to celebrate the <strong>25th anniversary</strong> of colette opening &amp; the <strong>10th anniversary</strong> of the Darcel Disappoints exhibition ‘150/15’.<br />
+                    <br />
+                    <a href="https://opensea.io/collection/colettexdourdarcels" target="_blank">View on OpenSea</a></p>
+                    <a href="https://dourdarcels.io/colette" class="big-button centered-big-button">Visit the minisite</a>
+                </div>
+            </div>
+
+            <img src="" class="section-bg section-bg-right" alt="" />
+        </section>
+
         <section id="section-6">
             <div class="section-wrapper">
                 <div class="section-column section-column-right">
@@ -215,7 +271,7 @@ https://github.com/awj5
         <!-- Header -->
         <header>
             <a href="https://discord.gg/dourdarcels" target="_blank" id="header-discord" title="Discord"><img src="assets/img/icon-discord.png" alt="Discord" /></a><a href="https://twitter.com/DourDarcelsNFT" target="_blank" id="header-twitter" title="Twitter"><img src="assets/img/icon-twitter.png" alt="Twitter" /></a><a href="https://opensea.io/collection/dourdarcels" target="_blank" id="header-opensea" title="OpenSea"><img src="assets/img/icon-opensea.png" alt="OpenSea" /></a><a href="https://instagram.com/dourdarcelsnft" target="_blank" id="header-ig" title="Instagram"><img src="assets/img/icon-ig.png" alt="Instagram" /></a>
-            <a href="javascript: connectWallet();" class="big-button" id="header-connect">Connect Wallet</a>
+            <a href="javascript: connectWallet();" class="big-button connect-button" id="header-connect">Connect Wallet</a>
         </header>
 
         <!-- Overlay -->
@@ -243,6 +299,7 @@ https://github.com/awj5
         <script type="text/javascript" src="assets/js/global.js"></script>
         <script type="text/javascript" src="assets/js/section-2.js"></script>
         <script type="text/javascript" src="assets/js/section-5.js"></script>
+        <script type="text/javascript" src="assets/js/section-9.js"></script>
         <script type="text/javascript" src="assets/js/web3.js"></script>
         <!-- <script type="text/javascript" src="assets/js/wc/whitelist.js"></script>
         <script type="text/javascript" src="assets/js/wc/mint-wc.js"></script> -->

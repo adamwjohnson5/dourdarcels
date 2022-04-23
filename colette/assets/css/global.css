@@ -17,6 +17,9 @@ section#section-colette-1 form {
 section#section-colette-1 form input {
     border-radius: 999px 0 0 999px;
     width: 288px;
+    font-family: 'Helvetica Neue', sans-serif;
+    padding-left: 32px;
+    font-size: 16px;
 }
 
 section#section-colette-1 form button {

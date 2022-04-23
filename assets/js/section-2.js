@@ -48,23 +48,7 @@ function setMintProgress(minted) {
     }
 }
 
-function disableConnectButtons() {
-    // Deactivate
-    document.querySelector('a#header-connect').style.pointerEvents = 'none';
-    document.querySelector('a#minting-button-1').style.pointerEvents = 'none';
-}
-
-function walletConnected() {
-    // Connect buttons
-    const headerConnect = document.querySelector('a#header-connect');
-    headerConnect.innerHTML = 'Disconnect';
-    headerConnect.style.pointerEvents = 'auto'; // Re-enable
-    headerConnect.setAttribute('href', 'javascript: disconnectWallet();');
-    const mintingConnect = document.querySelector('a#minting-button-1');
-    mintingConnect.innerHTML = 'Disconnect';
-    mintingConnect.style.pointerEvents = 'auto'; // Re-enable
-    mintingConnect.setAttribute('href', 'javascript: disconnectWallet();');
-
+function walletConnectedMint() {
     // Must be whitelisted if pre-sale
     if (!window.presale || window.presale && window.whitelisted) {
         // Minting buttons

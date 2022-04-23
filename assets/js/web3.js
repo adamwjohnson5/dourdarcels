@@ -14,22 +14,62 @@ function isConnected() {
     return false; // Return true or false (connected/not connected)
 }
 
-function disconnectWallet() {
-    disableConnectButtons(); // This temporarily disables the connect buttons. Please leave at top.
+/* function disconnectWallet() {
+    toggleConnectButtons(false); // This temporarily disables the connect buttons. Please leave at top.
 
     // Devs do your magic
 
     walletDisconnected(); // Please call when wallet successfully disconnected
+} */
+
+async function connectWallet() {
+    toggleConnectButtons(false); // This temporarily disables the connect buttons. Please leave at top.
+
+    // Check for MetaMask
+    if (typeof window.ethereum !== 'undefined') {
+        // MetaMask installed
+        var accounts;
+
+        try {
+            accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+        } catch (error) {
+            //console.error(error)
+        }
+
+        if (accounts) {
+            window.whitelisted = false; // Please set if user address is whitelisted
+            window.whitelistQty = 0; // Please set allowance if user whitelisted. Set to 0 if not whitelisted
+            walletConnected(); // Please call when wallet successfully connected
+        } else {
+            toggleConnectButtons(true);; // Enable
+            toggleOverlay('Error', 'Wallet not found.');
+        }
+    } else {
+        // No MetaMask
+        toggleConnectButtons(true); // Enable
+        toggleOverlay('Error', 'MetaMask not found. Download it <a href="https://metamask.io" target="_blank">here</a>');
+    }
 }
 
-function connectWallet() {
-    disableConnectButtons(); // This temporarily disables the connect buttons. Please leave at top.
+async function getWalletAddress() {
+    var address;
 
-    // Devs do your magic here
+    // Check for MetaMask
+    if (typeof window.ethereum !== 'undefined') {
+        // MetaMask installed
+        const accounts = await window.ethereum.request({ method: 'eth_accounts' });
 
-    window.whitelisted = false; // Please set if user address is whitelisted
-    window.whitelistQty = 0; // Please set allowance if user whitelisted. Set to 0 if not whitelisted
-    walletConnected(); // Please call when wallet successfully connected
+        if (accounts.length) {
+            // Connected
+            address = accounts[0];
+        }
+    }
+
+    return address;
+}
+
+async function getOSAsset(contract, item) {
+    return await getData(`https://api.opensea.io/api/v1/asset/${ contract }/${ item }/?include_orders=true`);
 }
 
 function mint() {

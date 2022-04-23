@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
             animateSection(6, window.pageYOffset);
             animateSection(7, window.pageYOffset);
             animateSection(8, window.pageYOffset);
+            animateSection(9, window.pageYOffset);
         }
     });
 
@@ -117,6 +118,40 @@ function animateSection(sectionNum, pos) {
         const top = pos < section.offsetTop - window.innerHeight ? (section.offsetHeight / 4) : pos >= section.offsetHeight - window.innerHeight + section.offsetTop ? 0 : (100 - percent) * (section.offsetHeight / 4) / 100;
         column.style.marginTop = window.innerWidth >= 927 ? top + 'px' : 0; // Top moves 1/4 of section size (excluding mobile)
     }
+}
+
+function toggleConnectButtons(enabled) {
+    const connectButtons = document.querySelectorAll('a.connect-button');
+
+    for (let x = 0; x < connectButtons.length; x++) {
+        connectButtons[x].style.pointerEvents = enabled ? '' : 'none';
+    }
+}
+
+function walletConnected() {
+    const connectButtons = document.querySelectorAll('a.connect-button');
+
+    // Change button text
+    for (let x = 0; x < connectButtons.length; x++) {
+        connectButtons[x].innerHTML = 'Connected';
+    }
+
+    walletConnectedMint();
+    walletConnectedMerch();
+}
+
+async function getData(path) {
+    const data = await fetch(path, {
+        method: 'get',
+        headers: {Accept: 'application/json'}
+    })
+    .then((response) => {
+        return response.json();
+    }).catch((error) => {
+        console.log(error);
+    });
+
+    return data;
 }
 
 /* Overlay */
