@@ -47,6 +47,8 @@ async function validateMerch9(form) {
             const asset = await getOSAsset('0x8d609bd201beaea7dccbfbd9c22851e23da68691', token);
 
             if (asset.owner && asset.owner.address === address) {
+                const payPalID = document.querySelector('input[name="hosted_button_id"]');
+
                 if (color === 'Red') {
                     // Loop token traits
                     for (let x = 0; x < asset.traits.length; x++) {
@@ -57,9 +59,13 @@ async function validateMerch9(form) {
 
                     if (!verified) {
                         errorMessage = 'Your Dour Darcel does not have the \'Darcel T-Shirt\' trait.';
+                    } else {
+                        payPalID.value = '8KWGQW5ZUKBDQ';
                     }
                 } else {
+                    // Black
                     verified = true;
+                    payPalID.value = 'TBC2KCANHSXZ6';
                 }
             }
         }

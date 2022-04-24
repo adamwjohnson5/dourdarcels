@@ -84,6 +84,7 @@ button {
 }
 
 select {
+    -webkit-appearance: none;
     appearance: none;
     outline: none;
     border: none;
@@ -98,6 +99,7 @@ select {
     background-repeat: no-repeat;
     background-size: 32px 32px;
     background-position: center right 8px;
+    color: #000;
 }
 
 /* Global */
