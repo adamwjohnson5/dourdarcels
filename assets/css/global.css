@@ -59,6 +59,7 @@ a {
 /* Forms */
 
 input {
+    appearance: none;
     margin: 0;
     outline: none;
     box-sizing: border-box;
@@ -84,7 +85,6 @@ button {
 }
 
 select {
-    -webkit-appearance: none;
     appearance: none;
     outline: none;
     border: none;
