@@ -76,7 +76,7 @@ async function validateMerch9(form) {
             document.querySelector('input#section-9-merch-wallet-token').value = address + ' ' + token;
             document.querySelector('input#section-9-merch-variant').value = size + ' ' + color;
             //form.submit();
-            toggleOverlay('Sold Out!', 'Wen more apparel? Soon!);
+            toggleOverlay('Sold Out!', 'Wen more apparel? Soon!');
         }
     }
 
