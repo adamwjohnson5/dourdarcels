@@ -7,7 +7,6 @@
 function walletConnectedMerch() {
     document.querySelector('#section-9-merch-connected').style.display = 'inline'; // Show
     document.querySelector('#section-9-merch-connect').style.display = 'none'; // Hide
-    document.querySelector('input#section-9-merch-submit').disabled = true; // Sold out!
 }
 
 async function validateMerch9(form) {
@@ -76,7 +75,8 @@ async function validateMerch9(form) {
         } else {
             document.querySelector('input#section-9-merch-wallet-token').value = address + ' ' + token;
             document.querySelector('input#section-9-merch-variant').value = size + ' ' + color;
-            form.submit();
+            //form.submit();
+            toggleOverlay('Sold Out!', 'Wen more apparel? Soon!);
         }
     }
 
