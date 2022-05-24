@@ -89,9 +89,9 @@ https://github.com/awj5
                     <br />
                     The collection is focused on quality art with 200+ colorful traits and variations. All Darcels are individual and unique – just like frens IRL.<br />
                     <br />
-                    Each <strong>Dour Darcel</strong> is a unique NFT that lives on the Ethereum blockchain.<br />
+                    Each <strong>Dour Darcel</strong> is a unique NFT that lives on the Ethereum blockchain. <!-- <br />
                     <br />
-                    <!-- <strong>Presale: March 4th<br />Public Sale: March 5th<br />Price: 0.1ETH</strong> --></p>
+                    <strong>Presale: March 4th<br />Public Sale: March 5th<br />Price: 0.1ETH</strong> --></p>
                     <!-- <a href="https://www.instagram.com/p/CYpLvq2pE-O/" target="_blank" class="big-button" id="section-3-how">Buying your first NFT?</a> -->
                     <a href="https://opensea.io/collection/dourdarcels" target="_blank" class="big-button centered-big-button">View on OpenSea</a>
                 </div>
@@ -113,12 +113,49 @@ https://github.com/awj5
             <img src="" class="section-bg" alt="" />
         </section>
 
+        <section id="section-10">
+            <div class="section-wrapper">
+                <div class="section-column">
+                    <h2>Dour<br />Portal</h2>
+
+                    <div id="section-10-connect">
+                        <p><strong>Connect your wallet and download your Darcel in a variety of formats, from hi-res files to phone wallpapers!</strong></p>
+                        <a href="javascript: connectWallet();" class="big-button centered-big-button connect-button">Connect Wallet</a>
+                    </div>
+
+                    <div id="section-10-connected">
+                        <p>Select a Darcel from your wallet:</p>
+                        <div id="section-10-portal-darcels"></div>
+                        <div class="clear"></div>
+
+                        <select class="section-10-portal-action" id="section-10-portal-format">
+                            <option value="">Select Format</option>
+                            <option value="Desktop">Desktop</option>
+                            <option value="Hi-Res">Hi-Res</option>
+                            <option value="Phone">Phone</option>
+                            <option value="Tablet">Tablet</option>
+                        </select>
+
+                        <a href="javascript: portalGenerate();" class="big-button section-10-portal-action" id="section-10-portal-generate">Generate</a>
+                        <div class="clear"></div>
+                        <div id="section-10-portal-canvas"><canvas id="section-10-portal-canvas-y" width="1800" height="3600"></canvas><canvas id="section-10-portal-canvas-x" width="5400" height="1800"></canvas></div>
+                    </div>
+                </div>
+
+                <div class="section-column section-column-right">
+                    <img id="section-10-portal-preview" src="" alt="" />
+                </div>
+            </div>
+
+            <img src="" class="section-bg section-bg-right" alt="" />
+        </section>
+
         <section id="section-9">
             <div class="section-wrapper">
                 <div class="section-column">
                     <h2>Apparel 01</h2>
 
-                    <div id="section-9-merch-connect">
+                    <div id="section-9-connect">
                         <a href="javascript: connectWallet();" class="big-button centered-big-button connect-button">Connect Wallet</a>
                         <p><strong>SOLD OUT</strong><br />
                         <!-- <br />
@@ -127,7 +164,7 @@ https://github.com/awj5
                         <strong>This is a PREORDER, approximate delivery time of 6 weeks.</strong></p>
                     </div>
 
-                    <div id="section-9-merch-connected">
+                    <div id="section-9-connected">
                         <p><strong>SOLD OUT</strong><br />
                         <br />
                         100% cotton hoodie with built in NFC chip that can be scanned with your phone to reveal your Dour Darcels token.<br />
@@ -301,6 +338,7 @@ https://github.com/awj5
         <script type="text/javascript" src="assets/js/section-2.js"></script>
         <script type="text/javascript" src="assets/js/section-5.js"></script>
         <script type="text/javascript" src="assets/js/section-9.js"></script>
+        <script type="text/javascript" src="assets/js/section-10.js"></script>
         <script type="text/javascript" src="assets/js/web3.js"></script>
         <!-- <script type="text/javascript" src="assets/js/wc/whitelist.js"></script>
         <script type="text/javascript" src="assets/js/wc/mint-wc.js"></script> -->

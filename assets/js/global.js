@@ -5,6 +5,7 @@
 window.touchScreen = false;
 window.minting = false; // Toggle at launch
 window.presale = false; // Toggle at public mint
+window.portal = false; // Toggle at launch
 window.project;
 
 /* On DOM load */
@@ -29,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
             animateSection(7, window.pageYOffset);
             animateSection(8, window.pageYOffset);
             animateSection(9, window.pageYOffset);
+            animateSection(10, window.pageYOffset);
         }
     });
 
@@ -60,9 +62,17 @@ function start() {
         window.minting = true;
     }
 
+    if (urlParams.has('portal')) {
+        window.portal = true;
+    }
+
     // Minting open?
     if (window.minting && typeof window.project === 'undefined') {
         mintingOpen();
+    }
+
+    if (window.portal && typeof window.project === 'undefined') {
+        document.querySelector('section#section-10').style.display = 'block'; // Show section
     }
 
     loadSection(1);
@@ -139,6 +149,7 @@ function walletConnected() {
 
     walletConnectedMint();
     walletConnectedMerch();
+    walletConnectedPortal();
 }
 
 async function getData(path) {

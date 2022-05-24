@@ -47,7 +47,7 @@ async function connectWallet() {
     } else {
         // No MetaMask
         toggleConnectButtons(true); // Enable
-        toggleOverlay('Error', 'MetaMask not found. Download it <a href="https://metamask.io" target="_blank">here</a>');
+        toggleOverlay('Error', 'MetaMask not found. Download it <a href="https://metamask.io" target="_blank">here</a>.');
     }
 }
 

@@ -5,8 +5,8 @@
 /* Section 9 */
 
 function walletConnectedMerch() {
-    document.querySelector('#section-9-merch-connected').style.display = 'inline'; // Show
-    document.querySelector('#section-9-merch-connect').style.display = 'none'; // Hide
+    document.querySelector('#section-9-connected').style.display = 'inline-block'; // Show
+    document.querySelector('#section-9-connect').style.display = 'none'; // Hide
 }
 
 async function validateMerch9(form) {
