@@ -91,7 +91,7 @@ async function portalGenerate() {
 
         img.onload = () => {
             if (window.generateDate === date) {
-                ctx.drawImage(img, 0, 1800, 1800, 1800);
+                ctx.drawImage(img, format === 'Phone' ? 0 : 1800, format === 'Phone' ? 1800 : 0, 1800, 1800);
             }
         };
 
@@ -106,8 +106,13 @@ async function portalGenerate() {
             bg.onload = () => {
                 if (window.generateDate === date) {
                     ctx.save();
-                    ctx.scale(1, -1);
-                    ctx.drawImage(bg, 0, 0, 1800, 1800 * -1);
+                    ctx.scale(format === 'Phone' ? 1 : -1, format === 'Phone' ? -1 : 1);
+                    ctx.drawImage(bg, 0, 0, format === 'Phone' ? 1800 : 1800 * -1, format === 'Phone' ? 1800 * -1 : 1800);
+
+                    if (format !== 'Phone') {
+                        ctx.drawImage(bg, -5400, 0, 1800, 1800);
+                    }
+
                     ctx.restore();
                     document.querySelector('img#section-10-portal-preview').src = canvas.toDataURL('image/png'); // Set preview
                     toggleGenerateButton('remove', 'wait', '');
