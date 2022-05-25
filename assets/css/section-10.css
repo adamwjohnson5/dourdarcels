@@ -79,17 +79,10 @@ a#section-10-portal-generate {
    overflow: hidden;
 }
 
-img.section-10-portal-preview {
+img#section-10-portal-preview {
    width: 50%;
    position: absolute;
    right: 0;
-}
-
-img#section-10-portal-preview-file {
-   -webkit-mask-image: url('../img/portal-phone-mask.png');
-   mask-image: url('../img/portal-phone-mask.png');
-   -webkit-mask-size: 100%;
-   mask-size: 100%;
 }
 
 @media only screen and (max-width: 926px) {
@@ -108,7 +101,7 @@ img#section-10-portal-preview-file {
       color: #FFF;
    }
 
-   img.section-10-portal-preview {
+   img#section-10-portal-preview {
       width: 100%;
       z-index: 1;
    }

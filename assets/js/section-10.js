@@ -5,7 +5,6 @@
 window.portalIPFS;
 window.portalBg;
 window.generateDate;
-window.imgURL;
 
 /* Section 10 */
 
@@ -40,7 +39,7 @@ async function walletConnectedPortal() {
                 thumb.classList.add('selected'); // Select
                 format.classList.add('enabled');
                 format.value = ''; // Reset
-                toggleGenerateButton('remove', 'enabled', '');
+                toggleGenerateButton('remove', 'enabled');
                 window.portalIPFS = nfts[x].media[0].gateway;
                 window.portalBg = nfts[x].metadata.attributes[0].value;
             });
@@ -51,45 +50,20 @@ async function walletConnectedPortal() {
 
     // Format
     format.addEventListener('change', async (e) => {
-        const val = e.currentTarget.value.toLowerCase();
-
-        if (val !== '') {
-            toggleGenerateButton('add', 'enabled', '');
-            document.querySelector('img#section-10-portal-preview-template').src = `assets/img/portal-${ val }.png`;
+        if (e.currentTarget.value !== '') {
+            toggleGenerateButton('add', 'enabled');
         } else {
-            toggleGenerateButton('remove', 'enabled', '');
-            document.querySelector('img#section-10-portal-preview-template').src = `assets/img/portal.gif`;
+            toggleGenerateButton('remove', 'enabled');
         }
     });
 }
 
-function test() {
-
-    function dataURLtoBlob(dataurl) {
-        var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
-            bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
-        while(n--){
-            u8arr[n] = bstr.charCodeAt(n);
-        }
-        return new Blob([u8arr], {type:mime});
-    }
-
-    if (navigator.share) {
-
-        navigator.share({
-            title: 'Test',
-          files: [dataURLtoBlob(window.imgURL)]
-        }).then(() => {
-          console.log('Thanks for sharing!');
-        })
-        .catch(console.error);
-      } else {
-
-      }
-}
-
-function toggleGenerateButton(action, style, text) {
+function toggleGenerateButton(action, style, text, href) {
     const generate = document.querySelector('a#section-10-portal-generate');
+
+    // Reset
+    generate.removeAttribute('download');
+    generate.href = 'javascript: portalGenerate();';
 
     if (action === 'add') {
         generate.classList.add(style);
@@ -98,10 +72,14 @@ function toggleGenerateButton(action, style, text) {
 
         if (style === 'enabled') {
             generate.classList.remove('wait');
+        } else if (href) {
+            // Download
+            generate.href = href;
+            generate.setAttribute('download', 'download');
         }
     }
 
-    generate.textContent = text ? text : 'Generate';
+    generate.textContent = href ? 'Download' : text ? text : 'Generate';
 }
 
 async function portalGenerate() {
@@ -125,7 +103,7 @@ async function portalGenerate() {
             }
         };
 
-        img.src = window.portalIPFS;
+        img.src = window.portalIPFS.replace('ipfs.io', 'cloudflare-ipfs.com'); // Use Cloudflare
         await img.decode(); // Wait until image finished loading
 
         if (window.generateDate === date) {
@@ -144,10 +122,7 @@ async function portalGenerate() {
                     }
 
                     ctx.restore();
-                    document.querySelector('img#section-10-portal-preview-file').src = canvas.toDataURL('image/png'); // Set preview
-                    window.imgURL = canvas.toDataURL('image/png');
-                    //document.querySelector('a#test').href = canvas.toDataURL('image/png');
-                    toggleGenerateButton('remove', 'wait', '');
+                    toggleGenerateButton('remove', 'wait', '', canvas.toDataURL('image/png')); // Finished
                 }
             };
 
