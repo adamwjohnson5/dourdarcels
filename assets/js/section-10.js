@@ -64,7 +64,9 @@ async function walletConnectedPortal() {
 }
 
 function test() {
+    alert('Test')
     if (navigator.share) {
+
         navigator.share({
           files: [window.imgURL]
         }).then(() => {
