@@ -134,7 +134,8 @@ async function portalGenerate() {
 
                     ctx.restore();
                     document.querySelector('img#section-10-portal-preview-file').src = canvas.toDataURL('image/png'); // Set preview
-                    window.imgURL = canvas.toDataURL('image/png');
+                    //window.imgURL = canvas.toDataURL('image/png');
+                    document.querySelector('a#test').href = canvas.toDataURL('image/png');
                     toggleGenerateButton('remove', 'wait', '');
                 }
             };
