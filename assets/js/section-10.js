@@ -5,6 +5,7 @@
 window.portalIPFS;
 window.portalBg;
 window.generateDate;
+window.imgURL;
 
 /* Section 10 */
 
@@ -60,6 +61,20 @@ async function walletConnectedPortal() {
             document.querySelector('img#section-10-portal-preview-template').src = `assets/img/portal.gif`;
         }
     });
+}
+
+function test() {
+    if (navigator.share) {
+        navigator.share({
+          title: 'WebShare API Demo',
+          url: window.imgURL
+        }).then(() => {
+          console.log('Thanks for sharing!');
+        })
+        .catch(console.error);
+      } else {
+
+      }
 }
 
 function toggleGenerateButton(action, style, text) {
@@ -118,7 +133,8 @@ async function portalGenerate() {
                     }
 
                     ctx.restore();
-                    document.querySelector('img#section-10-portal-preview').src = canvas.toDataURL('image/png'); // Set preview
+                    document.querySelector('img#section-10-portal-file').src = canvas.toDataURL('image/png'); // Set preview
+                    window.imgURL = canvas.toDataURL('image/png');
                     toggleGenerateButton('remove', 'wait', '');
                 }
             };
