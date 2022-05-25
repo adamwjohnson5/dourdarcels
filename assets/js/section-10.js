@@ -69,7 +69,7 @@ function test() {
 
         navigator.share({
             title: 'Test',
-          files: [window.imgURL]
+          url: 'https://dourdarcels.io'
         }).then(() => {
           console.log('Thanks for sharing!');
         })
