@@ -68,6 +68,7 @@ function test() {
     if (navigator.share) {
 
         navigator.share({
+            title: 'Test',
           files: [window.imgURL]
         }).then(() => {
           console.log('Thanks for sharing!');
