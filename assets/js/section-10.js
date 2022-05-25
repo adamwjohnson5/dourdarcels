@@ -41,7 +41,7 @@ async function walletConnectedPortal() {
                 format.value = ''; // Reset
                 toggleGenerateButton('remove', 'enabled', '');
                 window.portalIPFS = nfts[x].media[0].gateway;
-                window.portalBg = nfts[x].metadata.attributes[0].value.toLowerCase();
+                window.portalBg = nfts[x].metadata.attributes[0].value;
             });
         }
     } else {
@@ -50,10 +50,14 @@ async function walletConnectedPortal() {
 
     // Format
     format.addEventListener('change', async (e) => {
-        if (e.currentTarget.value !== '') {
+        const val = e.currentTarget.value.toLowerCase();
+
+        if (val !== '') {
             toggleGenerateButton('add', 'enabled', '');
+            document.querySelector('img#section-10-portal-preview-template').src = `assets/img/portal-${ val }.png`;
         } else {
             toggleGenerateButton('remove', 'enabled', '');
+            document.querySelector('img#section-10-portal-preview-template').src = `assets/img/portal.gif`;
         }
     });
 }
@@ -119,7 +123,7 @@ async function portalGenerate() {
                 }
             };
 
-            bg.src = `https://dourdarcels.s3.amazonaws.com/bg/${ window.portalBg }.png`;
+            bg.src = `https://dourdarcels.s3.amazonaws.com/bg/${ window.portalBg.toLowerCase().replace(/ /g, '_') }.png`;
             await img.decode(); // Wait until image finished loading
         }
     } catch (error) {

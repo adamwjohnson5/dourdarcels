@@ -12,20 +12,22 @@ section#section-10 {
 
 #section-10-portal-darcels {
    width: 100%;
-   height: 140px;
+   height: 155px;
    display: flex;
    margin-top: 16px;
    overflow-x: auto;
+   overflow-y: hidden;
    -webkit-overflow-scrolling: touch;
 }
 
 #section-10-portal-darcels p {
-   margin-top: 32px;
+   margin-top: 40px;
 }
 
 a.section-10-portal-thumb {
    border: 6px solid transparent;
    cursor: pointer;
+   height: 128px;
 }
 
 a.section-10-portal-thumb.selected {
@@ -41,13 +43,13 @@ a.section-10-portal-thumb:last-child {
 }
 
 #section-10-portal-darcels img {
-   height: 128px;
+   width: 128px;
 }
 
 .section-10-portal-action {
    float: left;
    margin: 12px;
-   margin-top: 16px;
+   margin-top: 12px;
    margin-bottom: 0;
    width: 208px !important;
    box-sizing: border-box;
@@ -72,13 +74,22 @@ a#section-10-portal-generate {
 }
 
 #section-10-portal-canvas {
-   width: 16px;
-   height: 16px;
+   width: 0px;
+   height: 0px;
    overflow: hidden;
 }
 
-img#section-10-portal-preview {
-   width: 160px;
+img.section-10-portal-preview {
+   width: 50%;
+   position: absolute;
+   right: 0;
+}
+
+img#section-10-portal-preview-file {
+   -webkit-mask-image: url('../img/portal-phone-mask.png');
+   mask-image: url('../img/portal-phone-mask.png');
+   -webkit-mask-size: 100%;
+   mask-size: 100%;
 }
 
 @media only screen and (max-width: 926px) {
@@ -95,5 +106,10 @@ img#section-10-portal-preview {
    a#section-10-portal-generate {
       background-color: #FFCC00;
       color: #FFF;
+   }
+
+   img.section-10-portal-preview {
+      width: 100%;
+      z-index: 1;
    }
 }
