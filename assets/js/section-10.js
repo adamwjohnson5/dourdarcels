@@ -133,7 +133,7 @@ async function portalGenerate() {
         //console.error(error);
         if (window.generateDate === date) {
             toggleOverlay('Error', 'Argh sorry! Something went wrong. Please try again.');
-            toggleGenerateButton('remove', 'wait', '');
+            toggleGenerateButton('remove', 'wait');
         }
     }
 }
