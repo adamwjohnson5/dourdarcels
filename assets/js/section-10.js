@@ -122,12 +122,12 @@ async function portalGenerate() {
                     }
 
                     ctx.restore();
-                    toggleGenerateButton('remove', 'wait', '', canvas.toDataURL('image/png')); // Finished
                 }
             };
 
             bg.src = `https://dourdarcels.s3.amazonaws.com/bg/${ window.portalBg.toLowerCase().replace(/ /g, '_') }.png`;
-            await img.decode(); // Wait until image finished loading
+            await bg.decode(); // Wait until image finished loading
+            toggleGenerateButton('remove', 'wait', '', canvas.toDataURL('image/png')); // Finished
         }
     } catch (error) {
         //console.error(error);
