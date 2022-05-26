@@ -4,7 +4,9 @@
 
 window.portalIPFS;
 window.portalBg;
+window.portalTitle;
 window.generateDate;
+window.waitInterval;
 
 /* Section 10 */
 
@@ -14,7 +16,14 @@ async function walletConnectedPortal() {
     const container = document.querySelector('#section-10-portal-darcels');
     const format = document.querySelector('select#section-10-portal-format');
 
-    // Get DD from wallet
+    if (window.touchScreen && !!navigator.platform.match(/iPhone|iPod|iPad/)) {
+        container.style.display = 'none';
+        format.style.display = 'none';
+        document.querySelector('a#section-10-portal-download').style.display = 'none';
+        document.querySelector('#section-10-connected p').textContent = 'Unfortunately the MetaMask app is not compatible with the portal. Please use a desktop browser instead.';
+    }
+
+    // Get DD from wallet using Alchemy
     const darcels = await getData(`https://eth-mainnet.alchemyapi.io/v2/kA0GvyDvzb_9brFE0cU4YM5cKdbdmWe9/getNFTs/?owner=${ await getWalletAddress() }&contractAddresses[]=0x8d609bd201beaea7dccbfbd9c22851e23da68691`);
     const nfts = darcels.ownedNfts;
 
@@ -39,9 +48,11 @@ async function walletConnectedPortal() {
                 thumb.classList.add('selected'); // Select
                 format.classList.add('enabled');
                 format.value = ''; // Reset
-                toggleGenerateButton('remove', 'enabled');
+                portalToggleDownload();
+                window.generateDate = Date.now(); // Cancel if generating
                 window.portalIPFS = nfts[x].media[0].gateway;
                 window.portalBg = nfts[x].metadata.attributes[0].value;
+                window.portalTitle = title;
             });
         }
     } else {
@@ -50,46 +61,46 @@ async function walletConnectedPortal() {
 
     // Format
     format.addEventListener('change', async (e) => {
-        if (e.currentTarget.value !== '') {
-            toggleGenerateButton('add', 'enabled');
+        const val = e.currentTarget.value;
+
+        if (val !== '') {
+            portalGenerate(val);
         } else {
-            toggleGenerateButton('remove', 'enabled');
+            window.generateDate = Date.now(); // Cancel if generating
+            portalToggleDownload();
         }
     });
 }
 
-function toggleGenerateButton(action, style, text, href) {
-    const generate = document.querySelector('a#section-10-portal-generate');
+function portalToggleDownload(action) {
+    const download = document.querySelector('a#section-10-portal-download');
 
     // Reset
-    generate.removeAttribute('download');
-    generate.href = 'javascript: portalGenerate();';
+    clearInterval(window.waitInterval);
+    download.classList.remove('wait');
+    download.classList.remove('enabled');
+    download.textContent = 'Download';
 
-    if (action === 'add') {
-        generate.classList.add(style);
-    } else {
-        generate.classList.remove(style);
-
-        if (style === 'enabled') {
-            generate.classList.remove('wait');
-        } else if (href) {
-            // Download
-            generate.href = href;
-            generate.setAttribute('download', 'download');
-        }
+    if (action === 'wait') {
+        download.classList.add('wait');
+        download.textContent = 'Please wait...';
+        window.waitInterval = setInterval(waitAnimation, 1000);
+    } else if (action === 'enabled') {
+        download.classList.add('enabled');
     }
 
-    generate.textContent = href ? 'Download' : text ? text : 'Generate';
+    function waitAnimation() {
+        download.textContent = download.textContent === 'Please wait...' ? 'Please wait' : download.textContent + '.';
+    }
 }
 
-async function portalGenerate() {
-    const date = Date.now()
+async function portalGenerate(format) {
+    const date = Date.now();
     window.generateDate = date;
+    portalToggleDownload('wait');
 
     try {
-        toggleGenerateButton('add', 'wait', 'Please wait...');
-        const format = document.querySelector('select#section-10-portal-format').value;
-        const canvas = document.querySelector(format === 'Phone' ? 'canvas#section-10-portal-canvas-y' : 'canvas#section-10-portal-canvas-x');
+        const canvas = document.querySelector(format === 'Phone' ? 'canvas#section-10-portal-canvas-y' : 'canvas#section-10-portal-canvas-x'); // Portrait or landscape
         const ctx = canvas.getContext('2d');
         ctx.clearRect(0, 0, canvas.width, canvas.height); // Reset
 
@@ -103,7 +114,7 @@ async function portalGenerate() {
             }
         };
 
-        img.src = window.portalIPFS.replace('ipfs.io', 'cloudflare-ipfs.com'); // Use Cloudflare
+        img.src = window.portalIPFS.replace('ipfs.io', 'cloudflare-ipfs.com'); // Use Cloudflare gateway
         await img.decode(); // Wait until image finished loading
 
         if (window.generateDate === date) {
@@ -113,6 +124,7 @@ async function portalGenerate() {
 
             bg.onload = () => {
                 if (window.generateDate === date) {
+                    // Mirror bg
                     ctx.save();
                     ctx.scale(format === 'Phone' ? 1 : -1, format === 'Phone' ? -1 : 1);
                     ctx.drawImage(bg, 0, 0, format === 'Phone' ? 1800 : 1800 * -1, format === 'Phone' ? 1800 * -1 : 1800);
@@ -127,13 +139,20 @@ async function portalGenerate() {
 
             bg.src = `https://dourdarcels.s3.amazonaws.com/bg/${ window.portalBg.toLowerCase().replace(/ /g, '_') }.png`;
             await bg.decode(); // Wait until image finished loading
-            toggleGenerateButton('remove', 'wait', '', canvas.toDataURL('image/png')); // Finished
+
+            if (window.generateDate === date) {
+                // Done
+                const download = document.querySelector('a#section-10-portal-download');
+                download.href = canvas.toDataURL('image/png');
+                download.setAttribute('download', window.portalTitle);
+                portalToggleDownload('enabled');
+            }
         }
     } catch (error) {
         //console.error(error);
         if (window.generateDate === date) {
             toggleOverlay('Error', 'Argh sorry! Something went wrong. Please try again.');
-            toggleGenerateButton('remove', 'wait');
+            portalToggleDownload();
         }
     }
 }

@@ -1,7 +1,7 @@
 /* Section 10 */
 
 section#section-10 {
-   display: none;
+   display: none; /* Remove at launch */
 }
 
 #section-10-connected {
@@ -18,10 +18,6 @@ section#section-10 {
    overflow-x: auto;
    overflow-y: hidden;
    -webkit-overflow-scrolling: touch;
-}
-
-#section-10-portal-darcels p {
-   margin-top: 40px;
 }
 
 a.section-10-portal-thumb {
@@ -46,10 +42,13 @@ a.section-10-portal-thumb:last-child {
    width: 128px;
 }
 
+#section-10-portal-darcels p {
+   margin-top: 40px;
+}
+
 .section-10-portal-action {
    float: left;
    margin: 12px;
-   margin-top: 12px;
    margin-bottom: 0;
    width: 208px !important;
    box-sizing: border-box;
@@ -68,7 +67,7 @@ a.section-10-portal-thumb:last-child {
    opacity: 0.5;
 }
 
-a#section-10-portal-generate {
+a#section-10-portal-download {
    background-color: #000;
    color: #FFF;
 }
@@ -96,7 +95,7 @@ img#section-10-portal-preview {
       float: none;
    }
 
-   a#section-10-portal-generate {
+   a#section-10-portal-download {
       background-color: #FFCC00;
       color: #FFF;
    }
