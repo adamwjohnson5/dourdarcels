@@ -16,7 +16,7 @@ async function walletConnectedPortal() {
     const container = document.querySelector('#section-10-portal-darcels');
     const format = document.querySelector('select#section-10-portal-format');
 
-    if (window.touchScreen && !!navigator.platform.match(/iPhone|iPod|iPad/)) {
+    if (window.touchScreen) {
         container.style.display = 'none';
         format.style.display = 'none';
         document.querySelector('a#section-10-portal-download').style.display = 'none';
