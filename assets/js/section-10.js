@@ -119,7 +119,7 @@ async function portalGenerate(format) {
             }
         };
 
-        img.src = window.portalIPFS.replace('ipfs.io', 'cloudflare-ipfs.com'); // Use Cloudflare gateway
+        img.src = `${ window.portalIPFS.replace('ipfs.io', 'cloudflare-ipfs.com') }?date=${ date }`; // Use Cloudflare gateway
         await img.decode(); // Wait until image finished loading
 
         if (window.generateDate === date) {
@@ -171,7 +171,7 @@ async function portalGenerate(format) {
                 }
             };
 
-            bg.src = `https://dourdarcels.s3.amazonaws.com/bg/${ window.portalBg.toLowerCase().replace(/ /g, '_') }.png`;
+            bg.src = `https://dourdarcels.s3.amazonaws.com/bg/${ window.portalBg.toLowerCase().replace(/ /g, '_') }.png?date=${ date }`;
             await bg.decode(); // Wait until image finished loading
 
             if (window.generateDate === date) {
