@@ -100,7 +100,7 @@ async function portalGenerate(format) {
     portalToggleDownload('wait');
 
     try {
-        const canvas = document.querySelector(format === 'Phone' ? 'canvas#section-10-portal-canvas-y' : 'canvas#section-10-portal-canvas-x'); // Portrait or landscape
+        const canvas = document.querySelector('canvas#section-10-portal-canvas-' + format);
         const ctx = canvas.getContext('2d');
         ctx.clearRect(0, 0, canvas.width, canvas.height); // Reset
 
@@ -110,7 +110,20 @@ async function portalGenerate(format) {
 
         img.onload = () => {
             if (window.generateDate === date) {
-                ctx.drawImage(img, format === 'Phone' ? 0 : 1800, format === 'Phone' ? 1800 : 0, 1800, 1800);
+                switch (format) {
+                    case 'phone':
+                        ctx.drawImage(img, 0, 1800, 1800, 1800);
+                        break;
+                    case 'tablet':
+                        ctx.drawImage(img, 1800, 1800, 1800, 1800);
+                        break;
+                    case 'banner':
+                        ctx.drawImage(img, 3600, 0, 1800, 1800);
+                        break;
+                    default:
+                        // DT
+                        ctx.drawImage(img, 900, 0, 1800, 1800);
+                }
             }
         };
 
@@ -124,13 +137,33 @@ async function portalGenerate(format) {
 
             bg.onload = () => {
                 if (window.generateDate === date) {
-                    // Mirror bg
                     ctx.save();
-                    ctx.scale(format === 'Phone' ? 1 : -1, format === 'Phone' ? -1 : 1);
-                    ctx.drawImage(bg, 0, 0, format === 'Phone' ? 1800 : 1800 * -1, format === 'Phone' ? 1800 * -1 : 1800);
 
-                    if (format !== 'Phone') {
-                        ctx.drawImage(bg, -5400, 0, 1800, 1800);
+                    switch (format) {
+                        case 'phone':
+                            ctx.scale(1, -1);
+                            ctx.drawImage(bg, 0, 0, 1800, 1800 * -1);
+                            break;
+                        case 'tablet':
+
+                            break;
+                        case 'banner':
+                            ctx.drawImage(bg, 0, 0, 1800, 1800);
+                            ctx.scale(-1, 1);
+                            ctx.drawImage(bg, -1800, 0, 1800 * -1, 1800);
+                            ctx.setTransform(1, 0, 0, 1, 0, 0); // Restore
+                            ctx.letterSpacing = '-12px';
+                            ctx.font = '330px itc-avant-garde-gothic-lt-bold';
+                            ctx.fillStyle = '#FFF';
+                            ctx.textAlign = 'center';
+                            ctx.textBaseline = 'middle';
+                            ctx.fillText(window.portalTitle, 1800, canvas.height / 2);
+                            break;
+                        default:
+                            // DT
+                            ctx.scale(-1, 1);
+                            ctx.drawImage(bg, 900, 0, 1800 * -1, 1800);
+                            ctx.drawImage(bg, -4500, 0, 1800, 1800);
                     }
 
                     ctx.restore();
