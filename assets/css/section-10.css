@@ -78,12 +78,6 @@ a#section-10-portal-download {
    overflow: hidden;
 }
 
-img#section-10-portal-preview {
-   width: 50%;
-   position: absolute;
-   right: 0;
-}
-
 @media only screen and (max-width: 926px) {
    #section-10-connected {
       width: 100%;
@@ -98,10 +92,5 @@ img#section-10-portal-preview {
    a#section-10-portal-download {
       background-color: #FFCC00;
       color: #FFF;
-   }
-
-   img#section-10-portal-preview {
-      width: 100%;
-      z-index: 1;
    }
 }
