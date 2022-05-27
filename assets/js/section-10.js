@@ -6,7 +6,6 @@ window.portalIPFS;
 window.portalBg;
 window.portalTitle;
 window.generateDate;
-window.waitInterval;
 
 /* Section 10 */
 
@@ -76,21 +75,14 @@ function portalToggleDownload(action) {
     const download = document.querySelector('a#section-10-portal-download');
 
     // Reset
-    clearInterval(window.waitInterval);
     download.classList.remove('wait');
     download.classList.remove('enabled');
-    download.textContent = 'Download';
 
-    if (action === 'wait') {
-        download.classList.add('wait');
-        download.textContent = 'Please wait...';
-        window.waitInterval = setInterval(waitAnimation, 1000);
-    } else if (action === 'enabled') {
-        download.classList.add('enabled');
-    }
+    // Set
+    download.textContent = action === 'wait' ? 'Generating...' : 'Download';
 
-    function waitAnimation() {
-        download.textContent = download.textContent === 'Please wait...' ? 'Please wait' : download.textContent + '.';
+    if (action) {
+        download.classList.add(action);
     }
 }
 
@@ -142,16 +134,25 @@ async function portalGenerate(format) {
                     switch (format) {
                         case 'phone':
                             ctx.scale(1, -1);
-                            ctx.drawImage(bg, 0, 0, 1800, 1800 * -1);
+                            ctx.drawImage(bg, 0, -1800, 1800, 1800);
                             break;
                         case 'tablet':
-
+                            ctx.scale(1, -1);
+                            ctx.drawImage(bg, 1800, -1800, 1800, 1800); // TC
+                            ctx.setTransform(1, 0, 0, 1, 0, 0); // Restore context
+                            ctx.scale(-1, -1);
+                            ctx.drawImage(bg, -1800, -1800, 1800, 1800); // TL
+                            ctx.drawImage(bg, -5400, -1800, 1800, 1800); // TR
+                            ctx.setTransform(1, 0, 0, 1, 0, 0); // Restore context
+                            ctx.scale(-1, 1);
+                            ctx.drawImage(bg, -1800, 1800, 1800, 1800); // BL
+                            ctx.drawImage(bg, -5400, 1800, 1800, 1800); // BR
                             break;
                         case 'banner':
                             ctx.drawImage(bg, 0, 0, 1800, 1800);
                             ctx.scale(-1, 1);
-                            ctx.drawImage(bg, -1800, 0, 1800 * -1, 1800);
-                            ctx.setTransform(1, 0, 0, 1, 0, 0); // Restore
+                            ctx.drawImage(bg, -3600, 0, 1800, 1800);
+                            ctx.setTransform(1, 0, 0, 1, 0, 0); // Restore context
                             ctx.letterSpacing = '-12px';
                             ctx.font = '330px itc-avant-garde-gothic-lt-bold';
                             ctx.fillStyle = '#FFF';
@@ -162,7 +163,7 @@ async function portalGenerate(format) {
                         default:
                             // DT
                             ctx.scale(-1, 1);
-                            ctx.drawImage(bg, 900, 0, 1800 * -1, 1800);
+                            ctx.drawImage(bg, -900, 0, 1800, 1800);
                             ctx.drawImage(bg, -4500, 0, 1800, 1800);
                     }
 
