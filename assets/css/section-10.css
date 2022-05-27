@@ -64,7 +64,11 @@ a.section-10-portal-thumb:last-child {
 
 .section-10-portal-action.wait {
    pointer-events: none;
-   opacity: 0.5;
+   background-image: url('../img/generating.gif');
+   color: #000 !important;
+   background-size: 208px 48px;
+   background-repeat: no-repeat;
+   opacity: 1;
 }
 
 a#section-10-portal-download {
