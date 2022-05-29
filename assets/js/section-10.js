@@ -18,8 +18,9 @@ async function walletConnectedPortal() {
     if (window.touchScreen) {
         container.style.display = 'none';
         format.style.display = 'none';
+        document.querySelector('p#section-10-portal-note').style.display = 'none';
         document.querySelector('a#section-10-portal-download').style.display = 'none';
-        document.querySelector('#section-10-connected p').textContent = 'Unfortunately the MetaMask app is not compatible with the portal. Please use a desktop browser instead.';
+        document.querySelector('p#section-10-portal-instructions').textContent = 'Unfortunately the MetaMask app is not compatible with the portal. Please use a desktop browser instead.';
     }
 
     // Get DD from wallet using Alchemy

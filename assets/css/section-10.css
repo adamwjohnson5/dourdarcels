@@ -76,6 +76,11 @@ a#section-10-portal-download {
    color: #FFF;
 }
 
+p#section-10-portal-note {
+   font-size: 14px;
+   font-style: italic;
+}
+
 #section-10-portal-canvas {
    width: 0px;
    height: 0px;
