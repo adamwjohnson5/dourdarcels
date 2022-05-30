@@ -62,11 +62,16 @@ async function walletConnectedPortal() {
     // Format
     format.addEventListener('change', async (e) => {
         const val = e.currentTarget.value;
+        window.generateDate = Date.now();
 
-        if (val !== '') {
+        if (val === 'theme') {
+            const download = document.querySelector('a#section-10-portal-download');
+            download.href = 'https://dourdarcels.s3.amazonaws.com/audio/Dour+Darcels+Theme+Song.mp3.zip';
+            download.setAttribute('download', 'Dour Darcels Theme Song');
+            portalToggleDownload('enabled');
+        } else if (val !== '') {
             portalGenerate(val);
         } else {
-            window.generateDate = Date.now(); // Cancel if generating
             portalToggleDownload();
         }
     });
@@ -88,8 +93,7 @@ function portalToggleDownload(action) {
 }
 
 async function portalGenerate(format) {
-    const date = Date.now();
-    window.generateDate = date;
+    const date = window.generateDate;
     portalToggleDownload('wait');
 
     try {
@@ -187,6 +191,7 @@ async function portalGenerate(format) {
         //console.error(error);
         if (window.generateDate === date) {
             toggleOverlay('Error', 'Argh sorry! Something went wrong. Please try again.');
+            document.querySelector('select#section-10-portal-format').value = ''; // Reset
             portalToggleDownload();
         }
     }

@@ -5,7 +5,8 @@
 window.touchScreen = false;
 window.minting = false; // Toggle at launch
 window.presale = false; // Toggle at public mint
-window.portal = false; // Toggle at launch
+window.portal = false;
+window.merch = false;
 window.project;
 
 /* On DOM load */
@@ -54,7 +55,7 @@ function setEventsGlobal() {
 /* Start */
 
 function start() {
-    // Temp - url params
+    // URL params
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
 
@@ -66,6 +67,10 @@ function start() {
         window.portal = true;
     }
 
+    if (urlParams.has('merch')) {
+        window.merch = true;
+    }
+
     // Minting open?
     if (window.minting && typeof window.project === 'undefined') {
         mintingOpen();
@@ -73,6 +78,10 @@ function start() {
 
     if (window.portal && typeof window.project === 'undefined') {
         document.querySelector('section#section-10').style.display = 'block'; // Show section
+    }
+
+    if (window.merch && typeof window.project === 'undefined') {
+        document.querySelector('section#section-9').style.display = 'block'; // Show section
     }
 
     loadSection(1);

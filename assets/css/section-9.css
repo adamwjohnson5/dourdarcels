@@ -1,6 +1,10 @@
 /* Section 9 */
 
-#section-9 h2 {
+section#section-9 {
+   display: none; /* Remove at launch */
+}
+
+section#section-9 h2 {
    line-height: 1;
    word-spacing: 9999999px; /* Force line break */
 }
@@ -25,7 +29,7 @@
 }
 
 #section-9 form input[type="submit"] {
-   width: 440px;
+   /* width: 440px; */
    background-color: #000;
    color: #FFF;
 }
@@ -43,7 +47,7 @@
    }
 
    #section-9 form input[type="submit"] {
-      width: 208px;
+      /* width: 208px; */
       background-color: #FFCC00;
       color: #FFF;
    }
