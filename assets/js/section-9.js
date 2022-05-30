@@ -57,7 +57,7 @@ async function validateMerch9(form) {
             toggleOverlay('Verification Error', errorMessage);
         } else {
             document.querySelector('input#section-9-merch-wallet').value = address;
-            document.querySelector('input#section-9-merch-variant').value = size;
+            document.querySelector('input#section-9-merch-size').value = size;
             form.submit();
             //toggleOverlay('Sold Out!', 'Wen more apparel? Soon!');
         }
