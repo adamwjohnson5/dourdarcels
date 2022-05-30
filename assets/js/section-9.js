@@ -42,7 +42,7 @@ async function validateMerch9(form) {
 
                 // Loop traits
                 for (let x = 0; x < traits.length; x++) {
-                    if (traits[x].trait_type === 'Hair & Hats' && traits[x].value === 'Gray Cap') {
+                    if (traits[x].trait_type === 'Hair & Hats' && traits[x].value === 'Navy Beanie') {
                         verified = true;
                     }
                 }
