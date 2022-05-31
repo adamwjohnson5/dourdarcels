@@ -32,6 +32,8 @@ section#section-9 h2 {
    /* width: 440px; */
    background-color: #000;
    color: #FFF;
+   pointer-events: none;
+   opacity: 0.25;
 }
 
 @media only screen and (min-width: 927px) and (max-width: 1366px) {
