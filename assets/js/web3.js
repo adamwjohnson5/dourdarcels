@@ -68,10 +68,6 @@ async function getWalletAddress() {
     return address;
 }
 
-async function getOSAsset(contract, item) {
-    return await getData(`https://api.opensea.io/api/v1/asset/${ contract }/${ item }/?include_orders=true`);
-}
-
 function mint() {
     //window.mintQuantity // This int variable contains the quantity user has selected
     setMintProgress(0); // Update count of NFTs minted on success to update progress bar

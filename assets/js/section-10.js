@@ -24,8 +24,14 @@ async function walletConnectedPortal() {
     }
 
     // Get DD from wallet using Alchemy
-    const darcels = await getData(`https://eth-mainnet.alchemyapi.io/v2/kA0GvyDvzb_9brFE0cU4YM5cKdbdmWe9/getNFTs/?owner=${ await getWalletAddress() }&contractAddresses[]=0x8d609bd201beaea7dccbfbd9c22851e23da68691`);
-    const nfts = darcels.ownedNfts;
+    var nfts = [];
+
+    try {
+        const darcels = await getData(`https://eth-mainnet.alchemyapi.io/v2/kA0GvyDvzb_9brFE0cU4YM5cKdbdmWe9/getNFTs/?owner=${ await getWalletAddress() }&contractAddresses[]=0x8d609bd201beaea7dccbfbd9c22851e23da68691`);
+        nfts = darcels.ownedNfts;
+    } catch (error) {
+        console.log(error)
+    }
 
     if (nfts.length > 0) {
         // Loop Darcels

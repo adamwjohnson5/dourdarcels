@@ -32,12 +32,26 @@ async function validateMerch9(form) {
         const address = await getWalletAddress();
 
         // Get DD from wallet using Alchemy
-        const darcels = await getData(`https://eth-mainnet.alchemyapi.io/v2/kA0GvyDvzb_9brFE0cU4YM5cKdbdmWe9/getNFTs/?owner=${ address }&contractAddresses[]=0x8d609bd201beaea7dccbfbd9c22851e23da68691`);
-        const nfts = darcels.ownedNfts;
-        const colette = await getData(`https://eth-mainnet.alchemyapi.io/v2/kA0GvyDvzb_9brFE0cU4YM5cKdbdmWe9/getNFTs/?owner=${ address }&contractAddresses[]=0x6d93d3fd7bb8baebf853be56d0198989db655e40`);
+        var nfts = [];
+
+        try {
+            const darcels = await getData(`https://eth-mainnet.alchemyapi.io/v2/kA0GvyDvzb_9brFE0cU4YM5cKdbdmWe9/getNFTs/?owner=${ address }&contractAddresses[]=0x8d609bd201beaea7dccbfbd9c22851e23da68691`);
+            nfts = darcels.ownedNfts;
+        } catch (error) {
+            console.error(error);
+        }
+
+        var coletteNFTs = [];
+
+        try {
+            const colette = await getData(`https://eth-mainnet.alchemyapi.io/v2/kA0GvyDvzb_9brFE0cU4YM5cKdbdmWe9/getNFTs/?owner=${ address }&contractAddresses[]=0x6d93d3fd7bb8baebf853be56d0198989db655e40`);
+            coletteNFTs = colette.ownedNfts;
+        } catch (error) {
+            console.error(error);
+        }
 
         // All Colette owners eligible
-        if (colette.ownedNfts.length > 0) {
+        if (coletteNFTs.length > 0) {
             verified = true;
         }
 
