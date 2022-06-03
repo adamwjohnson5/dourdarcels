@@ -51,7 +51,7 @@ async function validateMerch9(form) {
         }
 
         // All Colette owners eligible
-        if (coletteNFTs.length > 0) {
+        if (coletteNFTs.length > 0 || nfts.length > 0) {
             verified = true;
         }
 
