@@ -1,9 +1,5 @@
 /* Section 10 */
 
-section#section-10 {
-   display: none; /* Remove at launch */
-}
-
 #section-10-connected {
    display: none;
    width: 464px;
