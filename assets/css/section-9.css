@@ -6,7 +6,12 @@ section#section-9 {
 
 section#section-9 h2 {
    line-height: 1;
-   word-spacing: 9999999px; /* Force line break */
+   color: #000;
+}
+
+section#section-9 p,
+section#section-9 a {
+   color: #000;
 }
 
 #section-9-connected {
@@ -44,6 +49,12 @@ section#section-9 h2 {
 }
 
 @media only screen and (max-width: 926px) {
+   #section-9 h2,
+   #section-9 p,
+   section#section-9 a {
+      color: #FFF !important;
+   }
+   
    #section-9 form {
       width: 232px;
    }
