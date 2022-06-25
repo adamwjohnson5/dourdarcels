@@ -11,7 +11,7 @@ section#section-9 h2 {
 }
 
 section#section-9 p,
-section#section-9 a {
+section#section-9 p a {
    color: #000;
 }
 
@@ -19,13 +19,13 @@ section#section-9 a {
    display: none;
 }
 
-#section-9 form {
+section#section-9 form {
    margin: auto;
    width: 464px;
    margin-top: 8px;
 }
 
-#section-9 form * {
+section#section-9 form * {
    float: left;
    margin: 12px;
    margin-top: 16px;
@@ -34,7 +34,7 @@ section#section-9 a {
    box-sizing: border-box;
 }
 
-#section-9 form input[type="submit"] {
+section#section-9 form input[type="submit"] {
    /* width: 440px; */
    background-color: #000;
    color: #FFF;
@@ -43,24 +43,24 @@ section#section-9 a {
 }
 
 @media only screen and (min-width: 927px) and (max-width: 1366px) {
-   #section-9 h2 {
+   section#section-9 h2 {
       font-size: 90px;
       word-spacing: normal;
    }
 }
 
 @media only screen and (max-width: 926px) {
-   #section-9 h2,
-   #section-9 p,
-   section#section-9 a {
-      color: #FFF !important;
+   section#section-9 h2,
+   section#section-9 p,
+   section#section-9 p a {
+      color: #FFF;
    }
    
-   #section-9 form {
+   section#section-9 form {
       width: 232px;
    }
 
-   #section-9 form input[type="submit"] {
+   section#section-9 form input[type="submit"] {
       /* width: 208px; */
       background-color: #FFCC00;
       color: #FFF;
