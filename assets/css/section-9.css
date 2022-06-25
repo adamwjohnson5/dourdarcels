@@ -6,6 +6,7 @@ section#section-9 {
 
 section#section-9 h2 {
    line-height: 1;
+   /* word-spacing: 9999999px; /* Force line break */
    color: #000;
 }
 

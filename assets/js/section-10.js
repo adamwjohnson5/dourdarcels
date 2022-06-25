@@ -2,7 +2,7 @@
 
 /* Global vars */
 
-window.portalIPFS;
+window.portalToken;
 window.portalBg;
 window.portalTitle;
 window.generateDate;
@@ -56,7 +56,8 @@ async function walletConnectedPortal() {
                 format.value = ''; // Reset
                 portalToggleDownload();
                 window.generateDate = Date.now(); // Cancel if generating
-                window.portalIPFS = nfts[x].media[0].gateway;
+                window.portalToken = title.replace('Dour Darcel #', '');
+                //window.portalToken = nfts[x].media[0].gateway;
                 window.portalBg = nfts[x].metadata.attributes[0].value;
                 window.portalTitle = title;
             });
@@ -130,7 +131,8 @@ async function portalGenerate(format) {
             }
         };
 
-        img.src = `${ window.portalIPFS.replace('ipfs.io', 'cloudflare-ipfs.com') }?date=${ date }`; // Use Cloudflare gateway
+        img.src = `https://dourdarcels.s3.amazonaws.com/token/${ window.portalToken }.png`;
+        //img.src = `${ window.portalIPFS.replace('ipfs.io', 'cloudflare-ipfs.com') }?date=${ date }`;
         await img.decode(); // Wait until image finished loading
 
         if (window.generateDate === date) {
