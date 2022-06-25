@@ -193,6 +193,36 @@ a.centered-big-button {
     margin-top: 24px;
 }
 
+form#subForm {
+    margin-top: 24px;
+}
+
+form#subForm input {
+    border-radius: 999px 0 0 999px;
+    width: 288px;
+    font-family: 'Helvetica Neue', sans-serif;
+    padding-left: 32px;
+    font-size: 16px;
+}
+
+form#subForm button {
+    display: inline-flex;
+    vertical-align: top;
+    border-radius: 0 999px 999px 0;
+    background-color: #000;
+    color: #FFF;
+    min-width: auto;
+}
+
+.no-touch form#subForm button.big-button:hover {
+    background-color: #FFCC00;
+}
+
+form#subForm button.big-button:active {
+    color: #000;
+    background-color: #FFF !important;
+}
+
 @media only screen and (min-width: 927px) and (max-width: 1194px) {
     h2 {
         font-size: 100px;
@@ -226,6 +256,18 @@ a.centered-big-button {
         padding-top: 48px;
         padding-bottom: 48px;
         position: static;
+    }
+    
+    form#subForm input {
+        width: 168px;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+    
+    form#subForm button {
+        padding-left: 24px;
+        padding-right: 24px;
+        background-color: #FFCC00;
     }
 }
 
