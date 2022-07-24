@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Mouse events
-    const email = document.querySelector('section#section-colette-1 form input');
+    const email = document.querySelector('#section-colette-1 form input');
 
     email.addEventListener('focus', (e) => {
         email.setAttribute('placeholder', 'Enter your email');

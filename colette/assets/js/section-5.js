@@ -57,7 +57,7 @@ function moveTimeline(pos) {
 }
 
 function initEvents(pos) {
-    const section = document.querySelector('section#section-colette-5');
+    const section = document.querySelector('#section-colette-5');
     const timeline = document.querySelector('#section-5-timeline');
 
     if (section.style.opacity === '1' && !timeline.style.visibility && pos >= section.offsetTop - window.innerHeight + (section.offsetHeight / 2)) {

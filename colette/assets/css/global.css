@@ -6,12 +6,12 @@
 
 /* Section 1 */
 
-section#section-colette-1 h2 {
+#section-colette-1 h2 {
     margin-top: 80px;
 }
 
 @media only screen and (min-width: 927px) and (max-width: 1194px) {
-    section#section-colette-1 h2 {
+    #section-colette-1 h2 {
         font-size: 85px;
     }
 }

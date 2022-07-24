@@ -1,17 +1,17 @@
 /* Section 9 */
 
-section#section-9 {
+#section-9 {
    /* display: none; */
 }
 
-section#section-9 h2 {
+#section-9 h2 {
    line-height: 1;
    /* word-spacing: 9999999px; /* Force line break */
    color: #000;
 }
 
-section#section-9 p,
-section#section-9 p a {
+#section-9 p,
+#section-9 p a {
    color: #000;
 }
 
@@ -19,13 +19,13 @@ section#section-9 p a {
    display: none;
 }
 
-section#section-9 form {
+#section-9 form {
    margin: auto;
    width: 464px;
    margin-top: 8px;
 }
 
-section#section-9 form * {
+#section-9 form * {
    float: left;
    margin: 12px;
    margin-top: 16px;
@@ -34,7 +34,7 @@ section#section-9 form * {
    box-sizing: border-box;
 }
 
-section#section-9 form input[type="submit"] {
+#section-9 form input[type="submit"] {
    /* width: 440px; */
    background-color: #000;
    color: #FFF;
@@ -43,24 +43,24 @@ section#section-9 form input[type="submit"] {
 }
 
 @media only screen and (min-width: 927px) and (max-width: 1366px) {
-   section#section-9 h2 {
+   #section-9 h2 {
       font-size: 90px;
       word-spacing: normal;
    }
 }
 
 @media only screen and (max-width: 926px) {
-   section#section-9 h2,
-   section#section-9 p,
-   section#section-9 p a {
+   #section-9 h2,
+   #section-9 p,
+   #section-9 p a {
       color: #FFF;
    }
    
-   section#section-9 form {
+   #section-9 form {
       width: 232px;
    }
 
-   section#section-9 form input[type="submit"] {
+   #section-9 form input[type="submit"] {
       /* width: 208px; */
       background-color: #FFCC00;
       color: #FFF;

@@ -110,7 +110,7 @@ select {
     clear: both;
 }
 
-section {
+.section {
     opacity: 0;
     transition: opacity 0.5s ease-in;
     position: relative;
@@ -284,18 +284,18 @@ form#subForm button.big-button:active {
 
 /* Section 1 */
 
-section#section-1 .section-wrapper img {
+#section-1 .section-wrapper img {
     width: 60%;
     max-width: 900px;
 }
 
 @media only screen and (max-width: 926px) {
-    section#section-1 .section-wrapper {
+    #section-1 .section-wrapper {
         position: absolute;
         z-index: 1;
     }
 
-    section#section-1 .section-wrapper img {
+    #section-1 .section-wrapper img {
         width: 80%;
     }
 }

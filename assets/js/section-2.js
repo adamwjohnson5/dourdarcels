@@ -13,7 +13,7 @@ async function mintingOpen() {
     // Check if wallet already connected
     const connected = await isConnected();
 
-    document.querySelector('section#section-2').style.display = 'block'; // Show section
+    document.querySelector('#section-2').style.display = 'block'; // Show section
 
     // Header
     const headerConnect = document.querySelector('a#header-connect');
@@ -29,9 +29,9 @@ async function mintingOpen() {
 
 function setMintingWelcomeText() {
     if (window.presale) {
-        document.querySelector('section#section-2').querySelector('p#section-2-details').innerHTML = '<strong>Welcome, please connect your wallet to participate in the pre-sale mint.</strong>';
+        document.querySelector('#section-2').querySelector('p#section-2-details').innerHTML = '<strong>Welcome, please connect your wallet to participate in the pre-sale mint.</strong>';
     } else {
-        document.querySelector('section#section-2').querySelector('p#section-2-details').innerHTML = '<strong>Welcome, please connect your wallet to mint.</strong> You can mint a maximum of <strong>3 Darcels</strong> per transaction. Dour Darcels are <strong>0.1ETH</strong> each.';
+        document.querySelector('#section-2').querySelector('p#section-2-details').innerHTML = '<strong>Welcome, please connect your wallet to mint.</strong> You can mint a maximum of <strong>3 Darcels</strong> per transaction. Dour Darcels are <strong>0.1ETH</strong> each.';
     }
 }
 

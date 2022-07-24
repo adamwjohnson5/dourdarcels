@@ -71,11 +71,11 @@ function start() {
     }
 
     if (window.portal && typeof window.project === 'undefined') {
-        document.querySelector('section#section-10').style.display = 'block'; // Show section
+        document.querySelector('#section-10').style.display = 'block'; // Show section
     }
 
     if (window.merch && typeof window.project === 'undefined') {
-        document.querySelector('section#section-9').style.display = 'block'; // Show section
+        document.querySelector('#section-9').style.display = 'block'; // Show section
     }
 
     loadSection(1);
@@ -84,9 +84,9 @@ function start() {
 /* Global */
 
 function loadSection(int) {
-    const sections = document.querySelectorAll('section');
+    const sections = document.querySelectorAll('.section');
     const sectionID = parseInt(sections[int - 1].id.replace(`section-${ typeof window.project === 'undefined' ? '' : window.project + '-'}`, ''));
-    const section = document.querySelector(`section#section-${ typeof window.project === 'undefined' ? '' : window.project + '-'}` + sectionID);
+    const section = document.querySelector(`#section-${ typeof window.project === 'undefined' ? '' : window.project + '-'}` + sectionID);
     const bg = section.querySelector('img.section-bg');
     bg.setAttribute('src', `/assets/img/bg-${ typeof window.project === 'undefined' ? '' : window.project + '-'}${ sectionID }.jpg`);
 
@@ -111,7 +111,7 @@ function loadSection(int) {
 }
 
 function animateSection(sectionNum, pos) {
-    const section = document.querySelector(`section#section-${ typeof window.project === 'undefined' ? '' : window.project + '-'}` + sectionNum);
+    const section = document.querySelector(`#section-${ typeof window.project === 'undefined' ? '' : window.project + '-'}` + sectionNum);
 
     // Only if section is loaded and visible
     if (typeof window.project === 'undefined' && sectionNum === 1 && section.style.opacity === '1') {
