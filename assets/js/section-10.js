@@ -40,7 +40,10 @@ async function walletConnectedPortal() {
             let thumb = document.createElement('a');
             thumb.title = title;
             thumb.classList.add('section-10-portal-thumb');
-            thumb.innerHTML = `<img src="https://traitmatch.s3.us-west-1.amazonaws.com/dourdarcels/${ title.replace('Dour Darcel #', '') }.png" alt="${ title }" />`;
+            let img = document.createElement('img');
+            img.src = `https://traitmatch.s3.us-west-1.amazonaws.com/dourdarcels/${ title.replace('Dour Darcel #', '') }.png`;
+            img.alt = title;
+            thumb.appendChild(img);
             container.appendChild(thumb);
 
             thumb.addEventListener('click', (e) => {

@@ -120,9 +120,11 @@ timeline-event {
    margin: auto;
 }
 
-.no-touch .timeline-event-link span.big-button:hover {
-   background-color: #FFCC00;
-   cursor: pointer;
+@media (hover: hover) {
+   .timeline-event-link span.big-button:hover {
+      background-color: #FFCC00;
+      cursor: pointer;
+   }
 }
 
 .timeline-event-link span.big-button:active {

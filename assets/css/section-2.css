@@ -160,7 +160,12 @@ p#section-2-counter-text {
     word-break: break-all;
 }
 
-.no-touch #overlay-window.minting-success p a:hover,
+@media (hover: hover) {
+    #overlay-window.minting-success p a:hover {
+        text-decoration: underline;
+    }
+}
+
 #overlay-window.minting-success p a:active {
     text-decoration: underline;
 }

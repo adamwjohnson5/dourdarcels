@@ -12,13 +12,7 @@ window.project;
 /* On DOM load */
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Detect mobile
-    window.touchScreen = matchMedia('(hover: none)').matches;
-
-    if (window.touchScreen) {
-        document.querySelector('body').classList.remove('no-touch');
-    }
-
+    window.touchScreen = matchMedia('(hover: none)').matches; // Detect mobile
     setEventsGlobal(); // Mouse and keyboard
 
     // Scroll
@@ -153,7 +147,7 @@ function walletConnected() {
 
     // Change button text
     for (let x = 0; x < connectButtons.length; x++) {
-        connectButtons[x].innerHTML = 'Connected';
+        connectButtons[x].textContent = 'Connected';
     }
 
     walletConnectedMint();

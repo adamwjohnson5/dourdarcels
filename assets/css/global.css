@@ -178,8 +178,10 @@ img.section-bg {
     -webkit-user-select: none;
 }
 
-.no-touch a.big-button:hover {
-    background-color: #FFCC00;
+@media (hover: hover) {
+    a.big-button:hover {
+        background-color: #FFCC00;
+    }
 }
 
 .big-button:active {
@@ -214,8 +216,10 @@ form#subForm button {
     min-width: auto;
 }
 
-.no-touch form#subForm button.big-button:hover {
-    background-color: #FFCC00;
+@media (hover: hover) {
+    form#subForm button.big-button:hover {
+        background-color: #FFCC00;
+    }
 }
 
 form#subForm button.big-button:active {
@@ -257,13 +261,13 @@ form#subForm button.big-button:active {
         padding-bottom: 48px;
         position: static;
     }
-    
+
     form#subForm input {
         width: 168px;
         padding-left: 16px;
         padding-right: 16px;
     }
-    
+
     form#subForm button {
         padding-left: 24px;
         padding-right: 24px;
