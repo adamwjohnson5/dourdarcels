@@ -14,7 +14,7 @@ async function validateMerch9(form) {
     var errorMessage = '';
     const submitButton = document.querySelector('input#section-9-merch-submit');
     submitButton.disabled = true;
-    const size = document.querySelector('select#section-9-merch-size').value;
+    const size = document.querySelector('select#section-9-merch-sizing').value;
 
     if (!size) {
         errorMessage += '<p>Please select your size.</p>';
