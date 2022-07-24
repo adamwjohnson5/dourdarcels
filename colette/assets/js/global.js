@@ -20,11 +20,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Mouse events
     const email = document.querySelector('#section-colette-1 form input');
 
-    email.addEventListener('focus', (e) => {
+    email.addEventListener('focus', () => {
         email.setAttribute('placeholder', 'Enter your email');
     });
 
-    email.addEventListener('blur', (e) => {
+    email.addEventListener('blur', () => {
         email.setAttribute('placeholder', 'Join the mailing list for updates');
     });
 });

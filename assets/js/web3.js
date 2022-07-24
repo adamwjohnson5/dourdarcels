@@ -41,7 +41,7 @@ async function connectWallet() {
             window.whitelistQty = 0; // Please set allowance if user whitelisted. Set to 0 if not whitelisted
             walletConnected(); // Please call when wallet successfully connected
         } else {
-            toggleConnectButtons(true);; // Enable
+            toggleConnectButtons(true); // Enable
             toggleOverlay('Error', 'Wallet not found.');
         }
     } else {

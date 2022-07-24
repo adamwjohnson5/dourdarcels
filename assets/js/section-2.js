@@ -84,11 +84,11 @@ function walletDisconnected() {
     const headerConnect = document.querySelector('a#header-connect');
     headerConnect.innerHTML = 'Connect Wallet';
     headerConnect.style.pointerEvents = 'auto'; // Re-enable
-    headerConnect.setAttribute('href', 'javascript: connectWallet();')
+    headerConnect.setAttribute('href', 'javascript: connectWallet();');
     const mintingConnect = document.querySelector('a#minting-button-1');
     mintingConnect.innerHTML = 'Connect Wallet';
     mintingConnect.style.pointerEvents = 'auto'; // Re-enable
-    mintingConnect.setAttribute('href', 'javascript: connectWallet();')
+    mintingConnect.setAttribute('href', 'javascript: connectWallet();');
 
     disableMinting();
     mintQuantityToggle('reset');

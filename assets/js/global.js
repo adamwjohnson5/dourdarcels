@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
 /* Mouse and keyboard events */
 
 function setEventsGlobal() {
-    document.querySelector('#overlay-bg').addEventListener('click', (e) => {
+    document.querySelector('#overlay-bg').addEventListener('click', () => {
         toggleOverlay();
     });
 }

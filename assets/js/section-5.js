@@ -39,7 +39,7 @@ function setTimelineNav(pos) {
     } else if (pos >= contentDivided * 3) {
         item = 3;
     } else if (pos >= contentDivided) {
-        item = 2
+        item = 2;
     }
 
     document.querySelector('a#timeline-nav-' + item).style.opacity = 0.25;

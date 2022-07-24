@@ -30,7 +30,7 @@ async function walletConnectedPortal() {
         const darcels = await getData(`https://eth-mainnet.alchemyapi.io/v2/kA0GvyDvzb_9brFE0cU4YM5cKdbdmWe9/getNFTs/?owner=${ await getWalletAddress() }&contractAddresses[]=0x8d609bd201beaea7dccbfbd9c22851e23da68691`);
         nfts = darcels.ownedNfts;
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
 
     if (nfts.length > 0) {
@@ -46,7 +46,7 @@ async function walletConnectedPortal() {
             thumb.appendChild(img);
             container.appendChild(thumb);
 
-            thumb.addEventListener('click', (e) => {
+            thumb.addEventListener('click', () => {
                 let thumbs = container.querySelectorAll('a');
 
                 // Reset all
