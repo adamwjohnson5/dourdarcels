@@ -71,7 +71,8 @@ function start() {
     }
 
     if (window.portal && typeof window.project === 'undefined') {
-        document.querySelector('#section-10').style.display = 'block'; // Show section
+        //document.querySelector('#section-10').style.display = 'block'; // Show section
+        document.querySelector('option[value=hi-res]').removeAttribute('hidden');
     }
 
     if (window.merch && typeof window.project === 'undefined') {

@@ -71,11 +71,16 @@ async function walletConnectedPortal() {
 
     // Format
     format.addEventListener('change', async (e) => {
+        const download = document.querySelector('a#section-10-portal-download');
+        download.setAttribute('target', '_self');
         const val = e.currentTarget.value;
         window.generateDate = Date.now();
 
-        if (val === 'theme') {
-            const download = document.querySelector('a#section-10-portal-download');
+        if (val === 'hi-res') {
+            download.href = `https://dourdarcels.s3.amazonaws.com/hires/${ window.portalToken }.png`;
+            download.setAttribute('target', '_blank');
+            portalToggleDownload('enabled');
+        } else if (val === 'theme') {
             download.href = 'https://dourdarcels.s3.amazonaws.com/audio/Dour+Darcels+Theme+Song.mp3.zip';
             download.setAttribute('download', 'Dour Darcels Theme Song');
             portalToggleDownload('enabled');
