@@ -123,7 +123,7 @@ function animateSection(sectionNum, pos) {
     } else if (sectionNum !== 1 && section.style.opacity === '1') {
         // All other sections excluding timeline
         let percent = Math.round((pos - section.offsetTop + window.innerHeight) / section.offsetHeight * 100);
-        const column = section.querySelector('.section-column');
+        const column = section.querySelector('.section-column') ? section.querySelector('.section-column') : section.querySelector('.section-wrapper');
 
         // Opacity
         const opacity = pos < section.offsetTop - window.innerHeight ? 0 : pos >= section.offsetHeight - window.innerHeight + section.offsetTop ? 1 : percent / 100;
