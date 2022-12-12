@@ -21,9 +21,9 @@ document.addEventListener('DOMContentLoaded', () => {
             animateSection(1, window.pageYOffset);
             animateSection(3, window.pageYOffset);
             animateSection(4, window.pageYOffset);
-            animateSection(6, window.pageYOffset);
+            //animateSection(6, window.pageYOffset);
             animateSection(7, window.pageYOffset);
-            animateSection(8, window.pageYOffset);
+            //animateSection(8, window.pageYOffset);
             animateSection(9, window.pageYOffset);
             animateSection(10, window.pageYOffset);
         }

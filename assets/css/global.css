@@ -308,6 +308,7 @@ form#subForm button.big-button:active {
 
 #section-4-collections {
     margin-top: 24px;
+    font-size: 0;
 }
 
 #section-4-collections .collections-item {
@@ -317,11 +318,11 @@ form#subForm button.big-button:active {
 }
 
 #section-4-collections h3 {
-    font-size: 42px;
+    font-size: 36px;
     position: absolute;
     width: 100%;
     margin-top: 24px;
-    letter-spacing: -2px;
+    letter-spacing: -1px;
 }
 
 #section-4-collections img {
@@ -342,10 +343,13 @@ form#subForm button.big-button:active {
 }
 
 @media only screen and (max-width: 1194px) {
+    #section-4-collections {
+        margin-top: 12px;
+    }
+
     #section-4-collections h3 {
         font-size: 30px;
-        margin-top: 20px;
-        letter-spacing: -1px;
+        margin-top: 16px;
     }
 
     #section-4-collections img {
@@ -359,13 +363,26 @@ form#subForm button.big-button:active {
     }
 
     #section-4 h2 {
-        font-size: 52px;
-        letter-spacing: -3px;
+        font-size: 48px;
+        letter-spacing: -2px;
+    }
+
+    #section-4-collections .collections-item {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    #section-4-collections h3 {
+        margin-top: 20px;
     }
 
     #section-4-collections a {
         background-color: #FFF;
         color: #000;
+    }
+
+    #section-4-collections img {
+        width: 256px;
     }
 }
 
