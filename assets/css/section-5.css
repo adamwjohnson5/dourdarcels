@@ -63,6 +63,10 @@
    letter-spacing: normal;
 }
 
+h3#timeline-end span {
+   font-size: 18px;
+}
+
 .timeline-line {
    height: 1px;
    width: 0px;
