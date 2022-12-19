@@ -456,42 +456,6 @@ form#subForm button.big-button:active {
     }
 }
 
-/* Section 9 */
-
-#section-9 h2,
-#section-9 p {
-    color: #000;
-}
-
-#section-9 a.big-button {
-    background-color: #000;
-    color: #FFF;
-    transition: color 0.15s linear;
-}
-
-#section-9 a.big-button:active {
-    background-color: #FFCC00 !important;
-    color: #000 !important;
-}
-
-@media (hover: hover) {
-    #section-9 a.big-button:hover {
-        color: #FFCC00;
-    }
-}
-
-@media only screen and (max-width: 926px) {
-    #section-9 h2,
-    #section-9 p {
-        color: #FFF;
-    }
-
-    #section-9 a.big-button {
-        background-color: #FFF;
-        color: #000;
-    }
-}
-
 /* Footer */
 
 footer {
