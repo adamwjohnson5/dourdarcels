@@ -153,7 +153,7 @@ function walletConnected() {
     }
 
     walletConnectedMint();
-    walletConnectedMerch();
+    //walletConnectedMerch();
     walletConnectedPortal();
 }
 
