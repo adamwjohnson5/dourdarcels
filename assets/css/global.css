@@ -456,6 +456,71 @@ form#subForm button.big-button:active {
     }
 }
 
+/* Section 12 */
+
+#section-12-advisors {
+    width: max-content;
+    margin: auto;
+    margin-top: 8px;
+    display: grid;
+    grid-template-columns: repeat(3, 176px);
+}
+
+#section-12-advisors a {
+    line-height: 1;
+    font-size: 12px;
+    font-weight: 300;
+    margin-top: 24px;
+}
+
+#section-12-advisors a img {
+    width: 128px;
+    display: block;
+    border-radius: 999px;
+    margin: auto;
+}
+
+#section-12-advisors a span {
+    display: block;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+@media only screen and (min-width: 1366px) {
+    #section-12-advisors {
+        grid-template-columns: repeat(3, 192px);
+    }
+
+    #section-12-advisors a img {
+        width: 144px;
+    }
+}
+
+@media only screen and (max-width: 1194px) {
+    #section-12-team {
+        grid-template-columns: repeat(3, 160px);
+        margin-top: 16px;
+    }
+
+    #section-12-advisors a {
+        margin-top: 16px;
+    }
+}
+
+@media only screen and (max-width: 592px) {
+    #section-12 .section-column {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    #section-12-advisors {
+        width: auto;
+        grid-template-columns: repeat(2, auto);
+    }
+}
+
 /* Footer */
 
 footer {
