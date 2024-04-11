@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
             animateSection(10, window.pageYOffset);
             animateSection(11, window.pageYOffset);
             animateSection(12, window.pageYOffset);
+            animateSection(13, window.pageYOffset);
         }
     });
 
