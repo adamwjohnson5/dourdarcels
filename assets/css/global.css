@@ -523,6 +523,10 @@ form#subForm button.big-button:active {
 
 /* Section 13 */
 
+#section-13 h2 {
+    font-size: 72px;
+}
+
 #section-13-egg4good {
     width: max-content;
     margin: auto;
@@ -575,6 +579,10 @@ form#subForm button.big-button:active {
 }
 
 @media only screen and (max-width: 592px) {
+    #section-13 h2 {
+        font-size: 60px;
+    }
+
     #section-13 .section-column {
         padding-left: 16px;
         padding-right: 16px;
